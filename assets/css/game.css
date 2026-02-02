@@ -73,6 +73,10 @@
   100% { transform: translateY(0); }
 }
 
+:root {
+  --ground-y: 65%;
+}
+
 /* =========================
    PERSONNAGE
 ========================= */
@@ -81,7 +85,7 @@
   width: 40px;
   height: 40px;
   background: #4caf50;
-  transition: transform 0.1s;
+  top: var(--ground-y);
 }
 
 /* =========================
@@ -92,7 +96,7 @@
   width: 50px;
   height: 70px;
   background: #795548;
-  top: 60%; 
+  top: calc(var(--ground-y) - 30px);
 }
 
 /* ✅ ALIGNEMENT ROBUSTE */
