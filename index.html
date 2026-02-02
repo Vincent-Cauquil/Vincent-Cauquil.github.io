@@ -1,22 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Vincent Cauquil — Portfolio</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/game.css">
+</head>
 <body>
 
-  <!-- Écran de démarrage -->
-  <section id="start-screen" class="screen active">
-    <h1>🎮 Vincent Cauquil</h1>
-    <button id="start-btn">Start Game</button>
-  </section>
+  <!-- Monde du jeu -->
+  <div id="game">
 
-  <!-- Zone de jeu -->
-  <section id="game-world" class="screen">
+    <!-- Indication clavier -->
+    <div id="controls-hint">
+      Z Q S D
+    </div>
+
+    <!-- Personnage -->
     <div id="player"></div>
 
-    <div class="object" data-section="about">À propos</div>
-    <div class="object" data-section="skills">Compétences</div>
-    <div class="object" data-section="projects">Projets</div>
-  </section>
+    <!-- Portes -->
+    <div class="door" data-section="about"></div>
+    <div class="door" data-section="skills"></div>
+    <div class="door" data-section="projects"></div>
+    <div class="door" data-section="contact"></div>
 
-  <!-- Modales -->
-  <section id="modal" class="hidden"></section>
+  </div>
 
   <script src="assets/js/game.js"></script>
 </body>
+</html>
