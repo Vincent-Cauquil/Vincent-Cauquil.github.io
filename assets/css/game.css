@@ -1,4 +1,6 @@
-/* Zone de jeu */
+/* =========================
+   ZONE DE JEU
+========================= */
 #game {
   position: relative;
   width: 100vw;
@@ -6,26 +8,32 @@
   overflow: hidden;
 }
 
-/* Indication ZQSD */
+/* =========================
+   INDICATION ZQSD
+========================= */
 #controls-hint {
   position: absolute;
   pointer-events: none;
   font-family: monospace;
-  transform: translate(-50%, -100%);
   z-index: 10;
+  transform: translate(-50%, -100%);
 }
 
+/* =========================
+   INDICATION [ E ]
+========================= */
 #interact-hint {
   position: absolute;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.15s ease;
-
   transform: translate(-50%, -120%);
   z-index: 10;
 }
 
-/* Lignes de touches */
+/* =========================
+   TOUCHES
+========================= */
 .key-row {
   display: flex;
   justify-content: center;
@@ -33,7 +41,6 @@
   margin-bottom: 6px;
 }
 
-/* Touche pixel-art */
 .key {
   width: 42px;
   height: 42px;
@@ -41,27 +48,34 @@
   color: #000;
   font-size: 18px;
   font-weight: bold;
-  animation: pulse 1.5s infinite ease-in-out;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   border-radius: 6px 6px 10px 10px;
   border: 3px solid #111;
+
   box-shadow:
     inset -3px -3px 0 #b5c7e6,
     inset 3px 3px 0 #ffffff,
     3px 3px 0 #111;
 
   image-rendering: pixelated;
+
+  animation: pulse 1.5s infinite ease-in-out;
 }
 
+/* ✅ Animation SANS toucher au positionnement */
 @keyframes pulse {
-  0%   { transform: translate(-50%, -100%) translateY(0); }
-  50%  { transform: translate(-50%, -100%) translateY(-6px); }
-  100% { transform: translate(-50%, -100%) translateY(0); }
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
 }
 
-/* Personnage */
+/* =========================
+   PERSONNAGE
+========================= */
 #player {
   position: absolute;
   width: 40px;
@@ -70,17 +84,19 @@
   transition: transform 0.1s;
 }
 
-/* Portes */
+/* =========================
+   PORTES
+========================= */
 .door {
+  position: absolute;
   width: 50px;
   height: 70px;
   background: #795548;
-  position: absolute;
   bottom: 20%;
 }
 
-/* Alignement des portes */
-.door:nth-child(4) { left: 30%; }
-.door:nth-child(5) { left: 45%; }
-.door:nth-child(6) { left: 60%; }
-.door:nth-child(7) { left: 75%; }
+/* ✅ ALIGNEMENT ROBUSTE */
+.door:nth-of-type(1) { left: 30%; }
+.door:nth-of-type(2) { left: 45%; }
+.door:nth-of-type(3) { left: 60%; }
+.door:nth-of-type(4) { left: 75%; }
