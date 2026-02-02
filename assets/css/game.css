@@ -10,18 +10,41 @@
 /* Indication ZQSD */
 #controls-hint {
   position: absolute;
-  top: 20%;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  color: white;
-  font-size: 1.2rem;
-  opacity: 0.8;
-  animation: blink 1.5s infinite;
+  pointer-events: none;
+  font-family: monospace;
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 0.3; }
+/* Lignes de touches */
+.key-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+/* Touche pixel-art */
+.key {
+  width: 42px;
+  height: 42px;
+  background: #e8f0ff;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 3px solid #111;
+  box-shadow:
+    inset -3px -3px 0 #b5c7e6,
+    inset 3px 3px 0 #ffffff,
+    3px 3px 0 #111;
+
+  image-rendering: pixelated;
 }
 
 /* Personnage */
