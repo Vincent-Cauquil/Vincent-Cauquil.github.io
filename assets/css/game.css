@@ -86,6 +86,7 @@
   height: 40px;
   background: #4caf50;
   top: var(--ground-y);
+  outline: 3px solid red;
 }
 
 /* =========================
@@ -97,6 +98,7 @@
   height: 70px;
   background: #795548;
   top: calc(var(--ground-y) - 30px);
+  outline: 3px solid blue;
 }
 
 /* ✅ ALIGNEMENT ROBUSTE */
