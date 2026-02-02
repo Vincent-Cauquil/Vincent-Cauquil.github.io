@@ -52,7 +52,7 @@ document.addEventListener("keyup", (e) => {
    GAME LOOP
 ========================= */
 function update() {
-
+  console.log(keys);
   /* --- Déplacement horizontal --- */
   if (leftKey) vx -= speed;
   if (rightKey) vx += speed;
