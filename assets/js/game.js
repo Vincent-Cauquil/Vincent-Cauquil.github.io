@@ -31,10 +31,10 @@ document.addEventListener("keydown", (e) => {
   keys[e.key.toLowerCase()] = true;
 
   /* Masquer l'aide au premier input */
-  if (controlsHint) {
-    controlsHint.style.opacity = "0";
-    controlsHint.style.pointerEvents = "none";
-  }
+  if (controlsHint && controlsHint.style.opacity !== "0") {
+     controlsHint.style.left = (x + player.offsetWidth / 2) + "px";
+     controlsHint.style.top = (y - 10) + "px";
+   }
 });
 
 document.addEventListener("keyup", (e) => {
