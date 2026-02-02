@@ -59,6 +59,7 @@
   height: 40px;
   background: #4caf50;
   position: absolute;
+  transition: transform 0.1s;
   top: 60%;
   left: 10%;
 }
