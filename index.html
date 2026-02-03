@@ -8,6 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    
+<div class="lang-switch">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <span class="lang-separator">|</span>
+    <button class="lang-btn" data-lang="en">EN</button>
+</div>
 
   <!-- HERO - Présentation -->
   <section id="hero">
@@ -49,42 +55,63 @@
     <div class="timeline-container">
       <div class="timeline-line"></div>
 
-      <!-- Projet 1 - GAUCHE -->
+        <!-- Projet 1 - GAUCHE -->
         <div class="timeline-item left" data-aos="fade-right">
             <div class="timeline-content">
-            <div class="project-image">
-            <img src="assets/images/projects/parking.png" alt="Smart Modular Parking">
-            </div>
-            <div class="project-info">
-            <h3>Smart Modular Parking</h3>
-            <p>Système de parking intelligent IoT. Lead technique sur l'intégration complète : 
-                SoC RISC-V (LiteX/Linux) sur FPGA et architecture BMS (RP2350/TI BQ ICs).</p>
-            <div class="project-tags">
-                <span class="tag">FPGA</span>
-                <span class="tag">RISC-V</span>
-                <span class="tag">LiteX</span>
-                <span class="tag">Linux</span>
-                <span class="tag">BMS</span>
-            <div class="award">
-                🏆 Projet le plus technique - CPE Lyon Majors 2025
-            </div>
-            </div>
-                <a href="https://github.com/EnderCryme/5A-Projet-Parking" class="btn btn-small" target="_blank">
-                <span class="btn-icon">🔗</span> Voir sur GitHub
-            </a>
+                <div class="project-image">
+                    <img src="assets/images/projects/parking.png" alt="Smart Modular Parking">
+                </div>
+                <div class="project-info">
+                    <h3>Smart Modular Parking</h3>
+                    
+                    <!-- Description FR -->
+                    <p class="lang-text" data-lang="fr">
+                        Système de parking intelligent IoT. Lead technique sur l'intégration complète : 
+                        SoC RISC-V (LiteX/Linux) sur FPGA et architecture BMS (RP2350/TI BQ ICs).
+                    </p>
+                    <!-- Description EN -->
+                    <p class="lang-text" data-lang="en" style="display: none;">
+                        Smart IoT parking system. Technical lead on full integration: 
+                        RISC-V SoC (LiteX/Linux) on FPGA and BMS architecture (RP2350/TI BQ ICs).
+                    </p>
+                    
+                    <div class="project-tags">
+                        <span class="tag">FPGA</span>
+                        <span class="tag">RISC-V</span>
+                        <span class="tag">LiteX</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">BMS</span>
+                    </div>
+                    
+                    <!-- Award FR -->
+                    <div class="award lang-text" data-lang="fr">
+                        🏆 Projet le plus technique - CPE Lyon Majors 2025
+                    </div>
+                    <!-- Award EN -->
+                    <div class="award lang-text" data-lang="en" style="display: none;">
+                        🏆 Most Technical Project - CPE Lyon Majors 2025
+                    </div>
+                    
+                    <a href="https://github.com/EnderCryme/5A-Projet-Parking" class="btn btn-small" target="_blank">
+                        <span class="btn-icon">🔗</span> 
+                        <span class="lang-text" data-lang="fr">Voir sur GitHub</span>
+                        <span class="lang-text" data-lang="en" style="display: none;">View on GitHub</span>
+                    </a>
+                </div>
             </div>
             <div class="timeline-date">
-            <div class="timeline-dot"></div>
-            <span class="date">2025</span>
-            </div>
+                <span class="date lang-text" data-lang="fr">Décembre 2025</span>
+                <span class="date lang-text" data-lang="en" style="display: none;">December 2025</span>
+                <div class="timeline-dot"></div>
             </div>
         </div>
+
 
         <!-- Projet 2 - DROITE -->
         <div class="timeline-item right" data-aos="fade-left">
             <div class="timeline-date">
+            <span class="date">2024 test la vrt</span>    
             <div class="timeline-dot"></div>
-            <span class="date">2024</span>
             </div>
             <div class="timeline-content">
             <div class="project-image">
