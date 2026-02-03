@@ -587,15 +587,20 @@ body.modal-open {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100vh; /* Force la hauteur de l'écran */
     z-index: 1000;
     margin: 0;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    overflow-y: auto;
-    background: rgba(0, 0, 0, 0.9);
+    padding: 1rem; /* Un peu moins de padding pour laisser de la place au contenu */
+    
+    /* MODIFICATION CLÉ ICI : Block au lieu de Flex */
+    display: block; 
+    
+    /* Gestion du scroll */
+    overflow-y: auto; 
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* INDISPENSABLE pour la fluidité sur iPhone/iPad */
+    
+    background: var(--bg-dark); /* Préférable d'utiliser une couleur opaque pour éviter les bugs visuels */
 }
 
 .timeline-item.expanded .timeline-content {
