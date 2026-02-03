@@ -2,42 +2,178 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vincent Cauquil — Portfolio</title>
-
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/game.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Monde du jeu -->
-  <div id="game">
-
-    <!-- Indication clavier -->
-    <div id="controls-hint">
-      <div class="key-row">
-        <div class="key">Z</div>
+  <!-- HERO - Présentation -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="greeting">Bonjour, je suis</span>
+        <h1>Vincent Cauquil</h1>
+        <p class="tagline">Développeur passionné • Créateur de solutions</p>
+        <p class="bio">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+          Passionné par le développement web et les nouvelles technologies,
+          je crée des expériences numériques uniques et fonctionnelles.
+        </p>
+        <div class="hero-buttons">
+          <a href="assets/cv/CV_Vincent_Cauquil.pdf" class="btn btn-primary" target="_blank">
+            <span class="btn-icon">📄</span> Télécharger mon CV
+          </a>
+          <a href="#timeline" class="btn btn-secondary">
+            Voir mes projets ↓
+          </a>
+        </div>
       </div>
-    
-      <div class="key-row">
-        <div class="key">Q</div>
-        <div class="key">S</div>
-        <div class="key">D</div>
+      <div class="hero-image">
+        <div class="avatar-container">
+          <img src="assets/images/avatar.jpg" alt="Vincent Cauquil" class="avatar">
+        </div>
       </div>
     </div>
-    
-    <div id="interact-hint" class="key">E</div>
-    
-    <!-- Personnage -->
-    <div id="player"></div>
+    <div class="scroll-indicator">
+      <div class="mouse"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
 
-    <!-- Portes -->
-    <div class="door" data-section="about"></div>
-    <div class="door" data-section="skills"></div>
-    <div class="door" data-section="projects"></div>
-    <div class="door" data-section="contact"></div>
+  <!-- TIMELINE - Projets -->
+  <section id="timeline">
+    <h2 class="section-title">Mon Parcours</h2>
     
-  </div>
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
 
-  <script src="assets/js/game.js"></script>
+      <!-- Projet 1 - GAUCHE -->
+      <div class="timeline-item left" data-aos="fade-right">
+        <div class="timeline-content">
+          <div class="project-image">
+            <img src="assets/images/project1.jpg" alt="Projet 1">
+          </div>
+          <div class="project-info">
+            <h3>Nom du Projet 1</h3>
+            <p>Description brève du projet. Technologies utilisées et objectifs principaux.</p>
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <a href="https://github.com/ton-username/projet1" class="btn btn-small" target="_blank">
+              <span class="btn-icon">🔗</span> Voir sur GitHub
+            </a>
+          </div>
+        </div>
+        <div class="timeline-date">
+          <span class="date">2024</span>
+          <div class="timeline-dot"></div>
+        </div>
+      </div>
+
+      <!-- Projet 2 - DROITE -->
+      <div class="timeline-item right" data-aos="fade-left">
+        <div class="timeline-date">
+          <div class="timeline-dot"></div>
+          <span class="date">2024</span>
+        </div>
+        <div class="timeline-content">
+          <div class="project-image">
+            <img src="assets/images/project2.jpg" alt="Projet 2">
+          </div>
+          <div class="project-info">
+            <h3>Nom du Projet 2</h3>
+            <p>Description brève du projet. Technologies utilisées et objectifs principaux.</p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+            </div>
+            <a href="https://github.com/ton-username/projet2" class="btn btn-small" target="_blank">
+              <span class="btn-icon">🔗</span> Voir sur GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projet 3 - GAUCHE -->
+      <div class="timeline-item left" data-aos="fade-right">
+        <div class="timeline-content">
+          <div class="project-image">
+            <img src="assets/images/project3.jpg" alt="Projet 3">
+          </div>
+          <div class="project-info">
+            <h3>Nom du Projet 3</h3>
+            <p>Description brève du projet. Technologies utilisées et objectifs principaux.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Django</span>
+            </div>
+            <a href="https://github.com/ton-username/projet3" class="btn btn-small" target="_blank">
+              <span class="btn-icon">🔗</span> Voir sur GitHub
+            </a>
+          </div>
+        </div>
+        <div class="timeline-date">
+          <span class="date">2023</span>
+          <div class="timeline-dot"></div>
+        </div>
+      </div>
+
+      <!-- Projet 4 - DROITE -->
+      <div class="timeline-item right" data-aos="fade-left">
+        <div class="timeline-date">
+          <div class="timeline-dot"></div>
+          <span class="date">2023</span>
+        </div>
+        <div class="timeline-content">
+          <div class="project-image">
+            <img src="assets/images/project4.jpg" alt="Projet 4">
+          </div>
+          <div class="project-info">
+            <h3>Nom du Projet 4</h3>
+            <p>Description brève du projet. Technologies utilisées et objectifs principaux.</p>
+            <div class="project-tags">
+              <span class="tag">Vue.js</span>
+              <span class="tag">Firebase</span>
+            </div>
+            <a href="https://github.com/ton-username/projet4" class="btn btn-small" target="_blank">
+              <span class="btn-icon">🔗</span> Voir sur GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ajoute autant de projets que nécessaire -->
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Me Contacter</h2>
+    <div class="contact-links">
+      <a href="mailto:ton@email.com" class="contact-item">
+        <span class="contact-icon">✉️</span>
+        <span>ton@email.com</span>
+      </a>
+      <a href="https://github.com/ton-username" target="_blank" class="contact-item">
+        <span class="contact-icon">💻</span>
+        <span>GitHub</span>
+      </a>
+      <a href="https://linkedin.com/in/ton-profil" target="_blank" class="contact-item">
+        <span class="contact-icon">💼</span>
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2024 Vincent Cauquil — Fait avec ❤️</p>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
 </body>
 </html>

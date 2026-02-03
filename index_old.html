@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Vincent Cauquil — Portfolio</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/game.css">
+</head>
+<body>
+
+  <!-- Monde du jeu -->
+  <div id="game">
+
+    <!-- Indication clavier -->
+    <div id="controls-hint">
+      <div class="key-row">
+        <div class="key">Z</div>
+      </div>
+    
+      <div class="key-row">
+        <div class="key">Q</div>
+        <div class="key">S</div>
+        <div class="key">D</div>
+      </div>
+    </div>
+    
+    <div id="interact-hint" class="key">E</div>
+    
+    <!-- Personnage -->
+    <div id="player"></div>
+
+    <!-- Portes -->
+    <div class="door" data-section="about"></div>
+    <div class="door" data-section="skills"></div>
+    <div class="door" data-section="projects"></div>
+    <div class="door" data-section="contact"></div>
+    
+  </div>
+
+  <script src="assets/js/game.js"></script>
+</body>
+</html>
