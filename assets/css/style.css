@@ -1070,3 +1070,72 @@ code {
     color: #666;
     font-style: italic;
 }
+
+/* Conteneur du slider */
+.evidence-slider {
+    flex: 1;
+    min-width: 250px;
+    max-width: 450px;
+    position: relative; /* Important pour placer les flèches */
+    margin: auto;
+}
+
+/* Les slides */
+.evidence-slider .slide {
+    display: none; /* Caché par défaut */
+    text-align: center;
+}
+
+.evidence-slider .slide.active {
+    display: block; /* Affiche le slide actif */
+    animation: fade 0.5s;
+}
+
+.evidence-slider img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.evidence-slider .caption {
+    display: block;
+    font-size: 0.8em;
+    color: #555;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Boutons Précédent / Suivant */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 10px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.3); /* Fond semi-transparent */
+}
+
+/* Position droite pour le bouton next */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Effet au survol */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Animation de transition simple */
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
