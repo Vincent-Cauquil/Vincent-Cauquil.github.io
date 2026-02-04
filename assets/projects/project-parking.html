@@ -1,138 +1,85 @@
-<div class="timeline-item">
-    <div class="timeline-content">
-        <button class="btn-close" onclick="toggleProject(this)">✕</button>
+<div class="project-details">
+    
+    <div class="detail-block">
+        <h4 class="lang-text" data-lang="fr">⚡ Architecture de Puissance & BMS (KiCad)</h4>
+        <h4 class="lang-text" data-lang="en" style="display: none;">⚡ Power Architecture & BMS (KiCad)</h4>
+        
+        <div class="evidence-container">
+            <div class="evidence-text">
+                <p class="lang-text" data-lang="fr">
+                    <strong>Challenge :</strong> Alimenter un système hétérogène (FPGA, Moteurs 20V, CPU IA) avec une autonomie de 2h en charge max (65W).<br><br>
+                    <strong>Réalisation :</strong> Conception complète d'un BMS 4S3P (Li-Ion) avec entrée USB-C PD 100W. Architecture NVDC utilisant le trio TI (BQ25713, BQ40Z50, BQ296102) pour la gestion fine de la charge.<br><br>
+                    [cite_start]<strong>Innovation :</strong> Intégration d'un MCU [cite: 26] RP2350 dédié au calcul d'efficacité énergétique (IPN) et à la supervision thermique, décorrélé du processeur principal pour la sécurité.
+                </p>
+                <p class="lang-text" data-lang="en" style="display: none;">
+                    <strong>Challenge:</strong> Powering a heterogeneous system (FPGA, 20V Motors, AI CPU) with 2h autonomy at max load.<br><br>
+                    <strong>Achievement:</strong> Full design of a 4S3P BMS with 100W USB-C PD. NVDC architecture using TI chips (BQ25713, BQ40Z50, BQ296102).<br><br>
+                    [cite_start]<strong>Innovation:</strong> Integration of an [cite: 26] RP2350 MCU for energy efficiency computing and thermal monitoring.
+                </p>
+            </div>
 
-        <div class="project-image">
-            <img src="assets/images/projects/parking.png" alt="Smart Modular Parking System">
+            <div class="evidence-slider" id="bms-slider">
+                <div class="slide active">
+                    <img src="assets/images/projects/BMS_schem (1).png" alt="Architecture Synoptique BMS RP2350">
+                    <span class="caption">1/3 : Architecture Conceptuelle (TI + RP2350)</span>
+                </div>
+                <div class="slide">
+                    <img src="assets/images/projects/BMS_schem_elec.png" alt="Schéma électrique KiCad">
+                    <span class="caption">2/3 : Schématique Détaillé (Sécurité & Filtrage)</span>
+                </div>
+                <div class="slide">
+                    <img src="assets/images/projects/BMS_3D_view.png" alt="Vue 3D KiCad PCB">
+                    <span class="caption">3/3 : Modélisation 3D (KiCad 7)</span>
+                </div>
+                
+                <a class="prev" onclick="plusSlides(-1, 'bms-slider')">❮</a>
+                <a class="next" onclick="plusSlides(1, 'bms-slider')">❯</a>
+            </div>
         </div>
-
-        <div class="project-info">
-            <h3>Smart Modular Parking (PSM)</h3>
-
-            <p class="lang-text" data-lang="fr">
-                Architecte système et Lead Power pour un parking IoT autonome. 
-                Conception d'un BMS 100W USB-C PD intelligent et implémentation d'un SoC RISC-V sur FPGA.
-            </p>
-            <p class="lang-text" data-lang="en" style="display: none;">
-                System Architect & Power Lead for an autonomous IoT parking. 
-                Designed a smart 100W USB-C PD BMS and implemented a RISC-V SoC on FPGA.
-            </p>
-
-            <div class="project-tags">
-                <span class="tag">KiCad 7</span>
-                <span class="tag">FPGA LiteX</span>
-                <span class="tag">RISC-V</span>
-                <span class="tag">MQTT</span>
-                <span class="tag">Power Delivery</span>
-            </div>
-
-            <div class="card-buttons">
-                <button class="btn-expand" onclick="toggleProject(this)">
-                    <span class="lang-text" data-lang="fr">Voir les compétences clés →</span>
-                    <span class="lang-text" data-lang="en" style="display: none;">See key skills →</span>
-                </button>
-                
-                <a href="https://github.com/EnderCryme/5A-Projet-Parking" class="btn-github" target="_blank">
-                    <svg class="icon"><use href="#icon-github"/></svg> GitHub
-                </a>
-
-                <a href="https://drive.google.com/file/d/1G9lH1KeA8uOhU5wkQOQOmOX-aidNT0l7/view" class="btn-video" target="_blank">
-                    ▶ <span class="lang-text" data-lang="fr">Démo Vidéo</span><span class="lang-text" data-lang="en" style="display: none;">Video Demo</span>
-                </a>
-            </div>
-
-            <div class="project-details">
-                
-                <div class="detail-block">
-                    <h4 class="lang-text" data-lang="fr">⚡ Architecture de Puissance & BMS (KiCad)</h4>
-                    <h4 class="lang-text" data-lang="en" style="display: none;">⚡ Power Architecture & BMS (KiCad)</h4>
-                    
-                    <div class="evidence-container">
-                        <div class="evidence-text">
-                            <p class="lang-text" data-lang="fr">
-                                <strong>Challenge :</strong> Alimenter un système hétérogène (FPGA, Moteurs 20V, CPU IA) avec une autonomie de 2h en charge max (65W).<br><br>
-                                <strong>Réalisation :</strong> Conception complète d'un BMS 4S3P (Li-Ion) avec entrée USB-C PD 100W. Architecture NVDC utilisant le trio TI (BQ25713, BQ40Z50, BQ296102) pour la gestion fine de la charge.<br><br>
-                                <strong>Innovation :</strong> Intégration d'un MCU RP2350 dédié au calcul d'efficacité énergétique (IPN) et à la supervision thermique, décorrélé du processeur principal pour la sécurité.
-                            </p>
-                            <p class="lang-text" data-lang="en" style="display: none;">
-                                <strong>Challenge:</strong> Powering a heterogeneous system (FPGA, 20V Motors, AI CPU) with 2h autonomy at max load.<br><br>
-                                <strong>Achievement:</strong> Full design of a 4S3P BMS with 100W USB-C PD. NVDC architecture using TI chips (BQ25713, BQ40Z50, BQ296102).<br><br>
-                                <strong>Innovation:</strong> Integration of an RP2350 MCU for energy efficiency computing and thermal monitoring.
-                            </p>
-                        </div>
-
-                        <div class="evidence-slider" id="bms-slider">
-                            <div class="slide active">
-                                <img src="assets/images/projects/BMS_schem.png" alt="Schéma conceptuel BMS">
-                                <span class="caption">1/3 : Architecture Conceptuelle (TI + RP2350)</span>
-                            </div>
-                            <div class="slide">
-                                <img src="assets/images/projects/BMS_schem_elec.png" alt="Schéma électrique KiCad">
-                                <span class="caption">2/3 : Schématique Détaillé (Sécurité & Filtrage)</span>
-                            </div>
-                            <div class="slide">
-                                <img src="assets/images/projects/BMS_3D_view.png" alt="Vue 3D KiCad PCB">
-                                <span class="caption">3/3 : Modélisation 3D (KiCad 7)</span>
-                            </div>
-                            <a class="prev" onclick="plusSlides(-1, 'bms-slider')">❮</a>
-                            <a class="next" onclick="plusSlides(1, 'bms-slider')">❯</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="detail-block">
-                    <h4 class="lang-text" data-lang="fr">🧠 FPGA & SoC RISC-V (LiteX)</h4>
-                    <h4 class="lang-text" data-lang="en" style="display: none;">🧠 FPGA & RISC-V SoC (LiteX)</h4>
-
-                    <div class="evidence-container">
-                        <div class="evidence-text">
-                            <p class="lang-text" data-lang="fr">
-                                <strong>Challenge :</strong> Piloter des barrières motorisées avec une précision temps réel tout en conservant la flexibilité d'un OS Linux.<br><br>
-                                <strong>Solution Technique :</strong> Implémentation d'un SoC Softcore VexRiscv (32-bit) sur FPGA Nexys A7 via la toolchain LiteX.<br><br>
-                                <strong>Dev Linux :</strong> Compilation d'un noyau Linux custom (Buildroot) et développement d'un driver spécifique mappant les registres matériels des moteurs en mémoire virtuelle (`mmap`), permettant un contrôle fluide depuis l'espace utilisateur.
-                            </p>
-                            <p class="lang-text" data-lang="en" style="display: none;">
-                                <strong>Challenge:</strong> Real-time motor control with the flexibility of a Linux OS.<br><br>
-                                <strong>Solution:</strong> Implementation of a VexRiscv Softcore SoC on Nexys A7 FPGA using LiteX.<br><br>
-                                <strong>Linux Dev:</strong> Custom Linux kernel compilation (Buildroot) and development of a specific driver mapping hardware registers via `mmap` for user-space control.
-                            </p>
-                        </div>
-                        <div class="evidence-image">
-                            <img src="assets/images/projects/fpga_soc_arch.png" alt="Architecture SoC LiteX RISC-V">
-                            <span class="caption">Architecture du SoC Custom sur FPGA</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="detail-block">
-                    <h4 class="lang-text" data-lang="fr">🤝 Architecture Système & Coordination</h4>
-                    <h4 class="lang-text" data-lang="en" style="display: none;">🤝 System Architecture & Coordination</h4>
-
-                    <div class="evidence-container">
-                        <div class="evidence-text">
-                            <p class="lang-text" data-lang="fr">
-                                <strong>Rôle :</strong> Lead Technique & Architecte (Équipe de 4).<br><br>
-                                <strong>Architecture :</strong> Conception d'un réseau distribué sur protocole MQTT reliant le "Cerveau" (BeagleY-AI), l'Interface (STM32) et la Puissance (FPGA).<br><br>
-                                <strong>Contribution Transverse :</strong> Support au développement de la Base de Données SQL pour sécuriser les accès (anti-passback) et supervision de l'intégration globale des modules (mécanique, élec, soft).
-                            </p>
-                            <p class="lang-text" data-lang="en" style="display: none;">
-                                <strong>Role:</strong> Technical Lead & Architect (Team of 4).<br><br>
-                                <strong>Architecture:</strong> Designed a distributed MQTT network linking the Brain (BeagleY-AI), Interface (STM32), and Power (FPGA).<br><br>
-                                <strong>Leadership:</strong> Supported SQL Database development for secure access logic and supervised global integration (mechanical, electrical, software).
-                            </p>
-                        </div>
-                        <div class="evidence-image">
-                            <img src="assets/images/projects/global_arch.png" alt="Architecture Distribuée MQTT">
-                            <span class="caption">Synoptique Global des interactions système</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div> </div>
     </div>
 
-    <div class="timeline-date">
-        <span class="date">2025 - 2026</span>
-        <div class="timeline-dot"></div>
+    <div class="detail-block">
+        <h4 class="lang-text" data-lang="fr">🧠 FPGA & SoC RISC-V (LiteX)</h4>
+        <h4 class="lang-text" data-lang="en" style="display: none;">🧠 FPGA & RISC-V SoC (LiteX)</h4>
+
+        <div class="evidence-container">
+            <div class="evidence-text">
+                <p class="lang-text" data-lang="fr">
+                    <strong>Challenge :</strong> Piloter des barrières motorisées avec une précision temps réel tout en conservant la flexibilité d'un OS Linux.<br><br>
+                    <strong>Solution :</strong> Implémentation d'un SoC Softcore VexRiscv (32-bit) sur FPGA Nexys A7 via la toolchain LiteX. Compilation d'un noyau Linux custom (Buildroot) et driver `mmap` spécifique.
+                </p>
+                <p class="lang-text" data-lang="en" style="display: none;">
+                    <strong>Challenge:</strong> Real-time motor control with Linux flexibility.<br><br>
+                    <strong>Solution:</strong> VexRiscv Softcore SoC on Nexys A7 FPGA via LiteX. Custom Linux kernel (Buildroot) and specific `mmap` driver.
+                </p>
+            </div>
+            <div class="evidence-image">
+                <img src="assets/images/projects/fpga_soc_arch.png" alt="Architecture SoC LiteX RISC-V">
+                <span class="caption">Architecture du SoC Custom sur FPGA</span>
+            </div>
+        </div>
     </div>
+
+    <div class="detail-block">
+        <h4 class="lang-text" data-lang="fr">🤝 Architecture Système & Coordination</h4>
+        <h4 class="lang-text" data-lang="en" style="display: none;">🤝 System Architecture & Coordination</h4>
+
+        <div class="evidence-container">
+            <div class="evidence-text">
+                <p class="lang-text" data-lang="fr">
+                    <strong>Rôle :</strong> Lead Technique & Architecte.<br><br>
+                    <strong>Architecture :</strong> Conception d'un réseau distribué sur protocole MQTT reliant le "Cerveau" (BeagleY-AI), l'Interface (STM32) et la Puissance (FPGA). Support SQL pour la logique d'accès.
+                </p>
+                <p class="lang-text" data-lang="en" style="display: none;">
+                    <strong>Role:</strong> Technical Lead & Architect.<br><br>
+                    <strong>Architecture:</strong> Designed a distributed MQTT network linking the Brain (BeagleY-AI), Interface (STM32), and Power (FPGA). SQL support for access logic.
+                </p>
+            </div>
+            <div class="evidence-image">
+                <img src="assets/images/projects/global_arch.png" alt="Architecture Distribuée MQTT">
+                <span class="caption">Synoptique Global des interactions système</span>
+            </div>
+        </div>
+    </div>
+
 </div>
