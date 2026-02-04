@@ -1,0 +1,144 @@
+<div class="timeline-item">
+    <div class="timeline-content">
+        <button class="btn-close" onclick="toggleProject(this)">✕</button>
+
+        <div class="project-image">
+            <img src="assets/images/projects/sensor_pcb_3d.png" alt="Carte de Conditionnement Capteurs">
+        </div>
+
+        <div class="project-info">
+            <h3>Conception de Capteurs & Conditionnement</h3>
+            
+            <p class="lang-text" data-lang="fr">
+                Projet transversal "Full-Stack Hardware" : De la fabrication des capteurs en salle blanche (INL) à la conception du PCB d'acquisition et au traitement sur STM32.
+            </p>
+            <p class="lang-text" data-lang="en" style="display: none;">
+                "Full-Stack Hardware" cross-functional project: From cleanroom sensor fabrication (INL) to acquisition PCB design and STM32 processing.
+            </p>
+
+            <div class="project-tags">
+                <span class="tag">Salle Blanche (INL)</span>
+                <span class="tag">Analog Electronics</span>
+                <span class="tag">KiCad</span>
+                <span class="tag">STM32 CubeMX</span>
+            </div>
+
+            <div class="card-buttons">
+                <button class="btn-expand" onclick="toggleProject(this)">
+                    <span class="lang-text" data-lang="fr">Voir le processus de fabrication →</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">See fabrication process →</span>
+                </button>
+                
+                <a href="https://github.com/Vincent-Cauquil/4A-Gestion-et-Conditionnement-des-Capteurs" class="btn-github" target="_blank">
+                    <svg class="icon"><use href="#icon-github"/></svg> GitHub
+                </a>
+                
+                <a href="assets/docs/A8_Posteur.pdf" class="btn-doc" target="_blank">
+                    📄 Poster
+                </a>
+            </div>
+
+            <div class="project-details">
+
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">1. Micro-fabrication en Salle Blanche (INL)</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">1. Cleanroom Micro-fabrication (INL)</h4>
+                    
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <p class="lang-text" data-lang="fr">
+                                <strong>Le Défi :</strong> Comprendre la physique du capteur en le fabriquant soi-même à l'Institut des Nanotechnologies de Lyon (INL).<br><br>
+                                <strong>Process :</strong> Réalisation de capteurs capacitifs interdigités (peignes) et résistifs sur Wafer Silicium.
+                                <ul style="margin-top:5px; padding-left:15px; font-size:0.9em; color:var(--text-muted);">
+                                    <li>Lithographie optique UV (Résine négative NLOF 2020).</li>
+                                    <li>Métallisation (Aluminium 150nm / Titane 15nm).</li>
+                                    <li>Procédé de "Lift-off" pour révéler les motifs micrométriques.</li>
+                                </ul>
+                            </p>
+                            <p class="lang-text" data-lang="en" style="display: none;">
+                                <strong>The Challenge:</strong> Understanding sensor physics by manufacturing it personally at the Lyon Nanotechnology Institute (INL).<br><br>
+                                <strong>Process:</strong> Fabrication of interdigitated capacitive (combs) and resistive sensors on Silicon Wafer.
+                                <ul style="margin-top:5px; padding-left:15px; font-size:0.9em; color:var(--text-muted);">
+                                    <li>UV Optical Lithography (NLOF 2020 negative resist).</li>
+                                    <li>Metallization (Aluminium 150nm / Titanium 15nm).</li>
+                                    <li>"Lift-off" process to reveal micrometric patterns.</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="evidence-image">
+                            <img src="assets/images/projects/sensor_wafer.png" alt="Wafer Silicium après Lift-off">
+                            <span class="caption">Microscopie : Peignes capacitifs fabriqués en salle blanche</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">2. Électronique Analogique & Premier PCB</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">2. Analog Electronics & First PCB</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <p class="lang-text" data-lang="fr">
+                                <strong>Conditionnement :</strong> Conception d'une chaîne d'acquisition analogique pour traiter les variations infimes des capteurs.<br><br>
+                                <strong>Architecture :</strong>
+                                <ul style="margin-top:5px; margin-bottom:10px; padding-left:15px; font-size:0.9em; color:var(--text-muted);">
+                                    <li><strong>Capacitif :</strong> Conversion Capacité-Fréquence via un timer <strong>NE555</strong> (Mode Astable) pour une lecture numérique robuste.</li>
+                                    <li><strong>Résistif :</strong> Pont de Wheatstone suivi d'un amplificateur d'instrumentation <strong>MAX4194</strong> pour extraire le signal différentiel.</li>
+                                </ul>
+                                <strong>Réalisation :</strong> Premier design complet sous KiCad, du schématique au routage, incluant le choix des composants et le soudage des CMS.
+                            </p>
+                            <p class="lang-text" data-lang="en" style="display: none;">
+                                <strong>Conditioning:</strong> Design of an analog acquisition chain to process tiny sensor variations.<br><br>
+                                <strong>Architecture:</strong>
+                                <ul style="margin-top:5px; margin-bottom:10px; padding-left:15px; font-size:0.9em; color:var(--text-muted);">
+                                    <li><strong>Capacitive:</strong> Capacitance-to-Frequency conversion via a <strong>NE555</strong> timer (Astable Mode) for robust digital reading.</li>
+                                    <li><strong>Resistive:</strong> Wheatstone bridge followed by a <strong>MAX4194</strong> instrumentation amplifier to extract the differential signal.</li>
+                                </ul>
+                                <strong>Realization:</strong> First complete design on KiCad, from schematic to routing, including component selection and SMD soldering.
+                            </p>
+                        </div>
+
+                        <div class="evidence-slider" id="sensor-slider">
+                            <div class="slide active">
+                                <img src="assets/images/projects/sensor_pcb_3d.png" alt="Vue 3D PCB KiCad">
+                                <span class="caption">1/2 : Rendu 3D de la carte de conditionnement</span>
+                            </div>
+                            <div class="slide">
+                                <img src="assets/images/projects/sensor_schematic.png" alt="Schéma NE555 et Ampli Inst">
+                                <span class="caption">2/2 : Schématique Analogique (NE555 & MAX4194)</span>
+                            </div>
+                            
+                            <a class="prev" onclick="plusSlides(-1, 'sensor-slider')">❮</a>
+                            <a class="next" onclick="plusSlides(1, 'sensor-slider')">❯</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">3. Acquisition Numérique (STM32 CubeMX)</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">3. Digital Acquisition (STM32 CubeMX)</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <p class="lang-text" data-lang="fr">
+                                <strong>Intégration :</strong> Utilisation d'une carte Nucleo STM32 pour numériser les signaux conditionnés.<br><br>
+                                <strong>Drivers développés :</strong>
+                                Configuration bas niveau via <strong>STM32CubeMX</strong> : Timer en mode "Input Capture" pour mesurer précisément la fréquence du NE555 (image de la capacité) et ADC avec DMA pour la chaîne résistive.
+                            </p>
+                            <p class="lang-text" data-lang="en" style="display: none;">
+                                <strong>Integration:</strong> Using an STM32 Nucleo board to digitize the conditioned signals.<br><br>
+                                <strong>Drivers Developed:</strong>
+                                Low-level configuration via <strong>STM32CubeMX</strong>: Timer in "Input Capture" mode to precisely measure the NE555 frequency (representing capacitance) and ADC with DMA for the resistive chain.
+                            </p>
+                        </div>
+                        </div>
+                </div>
+
+            </div> </div>
+    </div>
+
+    <div class="timeline-date">
+        <span class="date">Mars 2025</span>
+        <div class="timeline-dot"></div>
+    </div>
+</div>
