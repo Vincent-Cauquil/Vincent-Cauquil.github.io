@@ -46,24 +46,25 @@
                     
                     <div class="evidence-container">
                         <div class="evidence-text">
-                            <p class="lang-text" data-lang="fr">
-                                <strong>Le Défi :</strong> Comprendre la physique du capteur en le fabriquant soi-même à l'Institut des Nanotechnologies de Lyon (INL).<br><br>
-                                <strong>Process :</strong> Réalisation de capteurs capacitifs interdigités (peignes) et résistifs sur Wafer Silicium.
+                            <div class="lang-text" data-lang="fr">
+                                <p><strong>Le Défi :</strong> Comprendre la physique du capteur en le fabriquant soi-même à l'Institut des Nanotechnologies de Lyon (INL).</p>
+                                <p><strong>Process :</strong> Réalisation de capteurs capacitifs interdigités (peignes) et résistifs sur Wafer Silicium.</p>
                                 <ul style="margin-top:5px; padding-left:15px; font-size:0.9em; color:var(--text-muted);">
                                     <li>Lithographie optique UV (Résine négative NLOF 2020).</li>
                                     <li>Métallisation (Aluminium 150nm / Titane 15nm).</li>
                                     <li>Procédé de "Lift-off" pour révéler les motifs micrométriques.</li>
                                 </ul>
-                            </p>
-                            <p class="lang-text" data-lang="en" style="display: none;">
-                                <strong>The Challenge:</strong> Understanding sensor physics by manufacturing it personally at the Lyon Nanotechnology Institute (INL).<br><br>
-                                <strong>Process:</strong> Fabrication of interdigitated capacitive (combs) and resistive sensors on Silicon Wafer.
+                            </div>
+
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p><strong>The Challenge:</strong> Understanding sensor physics by manufacturing it personally at the Lyon Nanotechnology Institute (INL).</p>
+                                <p><strong>Process:</strong> Fabrication of interdigitated capacitive (combs) and resistive sensors on Silicon Wafer.</p>
                                 <ul style="margin-top:5px; padding-left:15px; font-size:0.9em; color:var(--text-muted);">
                                     <li>UV Optical Lithography (NLOF 2020 negative resist).</li>
                                     <li>Metallization (Aluminium 150nm / Titanium 15nm).</li>
                                     <li>"Lift-off" process to reveal micrometric patterns.</li>
                                 </ul>
-                            </p>
+                            </div>
                         </div>
                         <div class="evidence-image">
                             <img src="assets/images/projects/sensor_wafer.png" alt="Wafer Silicium après Lift-off">
@@ -78,24 +79,25 @@
 
                     <div class="evidence-container">
                         <div class="evidence-text">
-                            <p class="lang-text" data-lang="fr">
-                                <strong>Conditionnement :</strong> Conception d'une chaîne d'acquisition analogique pour traiter les variations infimes des capteurs.<br><br>
-                                <strong>Architecture :</strong>
+                            <div class="lang-text" data-lang="fr">
+                                <p><strong>Conditionnement :</strong> Conception d'une chaîne d'acquisition analogique pour traiter les variations infimes des capteurs.</p>
+                                <p><strong>Architecture :</strong></p>
                                 <ul style="margin-top:5px; margin-bottom:10px; padding-left:15px; font-size:0.9em; color:var(--text-muted);">
                                     <li><strong>Capacitif :</strong> Conversion Capacité-Fréquence via un timer <strong>NE555</strong> (Mode Astable) pour une lecture numérique robuste.</li>
                                     <li><strong>Résistif :</strong> Pont de Wheatstone suivi d'un amplificateur d'instrumentation <strong>MAX4194</strong> pour extraire le signal différentiel.</li>
                                 </ul>
-                                <strong>Réalisation :</strong> Premier design complet sous KiCad, du schématique au routage, incluant le choix des composants et le soudage des CMS.
-                            </p>
-                            <p class="lang-text" data-lang="en" style="display: none;">
-                                <strong>Conditioning:</strong> Design of an analog acquisition chain to process tiny sensor variations.<br><br>
-                                <strong>Architecture:</strong>
+                                <p><strong>Réalisation :</strong> Premier design complet sous KiCad, du schématique au routage, incluant le choix des composants et le soudage des CMS.</p>
+                            </div>
+
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p><strong>Conditioning:</strong> Design of an analog acquisition chain to process tiny sensor variations.</p>
+                                <p><strong>Architecture:</strong></p>
                                 <ul style="margin-top:5px; margin-bottom:10px; padding-left:15px; font-size:0.9em; color:var(--text-muted);">
                                     <li><strong>Capacitive:</strong> Capacitance-to-Frequency conversion via a <strong>NE555</strong> timer (Astable Mode) for robust digital reading.</li>
                                     <li><strong>Resistive:</strong> Wheatstone bridge followed by a <strong>MAX4194</strong> instrumentation amplifier to extract the differential signal.</li>
                                 </ul>
-                                <strong>Realization:</strong> First complete design on KiCad, from schematic to routing, including component selection and SMD soldering.
-                            </p>
+                                <p><strong>Realization:</strong> First complete design on KiCad, from schematic to routing, including component selection and SMD soldering.</p>
+                            </div>
                         </div>
 
                         <div class="evidence-slider" id="sensor-slider">
@@ -120,21 +122,21 @@
 
                     <div class="evidence-container">
                         <div class="evidence-text">
-                            <p class="lang-text" data-lang="fr">
-                                <strong>Intégration :</strong> Utilisation d'une carte Nucleo STM32 pour numériser les signaux conditionnés.<br><br>
-                                <strong>Drivers développés :</strong>
-                                Configuration bas niveau via <strong>STM32CubeMX</strong> : Timer en mode "Input Capture" pour mesurer précisément la fréquence du NE555 (image de la capacité) et ADC avec DMA pour la chaîne résistive.
-                            </p>
-                            <p class="lang-text" data-lang="en" style="display: none;">
-                                <strong>Integration:</strong> Using an STM32 Nucleo board to digitize the conditioned signals.<br><br>
-                                <strong>Drivers Developed:</strong>
-                                Low-level configuration via <strong>STM32CubeMX</strong>: Timer in "Input Capture" mode to precisely measure the NE555 frequency (representing capacitance) and ADC with DMA for the resistive chain.
-                            </p>
+                             <div class="lang-text" data-lang="fr">
+                                <p><strong>Intégration :</strong> Utilisation d'une carte Nucleo STM32 pour numériser les signaux conditionnés.</p>
+                                <p><strong>Drivers développés :</strong> Configuration bas niveau via <strong>STM32CubeMX</strong> : Timer en mode "Input Capture" pour mesurer précisément la fréquence du NE555 (image de la capacité) et ADC avec DMA pour la chaîne résistive.</p>
+                            </div>
+
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p><strong>Integration:</strong> Using an STM32 Nucleo board to digitize the conditioned signals.</p>
+                                <p><strong>Drivers Developed:</strong> Low-level configuration via <strong>STM32CubeMX</strong>: Timer in "Input Capture" mode to precisely measure the NE555 frequency (representing capacitance) and ADC with DMA for the resistive chain.</p>
+                            </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
 
-            </div> </div>
+            </div>
+        </div>
     </div>
 
     <div class="timeline-date">
