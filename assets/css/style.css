@@ -1015,127 +1015,138 @@ code {
 }
 
 
+/* =========================================
+   PROJET DÉTAILS - HARMONISATION DARK THEME
+   ========================================= */
+
 /* Style des blocs de détails */
 .detail-block {
-    margin-bottom: 30px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Bordure subtile */
+    padding-bottom: 30px;
 }
 
+.detail-block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Titres en BLANC comme demandé, avec accent Cyan */
 .detail-block h4 {
-    color: #2c3e50; /* Ou ta couleur principale */
-    margin-bottom: 15px;
-    border-left: 4px solid #007bff;
-    padding-left: 10px;
+    color: var(--text); /* Blanc */
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent); /* Cyan */
+    padding-left: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
 }
 
-/* Conteneur flex pour la justification par l'image */
+/* Conteneur flex pour Texte + Image/Slider */
 .evidence-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
     align-items: flex-start;
 }
 
+/* Texte descriptif */
 .evidence-text {
     flex: 1;
     min-width: 300px;
     font-size: 0.95em;
-    line-height: 1.6;
+    line-height: 1.7;
+    color: var(--text-muted); /* Gris clair lisible */
 }
 
-.evidence-image {
+.evidence-text strong {
+    color: var(--text); /* Mots clés en blanc */
+}
+
+/* Style commun pour Image statique et Slider */
+.evidence-image, .evidence-slider {
     flex: 1;
-    min-width: 250px;
-    max-width: 400px; /* Pour ne pas que l'image prenne trop de place */
-    text-align: center;
+    min-width: 280px;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
 }
 
-.evidence-image img {
+.evidence-image img, .evidence-slider img {
     width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border: 1px solid #ddd;
-    transition: transform 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Bordure fine pour détacher du fond */
+    background: #fff; /* Fond blanc au cas où l'image a de la transparence */
 }
 
-.evidence-image img:hover {
-    transform: scale(1.05); /* Petit effet zoom au survol */
-}
-
-.evidence-image .caption {
+/* Légendes sous les images */
+.caption {
     display: block;
-    margin-top: 8px;
-    font-size: 0.8em;
-    color: #666;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
     font-style: italic;
-}
-
-/* Conteneur du slider */
-.evidence-slider {
-    flex: 1;
-    min-width: 250px;
-    max-width: 450px;
-    position: relative; /* Important pour placer les flèches */
-    margin: auto;
-}
-
-/* Les slides */
-.evidence-slider .slide {
-    display: none; /* Caché par défaut */
     text-align: center;
 }
 
-.evidence-slider .slide.active {
-    display: block; /* Affiche le slide actif */
+/* --- SPÉCIFIQUE SLIDER --- */
+.evidence-slider .slide {
+    display: none;
     animation: fade 0.5s;
 }
 
-.evidence-slider img {
-    width: 100%;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.evidence-slider .caption {
+.evidence-slider .slide.active {
     display: block;
-    font-size: 0.8em;
-    color: #555;
-    margin-top: 5px;
-    font-style: italic;
 }
 
-/* Boutons Précédent / Suivant */
+/* Flèches de navigation */
 .prev, .next {
     cursor: pointer;
     position: absolute;
     top: 50%;
-    width: auto;
-    padding: 10px;
-    margin-top: -22px;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     font-weight: bold;
     font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fond sombre semi-transparent */
+    border: 1px solid rgba(255, 255, 255, 0.2);
     user-select: none;
-    background-color: rgba(0,0,0,0.3); /* Fond semi-transparent */
+    transition: all 0.3s ease;
+    z-index: 5;
 }
 
-/* Position droite pour le bouton next */
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
+.prev { left: -20px; }
+.next { right: -20px; }
 
-/* Effet au survol */
 .prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
+    background-color: var(--accent); /* Cyan au survol */
+    color: var(--bg-dark);
+    border-color: var(--accent);
 }
 
-/* Animation de transition simple */
 @keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
+}
+
+/* Ajustement Mobile */
+@media (max-width: 768px) {
+    .evidence-container {
+        flex-direction: column;
+    }
+    
+    .evidence-image, .evidence-slider {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .prev { left: 10px; }
+    .next { right: 10px; }
 }
