@@ -1,8 +1,26 @@
-/* ========================================
-   PREUVES — Images, Sliders, Lightbox
-   ======================================== */
+/* ========== DETAIL BLOCKS ========== */
+.detail-block {
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 30px;
+}
 
-/* --- Conteneur Flex (Texte + Preuve) --- */
+.detail-block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.detail-block h4 {
+    color: var(--text);
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent);
+    padding-left: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+/* ========== EVIDENCE CONTAINER ========== */
 .evidence-container {
     display: flex;
     flex-wrap: wrap;
@@ -22,7 +40,7 @@
     color: var(--text);
 }
 
-/* --- Image Statique --- */
+/* ========== EVIDENCE IMAGE ========== */
 .evidence-image,
 .evidence-slider {
     flex: 1;
@@ -32,42 +50,40 @@
     position: relative;
 }
 
-.evidence-image img,
-.evidence-slider img {
+.evidence-image img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-    transition: border-color 0.3s ease, transform 0.3s ease;
+    cursor: zoom-in;
 }
 
-.evidence-image img:hover,
-.evidence-slider img:hover {
-    border-color: var(--accent);
-    transform: scale(1.02);
-}
-
-/* --- Caption --- */
-.caption {
-    display: block;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.8em;
-    margin-top: 10px;
-    font-style: italic;
-}
-
-/* --- Slider --- */
+/* ========== SLIDER ========== */
 .evidence-slider .slide {
     display: none;
-    animation: fade 0.5s;
+    animation: fade 0.6s;
 }
 
 .evidence-slider .slide.active {
     display: block;
 }
 
-/* Flèches de navigation */
+.evidence-slider img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: zoom-in;
+}
+
+.evidence-slider .caption {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.85em;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Boutons Prev/Next */
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -75,27 +91,24 @@
     transform: translateY(-50%);
     width: 40px;
     height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    user-select: none;
-    transition: all 0.3s ease;
-    z-index: 5;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    z-index: 10;
 }
 
-.prev { left: -20px; }
-.next { right: -20px; }
+.prev { left: 15px; }
+.next { right: 15px; }
 
 .prev:hover, .next:hover {
-    background-color: var(--accent);
-    color: var(--bg-dark);
-    border-color: var(--accent);
+    background: var(--primary);
+    border-color: var(--primary);
 }
 
 @keyframes fade {
@@ -103,28 +116,124 @@
     to { opacity: 1; }
 }
 
-/* --- Lightbox --- */
-.lightbox-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
+/* ========== ARCHITECTURE GRID ========== */
+.architecture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.arch-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.arch-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.arch-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.arch-item strong {
+    display: block;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.arch-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* ========== TECH HIGHLIGHTS ========== */
+.tech-highlight {
+    background: rgba(0, 212, 255, 0.05);
+    border-left: 3px solid var(--accent);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 12px 12px 0;
+}
+
+.tech-highlight.warning {
+    background: rgba(255, 193, 7, 0.08);
+    border-left-color: #ffc107;
+}
+
+/* ========== RESULTS GRID ========== */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.result-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.result-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+}
+
+.result-item p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ========== SKILLS GRID ========== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.skill-category h5 {
+    color: var(--accent);
+    margin: 0 0 0.75rem 0;
+    font-size: 0.95rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-category li {
+    padding: 0.35rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.skill-category li::before {
+    content: '›';
+    position: absolute;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-    cursor: zoom-out;
-}
-
-.lightbox-overlay.active {
-    display: flex;
-}
-
-.lightbox-overlay img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 8px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    color: var(--accent);
+    font-weight: bold;
 }
