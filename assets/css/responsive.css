@@ -14,8 +14,16 @@
     }
 }
 
-/* --- Mobile Large --- */
-@media (max-width: 768px) {
+/* --- Mobile --- */
+@media (max-width: 900px) {
+    /* Lang switch */
+    .lang-switch {
+        top: 1rem;
+        left: 1rem;
+        right: auto;
+        z-index: 999;
+    }
+
     /* Hero */
     .hero-content {
         flex-direction: column-reverse;
@@ -41,8 +49,8 @@
     }
 
     .avatar-container {
-        width: 180px;
-        height: 180px;
+        width: 200px;
+        height: 200px;
     }
 
     .bio-item {
@@ -53,42 +61,54 @@
         text-align: left;
     }
 
-    /* Timeline mobile : tout à gauche */
+    /* Cacher le scroll indicator */
+    .scroll-indicator {
+        display: none;
+    }
+
+    /* ===== TIMELINE MOBILE ===== */
+    /* Ligne à gauche */
     .timeline-line {
         left: 20px;
+        transform: none;
     }
 
+    /* Items en colonne, décalés à droite de la ligne */
+    .timeline-item,
     .timeline-item.left,
     .timeline-item.right {
-        padding-left: 50px !important;
-        padding-right: 0 !important;
-        justify-content: flex-start !important;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 60px;
     }
 
+    /* Cartes pleine largeur */
+    .timeline-item.left .timeline-content,
+    .timeline-item.right .timeline-content {
+        width: 100%;
+        margin: 0;
+    }
+
+    /* Date + Dot centrés sur la ligne à gauche */
     .timeline-item.left .timeline-date,
     .timeline-item.right .timeline-date {
-        left: 0;
-        right: auto;
-        padding-left: 0;
-        padding-right: 0;
-        flex-direction: row;
-    }
-
-    .timeline-dot {
         position: absolute;
-        left: 12px;
+        left: 20px;
+        top: 0;
+        transform: translateX(-50%);
+        flex-direction: column;
+        gap: 5px;
+        margin: 0;
     }
 
+    /* Date compacte sur deux lignes */
     .date {
         font-size: 0.75rem;
-    }
-
-    /* Expanded mobile : plein écran */
-    .timeline-item.expanded .timeline-content {
-        width: 100%;
-        max-width: 100%;
-        max-height: 100vh;
-        border-radius: 0;
+        padding: 0.25rem 0.6rem;
+        white-space: normal;
+        text-align: center;
+        max-width: 70px;
+        line-height: 1.2;
     }
 
     /* Section title */
@@ -96,7 +116,19 @@
         font-size: 2rem;
     }
 
-    /* Evidence blocks */
+    /* ===== EXPANDED MOBILE ===== */
+    .timeline-item.expanded {
+        padding-left: 0 !important;
+    }
+
+    .timeline-item.expanded .timeline-content {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    /* Evidence blocks en colonne */
     .evidence-container {
         flex-direction: column;
     }
