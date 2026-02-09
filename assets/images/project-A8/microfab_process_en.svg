@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" style="font-family: 'Inter', Arial, sans-serif;">
+
+  <!-- STEP 1 -->
+  <g id="step1">
+    <text x="60" y="30" fill="#ff6b35" font-size="18" font-weight="bold">Step #1</text>
+
+    <!-- Wafer -->
+    <rect x="20" y="80" width="140" height="50" fill="#4a90e2" rx="2"/>
+    <text x="90" y="110" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">SiO₂</text>
+
+    <rect x="20" y="130" width="140" height="45" fill="#7a8a99" rx="2"/>
+    <text x="90" y="158" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Doped Si</text>
+
+    <!-- Description -->
+    <text x="180" y="90" font-size="11" fill="#333">
+      <tspan x="180" dy="0">2" or 4" doped silicon wafer</tspan>
+      <tspan x="180" dy="15">coated with a <tspan font-weight="600">SiO₂</tspan> layer</tspan>
+      <tspan x="180" dy="15">acting as dielectric.</tspan>
+    </text>
+  </g>
+
+  <!-- STEP 2 -->
+  <g id="step2">
+    <text x="460" y="30" fill="#ff6b35" font-size="18" font-weight="bold">Step #2</text>
+
+    <!-- Résine -->
+    <rect x="420" y="55" width="140" height="25" fill="#41C41D" rx="2"/>
+    <text x="490" y="72" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">nLOF-2020</text>
+
+    <!-- Wafer -->
+    <rect x="420" y="80" width="140" height="50" fill="#4a90e2" rx="2"/>
+    <text x="490" y="110" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">SiO₂</text>
+
+    <rect x="420" y="130" width="140" height="45" fill="#7a8a99" rx="2"/>
+    <text x="490" y="158" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Doped Si</text>
+
+    <!-- Description -->
+    <text x="580" y="70" font-size="11" fill="#333">
+      <tspan x="580" dy="0">Deposition of <tspan font-weight="600">HDMS</tspan></tspan>
+      <tspan x="580" dy="15">adhesion promoter followed</tspan>
+      <tspan x="580" dy="15">by <tspan font-weight="600">nLOF-2020 photoresist</tspan></tspan>
+      <tspan x="580" dy="15">via spin coating</tspan>
+      <tspan x="580" dy="20" font-size="9" fill="#666">v = 3000 rpm, t = 31s</tspan>
+      <tspan x="580" dy="12" font-size="9" fill="#666">a = 3000 rpm/s, h = 2µm</tspan>
+    </text>
+  </g>
+
+  <!-- STEP 3 -->
+  <g id="step3">
+    <text x="860" y="30" fill="#ff6b35" font-size="18" font-weight="bold">Step #3</text>
+
+    <!-- Pattern résine après litho (zones restantes) -->
+    <rect x="825" y="55" width="35" height="25" fill="#41C41D" rx="2"/>
+    <rect x="875" y="55" width="35" height="25" fill="#41C41D" rx="2"/>
+    <rect x="925" y="55" width="35" height="25" fill="#41C41D" rx="2"/>
+
+    <!-- Wafer -->
+    <rect x="820" y="80" width="150" height="50" fill="#4a90e2" rx="2"/>
+    <text x="895" y="110" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">SiO₂</text>
+
+    <rect x="820" y="130" width="150" height="45" fill="#7a8a99" rx="2"/>
+    <text x="895" y="158" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Doped Si</text>
+
+    <!-- Description -->
+    <text x="990" y="60" font-size="11" fill="#333">
+      <tspan x="990" dy="0" font-style="italic">nLOF-2020: negative photoresist</tspan>
+      <tspan x="990" dy="18"><tspan font-weight="600">UV Lithography</tspan> (100%/3s)</tspan>
+      <tspan x="990" dy="15">using chrome-on-glass mask</tspan>
+      <tspan x="990" dy="15">to define capacitor pattern.</tspan>
+      <tspan x="990" dy="20" font-size="9" fill="#666">λ = 365 nm</tspan>
+      <tspan x="990" dy="12" font-size="9" fill="#666">P = 23.2 mW/cm²</tspan>
+    </text>
+  </g>
+
+  <!-- STEP 4 -->
+  <g id="step4" transform="translate(0, 200)">
+    <text x="60" y="30" fill="#ff6b35" font-size="18" font-weight="bold">Step #4</text>
+
+    <!-- Pattern après développement (résine durcie restante) -->
+    <rect x="25" y="55" width="35" height="25" fill="#7ed321" rx="2"/>
+    <rect x="75" y="55" width="35" height="25" fill="#7ed321" rx="2"/>
+    <rect x="125" y="55" width="35" height="25" fill="#7ed321" rx="2"/>
+
+    <rect x="20" y="80" width="140" height="50" fill="#4a90e2" rx="2"/>
+    <text x="90" y="110" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">SiO₂</text>
+
+    <rect x="20" y="130" width="140" height="45" fill="#7a8a99" rx="2"/>
+    <text x="90" y="158" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Doped Si</text>
+
+    <text x="180" y="70" font-size="11" fill="#333">
+      <tspan x="180" dy="0"><tspan font-weight="600">Post Exposure Bake (PEB)</tspan></tspan>
+      <tspan x="180" dy="15">(100°C/60s) to stabilize and</tspan>
+      <tspan x="180" dy="15">evaporate excess photoresist.</tspan>
+      <tspan x="180" dy="15">Followed by <tspan font-weight="600">Development</tspan></tspan>
+      <tspan x="180" dy="15">using selective TMAH solution</tspan>
+      <tspan x="180" dy="15">(AZ 300MIF)</tspan>
+    </text>
+  </g>
+
+  <!-- STEP 5 -->
+  <g id="step5" transform="translate(0, 200)">
+    <text x="460" y="30" fill="#ff6b35" font-size="18" font-weight="bold">Step #5</text>
+
+    <!-- METAL LAYER covering everything (Ti+Al) -->
+    <rect x="420" y="65" width="140" height="25" fill="#c0c0c0" rx="2"/>
+    <rect x="425" y="40" width="25" height="25" fill="#c0c0c0" rx="2"/>
+    <rect x="475" y="40" width="25" height="25" fill="#c0c0c0" rx="2"/>
+    <rect x="525" y="40" width="25" height="25" fill="#c0c0c0" rx="2"/>
+
+    <rect x="580" y="117" width="15" height="8" fill="#525252" rx="2"/>
+    <rect x="580" y="130" width="15" height="8" fill="#c0c0c0" rx="2"/>
+
+    <rect x="420" y="75" width="140" height="10" fill="#525252" rx="2"/>
+    <rect x="425" y="50" width="25" height="10" fill="#525252" rx="2"/>
+    <rect x="475" y="50" width="25" height="10" fill="#525252" rx="2"/>
+    <rect x="525" y="50" width="25" height="10" fill="#525252" rx="2"/>
+
+    <!-- Photoresist under metal (protected patterns) -->
+    <rect x="425" y="55" width="25" height="25" fill="#7ed321" rx="2"/>
+    <rect x="475" y="55" width="25" height="25" fill="#7ed321" rx="2"/>
+    <rect x="525" y="55" width="25" height="25" fill="#7ed321" rx="2"/>
+
+    <rect x="420" y="80" width="140" height="50" fill="#4a90e2" rx="2"/>
+    <text x="490" y="110" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">SiO₂</text>
+
+    <rect x="420" y="130" width="140" height="45" fill="#7a8a99" rx="2"/>
+    <text x="490" y="158" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Doped Si</text>
+
+    <text x="580" y="60" font-size="11" fill="#333">
+      <tspan x="580" dy="0"><tspan font-weight="600">Metal deposition</tspan> via <tspan font-weight="600">PVD</tspan></tspan>
+      <tspan x="580" dy="15">(Cathodic sputtering)</tspan>
+      <tspan x="580" dy="15">Metal covers EVERYTHING</tspan>
+      <tspan x="580" dy="15">(photoresist + exposed areas)</tspan>
+      <tspan x="600" dy="20" font-size="10" fill="#666" font-weight="600">Al = 150 nm</tspan>
+      <tspan x="600" dy="14" font-size="10" fill="#666" font-weight="600">Ti = 15 nm</tspan>
+    </text>
+  </g>
+
+  <!-- STEP 6 -->
+  <g id="step6" transform="translate(0, 200)">
+    <text x="860" y="30" fill="#ff6b35" font-size="18" font-weight="bold">Step #6</text>
+
+    <!-- FINAL METAL PATTERNS (only where there was NO photoresist) -->
+    <rect x="820" y="65" width="150" height="25" fill="#c0c0c0" rx="2"/>
+    <rect x="820" y="75" width="150" height="10" fill="#525252" rx="2"/>
+    <rect x="825" y="55" width="25" height="25" fill="#FFFFFF" />
+    <rect x="875" y="55" width="25" height="25" fill="#FFFFFF" />
+    <rect x="925" y="55" width="25" height="25" fill="#FFFFFF" />
+
+    <rect x="820" y="80" width="150" height="50" fill="#4a90e2" rx="2"/>
+    <text x="895" y="110" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">SiO₂</text>
+
+    <rect x="820" y="130" width="150" height="45" fill="#7a8a99" rx="2"/>
+    <text x="895" y="158" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Doped Si</text>
+
+    <text x="990" y="60" font-size="11" fill="#333">
+      <tspan x="990" dy="0"><tspan font-weight="600">Lift-off</tspan> (AZ 326 MIF = 40s)</tspan>
+      <tspan x="990" dy="15">Photoresist + metal on top</tspan>
+      <tspan x="990" dy="15">are dissolved. Only metal</tspan>
+      <tspan x="990" dy="15">deposited DIRECTLY on SiO₂</tspan>
+      <tspan x="990" dy="15">remains → Final patterns!</tspan>
+    </text>
+  </g>
+
+</svg>
