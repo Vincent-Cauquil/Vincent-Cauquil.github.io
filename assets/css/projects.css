@@ -258,6 +258,15 @@
     display: none;
 }
 
+/* Désactiver les animations timeline en état expanded */
+.timeline-item.expanded,
+.timeline-item.expanded.left,
+.timeline-item.expanded.right,
+.timeline-item.expanded.left.visible,
+.timeline-item.expanded.right.visible {
+    animation: fadeInOverlay 0.35s ease forwards !important;
+}
+
 /* ===================================================
    ANIMATIONS — Simples et propres
    =================================================== */
@@ -292,3 +301,5 @@
         transform: translateY(30px);
     }
 }
+
+
