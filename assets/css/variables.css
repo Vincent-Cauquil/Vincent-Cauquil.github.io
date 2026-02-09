@@ -1,7 +1,4 @@
-/* ========================================
-   VARIABLES, RESET & BASE
-   ======================================== */
-
+/* ========== RESET & VARIABLES ========== */
 * {
     margin: 0;
     padding: 0;
@@ -34,3 +31,13 @@ body {
 body.modal-open {
     overflow: hidden;
 }
+
+/* ========== ICONS SVG ========== */
+.icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.icon-sm { width: 14px; height: 14px; }
+.icon-lg { width: 24px; height: 24px; }
