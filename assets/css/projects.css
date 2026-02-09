@@ -155,3 +155,42 @@
     font-size: 0.85rem;
     color: var(--text-muted);
 }
+
+/* --- Curseurs contextuels pour l'état Expanded --- */
+
+/* Zone scrollable : main ouverte "grab" */
+.timeline-item.expanded {
+    cursor: grab;
+}
+
+/* Pendant le scroll actif (mousedown) : main fermée "grabbing" */
+.timeline-item.expanded:active {
+    cursor: grabbing;
+}
+
+/* Éléments interactifs : rester en pointer classique */
+.timeline-item.expanded a,
+.timeline-item.expanded button,
+.timeline-item.expanded .btn-close,
+.timeline-item.expanded .btn-expand,
+.timeline-item.expanded .btn-github,
+.timeline-item.expanded .btn-video,
+.timeline-item.expanded .prev,
+.timeline-item.expanded .next,
+.timeline-item.expanded img {
+    cursor: pointer;
+}
+
+/* Images zoomables : loupe */
+.timeline-item.expanded .evidence-image img,
+.timeline-item.expanded .evidence-slider img {
+    cursor: zoom-in;
+}
+
+/* Texte sélectionnable : curseur texte */
+.timeline-item.expanded .evidence-text,
+.timeline-item.expanded .detail-block p,
+.timeline-item.expanded .detail-block li {
+    cursor: text;
+}
+
