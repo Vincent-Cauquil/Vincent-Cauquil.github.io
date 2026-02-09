@@ -3,19 +3,22 @@
         <button class="btn-close" onclick="toggleProject(this)">✕</button>
 
         <div class="project-image">
-            <img src="assets/images/projects/eda_cover.png" alt="RL Optimization for Standard Cells">
+            <img src="assets/images/project-AI/eda_cover.png" alt="RL Optimization for Standard Cells">
         </div>
 
         <div class="project-info">
-            <h3>Optimisation RL sur Standard Cells</h3>
+            <h3>
+                <span class="lang-text" data-lang="fr">Optimisation RL sur Standard Cells</span>
+                <span class="lang-text" data-lang="en" style="display: none;">RL Optimization for Standard Cells</span>
+            </h3>
 
             <p class="lang-text" data-lang="fr">
-                Développement d'un outil d'optimisation de dimensionnement de transistors (Sizing) par IA.
-                Une approche exploratoire allant de la modélisation physique (SPICE) à l'agent autonome (PPO), avec une interface dédiée à l'expérimentation.
+                Développement d'un outil d'optimisation de dimensionnement de transistors (<strong>Sizing</strong>) par <strong>Intelligence Artificielle</strong>. 
+                Une approche exploratoire allant de la modélisation physique (<strong>SPICE</strong>) à l'agent autonome (<strong>PPO</strong>), avec une interface dédiée à l'expérimentation.
             </p>
             <p class="lang-text" data-lang="en" style="display: none;">
-                Development of an AI-based transistor sizing optimization tool.
-                An exploratory approach ranging from physical modeling (SPICE) to autonomous agents (PPO), featuring a dedicated interface for experimentation.
+                Development of an <strong>AI-based</strong> transistor sizing optimization tool. 
+                An exploratory approach ranging from physical modeling (<strong>SPICE</strong>) to autonomous agents (<strong>PPO</strong>), featuring a dedicated experimentation interface.
             </p>
 
             <div class="project-tags">
@@ -24,6 +27,7 @@
                 <span class="tag">NGSpice</span>
                 <span class="tag">Stable-Baselines3</span>
                 <span class="tag">Sky130 PDK</span>
+                <span class="tag">Reinforcement Learning</span>
             </div>
 
             <div class="card-buttons">
@@ -31,7 +35,7 @@
                     <span class="lang-text" data-lang="fr">Voir la démarche & architecture →</span>
                     <span class="lang-text" data-lang="en" style="display: none;">See approach & architecture →</span>
                 </button>
-                
+
                 <a href="https://github.com/Vincent-Cauquil/5A-Projet-Optimisation-de-Standard-Cells" class="btn-github" target="_blank">
                     <svg class="icon"><use href="#icon-github"/></svg> GitHub
                 </a>
@@ -39,81 +43,186 @@
 
             <div class="project-details">
 
+                <!-- ===== BLOC 1 : Environnement Python-SPICE ===== -->
                 <div class="detail-block">
-                    <h4 class="lang-text" data-lang="fr">1. Construction de l'Environnement (Le Pont Python-SPICE)</h4>
-                    <h4 class="lang-text" data-lang="en" style="display: none;">1. Building the Environment (The Python-SPICE Bridge)</h4>
-                    
+                    <h4 class="lang-text" data-lang="fr">🔧 Construction de l'Environnement (Le Pont Python-SPICE)</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">🔧 Building the Environment (The Python-SPICE Bridge)</h4>
+
                     <div class="evidence-container">
                         <div class="evidence-text">
-                            
+
                             <div class="lang-text" data-lang="fr">
-                                <p><strong>La démarche :</strong> Avant de faire de l'IA, il fallait "parler" au simulateur. J'ai dû créer un environnement custom compatible <em>Gymnasium</em> capable d'interagir avec <strong>NGSpice</strong>.</p>
-                                <p><strong>Défis techniques :</strong></p>
-                                <ul style="margin-top:5px; margin-bottom:10px; padding-left:15px; font-size:0.9em; color:var(--text-muted);">
-                                    <li>Génération dynamique de Netlists SPICE (injection des paramètres W/L).</li>
-                                    <li>Parsing robuste des fichiers de sortie <code>.raw</code> pour extraire délais et consommation.</li>
-                                    <li><strong>Optimisation :</strong> Le RL nécessitant des milliers d'essais, j'ai dû paralléliser les simulations (Multiprocessing) pour réduire le temps d'entraînement de plusieurs heures à quelques minutes.</li>
+                                <p><strong>La Démarche :</strong> Avant de faire de l'IA, il fallait "parler" au simulateur. J'ai créé un environnement <strong>custom compatible Gymnasium</strong> capable d'interagir avec <strong>NGSpice</strong>.</p>
+                                
+                                <p><strong>Défis Techniques :</strong></p>
+                                <ul>
+                                    <li><strong>Génération dynamique de Netlists SPICE</strong> : Injection des paramètres <code>W/L</code> (largeur/longueur des transistors) pour chaque essai de l'agent.</li>
+                                    <li><strong>Parsing robuste des fichiers <code>.raw</code></strong> : Extraction automatique des métriques (délais de propagation, consommation énergétique).</li>
+                                    <li><strong>Optimisation Critique</strong> : Le RL nécessitant <strong>des milliers de simulations</strong>, j'ai parallélisé le processus avec <strong>Python Multiprocessing</strong>, réduisant le temps d'entraînement de <strong>plusieurs heures</strong> à <strong>quelques minutes</strong>.</li>
                                 </ul>
                             </div>
 
                             <div class="lang-text" data-lang="en" style="display: none;">
-                                <p><strong>The Approach:</strong> Before AI, we needed to "talk" to the simulator. I created a custom <em>Gymnasium</em>-compatible environment to interact with <strong>NGSpice</strong>.</p>
+                                <p><strong>The Approach:</strong> Before tackling AI, I needed to "talk" to the simulator. I built a <strong>custom Gymnasium-compatible environment</strong> to interact with <strong>NGSpice</strong>.</p>
+                                
                                 <p><strong>Technical Challenges:</strong></p>
-                                <ul style="margin-top:5px; margin-bottom:10px; padding-left:15px; font-size:0.9em; color:var(--text-muted);">
-                                    <li>Dynamic SPICE Netlist generation (W/L parameter injection).</li>
-                                    <li>Robust parsing of <code>.raw</code> output files to extract delays and power.</li>
-                                    <li><strong>Optimization:</strong> Since RL needs thousands of steps, I parallelized simulations (Multiprocessing) to cut training time from hours to minutes.</li>
+                                <ul>
+                                    <li><strong>Dynamic SPICE Netlist Generation</strong>: Injecting <code>W/L</code> parameters (transistor width/length) for each agent trial.</li>
+                                    <li><strong>Robust <code>.raw</code> File Parsing</strong>: Automated extraction of metrics (propagation delays, power consumption).</li>
+                                    <li><strong>Critical Optimization</strong>: Since RL requires <strong>thousands of simulations</strong>, I parallelized the process using <strong>Python Multiprocessing</strong>, cutting training time from <strong>hours to minutes</strong>.</li>
                                 </ul>
                             </div>
 
                         </div>
+
                         <div class="evidence-image">
-                            <div class="lang-text" data-lang="fr">
-                                <img src="assets/images/projects/eda_architecture_fr.svg" alt="Architecture Logicielle Pipeline EDA" style="background:white; padding:10px; border-radius:10px;">
-                                <span class="caption">Architecture "Polishée" : UI, Middleware et Backend IA</span>
-                            </div>
-                
-                            <div class="lang-text" data-lang="en" style="display: none;">
-                                <img src="assets/images/projects/eda_architecture_en.svg" alt="EDA Pipeline Software Architecture" style="background:white; padding:10px; border-radius:10px;">
-                                <span class="caption">Polished Architecture: UI, Middleware, and AI Backend</span>
-                            </div>
-                
+                            <img src="assets/images/project-AI/eda_architecture_fr.svg" alt="Architecture Logicielle Pipeline EDA" style="background:white; padding:10px; border-radius:10px;">
+                            <span class="caption lang-text" data-lang="fr">Architecture "Polishée" : UI, Middleware et Backend IA</span>
+                            <span class="caption lang-text" data-lang="en" style="display: none;">Polished Architecture: UI, Middleware, and AI Backend</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- ===== BLOC 2 : Apprentissage RL & UX ===== -->
                 <div class="detail-block">
-                    <h4 class="lang-text" data-lang="fr">2. Apprentissage & Interface d'Expérimentation (UX)</h4>
-                    <h4 class="lang-text" data-lang="en" style="display: none;">2. Learning & Experimentation Interface (UX)</h4>
+                    <h4 class="lang-text" data-lang="fr">🤖 Apprentissage & Interface d'Expérimentation</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">🤖 Learning & Experimentation Interface</h4>
 
                     <div class="evidence-container">
                         <div class="evidence-text">
-                            <p class="lang-text" data-lang="fr">
-                                <strong>L'Agent IA :</strong> Utilisation de PPO (Proximal Policy Optimization). Le travail a consisté à définir une fonction de <em>Reward</em> équilibrée (Trade-off Power vs Delay) pour que l'agent converge vers une solution viable.<br><br>
-                                <strong>UX Paramétrable :</strong> Pour comprendre le comportement "boîte noire" de l'IA, j'ai développé une GUI en <strong>PyQt6</strong>. Elle permet de modifier les hyperparamètres (Learning rate, Timesteps) et les contraintes physiques (PDK Sky130) en temps réel, transformant le code en véritable laboratoire d'expérimentation.
-                            </p>
-                            <p class="lang-text" data-lang="en" style="display: none;">
-                                <strong>AI Agent:</strong> Using PPO (Proximal Policy Optimization). The key work was defining a balanced <em>Reward</em> function (Power vs Delay trade-off) to ensure convergence.<br><br>
-                                <strong>Configurable UX:</strong> To understand the "black box" behavior, I built a <strong>PyQt6</strong> GUI. It allows real-time modification of hyperparameters (Learning rate, Timesteps) and physical constraints (Sky130 PDK), turning the code into a true experimentation lab.
-                            </p>
+                            <div class="lang-text" data-lang="fr">
+                                <p><strong>L'Agent IA :</strong> Utilisation de <strong>PPO</strong> (Proximal Policy Optimization) via <strong>Stable-Baselines3</strong>. Le travail crucial a consisté à définir une <strong>fonction de Reward équilibrée</strong> (Trade-off Power vs Delay) pour que l'agent converge vers une solution viable.</p>
+                                
+                                <p><strong>UX Paramétrable :</strong> Pour comprendre le comportement "boîte noire" de l'IA, j'ai développé une <strong>GUI en PyQt6</strong>. Elle permet de :</p>
+                                <ul>
+                                    <li>Modifier les <strong>hyperparamètres</strong> (Learning rate, Timesteps, γ) en temps réel.</li>
+                                    <li>Ajuster les <strong>contraintes physiques du PDK Sky130</strong> (Vdd, Tox, Limites W/L).</li>
+                                    <li>Visualiser les <strong>courbes de convergence</strong> pendant l'entraînement.</li>
+                                </ul>
+                                <p>Cette interface transforme le code en <strong>véritable laboratoire d'expérimentation</strong>, essentiel pour itérer rapidement.</p>
+                            </div>
+
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p><strong>AI Agent:</strong> Using <strong>PPO</strong> (Proximal Policy Optimization) via <strong>Stable-Baselines3</strong>. The key work was defining a <strong>balanced Reward function</strong> (Power vs Delay trade-off) to ensure convergence to viable solutions.</p>
+                                
+                                <p><strong>Configurable UX:</strong> To understand the "black box" behavior, I built a <strong>PyQt6 GUI</strong>. It allows:</p>
+                                <ul>
+                                    <li>Real-time modification of <strong>hyperparameters</strong> (Learning rate, Timesteps, γ).</li>
+                                    <li>Adjustment of <strong>Sky130 PDK physical constraints</strong> (Vdd, Tox, W/L limits).</li>
+                                    <li>Visualization of <strong>convergence curves</strong> during training.</li>
+                                </ul>
+                                <p>This interface turns the code into a <strong>true experimentation lab</strong>, essential for rapid iteration.</p>
+                            </div>
                         </div>
 
                         <div class="evidence-slider" id="eda-slider">
                             <div class="slide active">
-                                <img src="assets/images/projects/eda_gui.png" alt="Interface PyQt6 Configurable">
-                                <span class="caption">1/3 : Interface UX paramétrable (PyQt6) pour piloter l'entraînement</span>
+                                <img src="assets/images/project-AI/eda_gui.png" alt="Interface PyQt6 Configurable">
+                                <span class="caption lang-text" data-lang="fr">1/3 : Interface UX paramétrable (PyQt6) pour piloter l'entraînement</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">1/3: Configurable UX Interface (PyQt6) to control training</span>
                             </div>
                             <div class="slide">
-                                <img src="assets/images/projects/eda_training.png" alt="Courbes d'apprentissage RL">
-                                <span class="caption">2/3 : Convergence de l'agent (Reward Maximization)</span>
+                                <img src="assets/images/project-AI/eda_training.png" alt="Courbes d'apprentissage RL">
+                                <span class="caption lang-text" data-lang="fr">2/3 : Convergence de l'agent (Reward Maximization)</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">2/3: Agent Convergence (Reward Maximization)</span>
                             </div>
                             <div class="slide">
-                                <img src="assets/images/projects/eda_schematic.png" alt="Schematic Inverter Optimized">
-                                <span class="caption">3/3 : Résultat : Cellule Standard optimisée (Schematic)</span>
+                                <img src="assets/images/project-AI/eda_schematic.png" alt="Schematic Inverter Optimized">
+                                <span class="caption lang-text" data-lang="fr">3/3 : Résultat : Cellule Standard optimisée (Schematic)</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">3/3: Result: Optimized Standard Cell (Schematic)</span>
                             </div>
-                            
+
                             <a class="prev" onclick="plusSlides(-1, 'eda-slider')">❮</a>
                             <a class="next" onclick="plusSlides(1, 'eda-slider')">❯</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== BLOC 3 : Résultats & Perspectives ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">📊 Résultats & Perspectives</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">📊 Results & Perspectives</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <p><strong>Performance Obtenue :</strong> L'agent a réussi à optimiser un <strong>inverseur CMOS</strong> en respectant les contraintes du <strong>PDK Sky130</strong>. La cellule générée présente un compromis <strong>Délai/Puissance</strong> compétitif par rapport aux méthodes manuelles classiques.</p>
+                                
+                                <p><strong>Limites Identifiées :</strong></p>
+                                <ul>
+                                    <li><strong>Temps de simulation SPICE</strong> : Malgré la parallélisation, le goulot d'étranglement reste la durée des simulations transistor-level.</li>
+                                    <li><strong>Scalabilité</strong> : Le passage à des cellules plus complexes (NOR, NAND multi-inputs) nécessiterait un espace d'état bien plus large.</li>
+                                </ul>
+                                
+                                <p><strong>Pistes d'Amélioration :</strong></p>
+                                <ul>
+                                    <li>Utiliser des <strong>modèles de substitution (Surrogate Models)</strong> pour remplacer SPICE par des approximations rapides (Régression Polynomiale, Réseaux de Neurones).</li>
+                                    <li>Explorer des algorithmes RL plus modernes comme <strong>SAC</strong> (Soft Actor-Critic) pour améliorer l'exploration.</li>
+                                </ul>
+                            </div>
+
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p><strong>Performance Achieved:</strong> The agent successfully optimized a <strong>CMOS inverter</strong> while respecting <strong>Sky130 PDK</strong> constraints. The generated cell shows a competitive <strong>Delay/Power</strong> trade-off compared to traditional manual methods.</p>
+                                
+                                <p><strong>Identified Limitations:</strong></p>
+                                <ul>
+                                    <li><strong>SPICE Simulation Time</strong>: Despite parallelization, transistor-level simulation remains the bottleneck.</li>
+                                    <li><strong>Scalability</strong>: Moving to more complex cells (multi-input NOR, NAND) would require a significantly larger state space.</li>
+                                </ul>
+                                
+                                <p><strong>Improvement Paths:</strong></p>
+                                <ul>
+                                    <li>Use <strong>Surrogate Models</strong> to replace SPICE with fast approximations (Polynomial Regression, Neural Networks).</li>
+                                    <li>Explore modern RL algorithms like <strong>SAC</strong> (Soft Actor-Critic) for better exploration.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="evidence-image">
+                            <img src="assets/images/project-AI/eda_results.png" alt="Résultats Comparatifs">
+                            <span class="caption lang-text" data-lang="fr">Comparaison : Sizing Manuel vs Optimisé par RL</span>
+                            <span class="caption lang-text" data-lang="en" style="display: none;">Comparison: Manual Sizing vs RL-Optimized</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== BLOC 4 : Compétences Mobilisées ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">🎯 Compétences Mobilisées</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">🎯 Skills Leveraged</h4>
+
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Machine Learning</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">Machine Learning</h5>
+                            <ul>
+                                <li>Reinforcement Learning (PPO)</li>
+                                <li>Stable-Baselines3</li>
+                                <li>Reward Engineering</li>
+                                <li>Hyperparameter Tuning</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Design EDA</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">EDA Design</h5>
+                            <ul>
+                                <li>NGSpice (Simulation SPICE)</li>
+                                <li>Sky130 PDK (Skywater)</li>
+                                <li>Netlist Generation</li>
+                                <li>Transistor Sizing</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Software Engineering</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">Software Engineering</h5>
+                            <ul>
+                                <li>Python (OOP, Multiprocessing)</li>
+                                <li>PyQt6 (Interface Graphique)</li>
+                                <li>Gymnasium (Custom Env)</li>
+                                <li>Data Parsing (.raw files)</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
