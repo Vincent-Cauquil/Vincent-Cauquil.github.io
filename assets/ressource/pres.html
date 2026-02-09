@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincent Cauquil - EPFL AQUA Presentation</title>
+    
+    <!-- Reveal.js Styles (Loaded from CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <!-- Theme: Black (Good for technical/cryo presentations) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css" id="theme">
+
+    <style>
+        /* Custom Customization for EPFL/Cryo Vibe */
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            color: #61dafb; /* React Blue / Cryo Blue */
+            text-transform: none;
+        }
+        .reveal ul {
+            font-size: 0.8em;
+        }
+        .reveal li {
+            margin-bottom: 15px;
+        }
+        .highlight {
+            color: #f05047; /* Accent color */
+            font-weight: bold;
+        }
+        .small-text {
+            font-size: 0.6em;
+            color: #aaaaaa;
+        }
+        /* EPFL Red line accent */
+        .epfl-accent {
+            border-top: 3px solid #ff0000;
+            width: 50%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- SLIDE 1: TITLE -->
+            <section>
+                <h3>From Cryogenic Devices to<br>RSFQ Architectures</h3>
+                <div class="epfl-accent"></div>
+                <p>
+                    <strong>Vincent Cauquil</strong><br>
+                    <span class="small-text">Apprentice Research Engineer @ CEA-Leti<br>
+                    Candidate for Master's Thesis</span>
+                </p>
+            </section>
+
+            <!-- SLIDE 2: THE PROFILE -->
+            <section>
+                <h3>The "Full-Stack" Hardware Profile</h3>
+                <ul>
+                    <li><strong>Physics Foundation:</strong> CPGE (Maths/Physics) & Semiconductor Physics [CPE Lyon].</li>
+                    <li><strong>Research Experience:</strong> 3 years at <span class="highlight">CEA-Leti</span> (Quantum Devices) & Institute of Science Tokyo.</li>
+                    <li><strong>System Architecture:</strong> FPGA, RISC-V, and Embedded Linux experience.</li>
+                </ul>
+                <br>
+                <p style="background-color: #222; padding: 10px; border-left: 5px solid #61dafb;">
+                    <em>Goal: Applying this dual expertise to Rapid Single Flux Quantum (RSFQ) challenges.</em>
+                </p>
+            </section>
+
+            <!-- SLIDE 3: CRYOGENIC EXPERIENCE -->
+            <section>
+                <h3>Native at 4 Kelvin:<br>Cryogenic Engineering</h3>
+                <ul>
+                    <li><strong>CEA-Leti (Current):</strong> Designing multiplexing & amplification circuits (50 I/Os) for quantum devices.</li>
+                    <li><strong>Key Skills:</strong> Cryogenic I/V converters, thermal budgeting, and signal integrity in cryostats.</li>
+                    <li><strong>Institute of Science Tokyo:</strong> Developed cryogenic packaging for high-density interconnects.</li>
+                </ul>
+            </section>
+
+            <!-- SLIDE 4: SYSTEM ARCHITECTURE -->
+            <section>
+                <h3>System Architecture:<br>The Logic Layer</h3>
+                <ul>
+                    <li><strong>Project:</strong> Smart Modular Parking System (Best Technical Project Award).</li>
+                    <li><strong>Architecture:</strong> Implemented a <span class="highlight">RISC-V SoC (VexRiscv)</span> on FPGA (LiteX).</li>
+                    <li><strong>Integration:</strong> Managed AXI bus interconnects and wrote custom Linux drivers for memory mapping.</li>
+                </ul>
+            </section>
+
+            <!-- SLIDE 5: PHYSICS & FABRICATION -->
+            <section>
+                <h3>Device Physics & Analog Precision</h3>
+                <ul>
+                    <li><strong>Micro-fabrication:</strong> Experience in cleanroom (INL) performing Lithography, PVD, and Lift-off.</li>
+                    <li><strong>Analog Design:</strong> Designed custom PCBs for sensor conditioning (Wheatstone bridges, Instrumentation Amps).</li>
+                    <li><strong>Relevance:</strong> Deep understanding of process variations and noise sensitivity involved in chip design.</li>
+                </ul>
+            </section>
+
+            <!-- SLIDE 6: AUTOMATION & AI -->
+            <section>
+                <h3>Modern Design Flows: EDA & AI</h3>
+                <p>Automating complex design tasks:</p>
+                <ul>
+                    <li><strong>Innovation:</strong> Developed a Reinforcement Learning (RL) tool to optimize Standard Cells.</li>
+                    <li><strong>Tech Stack:</strong> Python, <span class="highlight">NGSpice</span>, and Stable-Baselines3 (PPO).</li>
+                    <li><strong>Application:</strong> Automated transistor sizing to balance Power vs. Delay.</li>
+                </ul>
+            </section>
+
+            <!-- SLIDE 7: CONCLUSION -->
+            <section>
+                <h3>Why AQUA Lab?</h3>
+                <div class="epfl-accent"></div>
+                <ul>
+                    <li><strong>Alignment:</strong> Bridging the gap between superconducting physics and computing architecture.</li>
+                    <li><strong>Readiness:</strong> Familiar with Cadence, SPICE, and Cryogenic constraints.</li>
+                    <li><strong>Objective:</strong> Contribute to the next generation of high-speed RSFQ processors.</li>
+                </ul>
+                <br><br>
+                <p class="small-text">Contact: cauquil69v@gmail.com</p>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js Scripts (Loaded from CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        // Initialize Reveal
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+        });
+    </script>
+
+</body>
+</html>
