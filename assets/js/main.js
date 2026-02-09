@@ -153,10 +153,7 @@ function openLightbox(img) {
     let imgAlt = img.alt;
 
     if (img.classList.contains('img-translatable')) {
-        // Récupérer la langue active
         const currentLang = document.querySelector('.lang-btn.active').dataset.lang;
-        
-        // Utiliser la bonne source selon la langue
         imgSrc = img.dataset[`src${currentLang.charAt(0).toUpperCase() + currentLang.slice(1)}`] || img.src;
         imgAlt = img.dataset[`alt${currentLang.charAt(0).toUpperCase() + currentLang.slice(1)}`] || img.alt;
     }
@@ -166,7 +163,7 @@ function openLightbox(img) {
 
     let captionText = '';
     const parent = img.closest('.evidence-image, .slide');
-    
+
     if (parent) {
         const captions = parent.querySelectorAll('.caption.lang-text, .caption .lang-text');
         captions.forEach(caption => {
@@ -176,14 +173,12 @@ function openLightbox(img) {
         });
     }
 
-    // Fallback sur l'alt si pas de légende
     if (!captionText) {
         captionText = imgAlt || '';
     }
 
     lightboxCaption.textContent = captionText;
 
-    // Détecter si on est dans un slider
     const slider = img.closest('.evidence-slider');
     if (slider) {
         currentLightboxSlider = slider;
@@ -196,16 +191,15 @@ function openLightbox(img) {
     } else {
         currentLightboxSlider = null;
     }
-
-    lightbox.style.display = 'flex';
+    lightbox.classList.add('active');
     document.body.classList.add('modal-open');
 }
 
-// Fonction pour fermer la lightbox
+// ========== FERMER LA LIGHTBOX ==========
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
     lightbox.classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
     currentLightboxSlider = null;
 }
 
