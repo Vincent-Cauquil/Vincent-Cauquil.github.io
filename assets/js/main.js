@@ -210,7 +210,7 @@ function closeProject(item) {
     const card = item.querySelector('.timeline-content');
     
     // Animation de fermeture
-    card.style.animation = 'shrinkCard 0.3s ease forwards';
+    card.style.animation = 'slideDown 0.3s ease forwards';
     item.style.animation = 'fadeOutOverlay 0.3s ease forwards';
     
     setTimeout(() => {
@@ -218,7 +218,7 @@ function closeProject(item) {
         card.classList.remove('expanded');
         document.body.classList.remove('modal-open');
         
-        // Reset des animations pour la prochaine ouverture
+        // Reset pour prochaine ouverture
         card.style.animation = '';
         item.style.animation = '';
     }, 300);
