@@ -55,9 +55,6 @@ async function loadProjects() {
     // Réappliquer la langue après chargement complet
     setLanguage(currentLang);
 
-    // ✨ NOUVEAU : Activer le zoom sur toutes les images chargées
-    activateImageZoom();
-
     // Observer les nouveaux éléments
     initTimelineObserver();
     initCloseOnClickOutside();
