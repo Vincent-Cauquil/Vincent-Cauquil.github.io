@@ -324,6 +324,11 @@
     transform: rotate(90deg);
 }
 
+.lightbox-content.svg-image {
+    background: white;
+    padding: 20px;
+}
+
 .lightbox-caption {
     color: white;
     text-align: center;

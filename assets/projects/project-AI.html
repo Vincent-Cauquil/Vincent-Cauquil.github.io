@@ -76,10 +76,18 @@
                         </div>
 
                         <div class="evidence-image">
-                            <img src="assets/images/project-AI/eda_architecture_fr.svg" alt="Architecture Logicielle Pipeline EDA" style="background:white; padding:10px; border-radius:10px;">
-                            <span class="caption lang-text" data-lang="fr">Architecture "Polishée" : UI, Middleware et Backend IA</span>
-                            <span class="caption lang-text" data-lang="en" style="display: none;">Polished Architecture: UI, Middleware, and AI Backend</span>
-                        </div>
+                            <img class="img-translatable" 
+                                 data-src-fr="assets/images/project-AI/eda_architecture_fr.svg"
+                                 data-src-en="assets/images/project-AI/eda_architecture_en.svg"
+                                 data-alt-fr="Processus de Microfabrication"
+                                 data-alt-en="Microfabrication Process"
+                                 src="assets/images/project-AI/eda_architecture_fr.svg" 
+                                 alt="Processus de Microfabrication"
+                                 style="background:white; padding:10px; border-radius:10px;">
+                            
+                            <span class="caption lang-text" data-lang="fr">Architecture : UI, Middleware et Backend IA</span>
+                            <span class="caption lang-text" data-lang="en" style="display: none;">Architecture: UI, Middleware, and AI Backend</span>
+                        </div>   
                     </div>
                 </div>
 
@@ -116,25 +124,33 @@
                         </div>
 
                         <div class="evidence-slider" id="eda-slider">
+                            <!-- Slide 1 : Interface PyQt6 -->
                             <div class="slide active">
-                                <img src="assets/images/project-AI/eda_gui.png" alt="Interface PyQt6 Configurable">
+                                <img src="assets/images/project-AI/eda_gui.png" 
+                                     alt="PyQt6 Configurable Interface">
                                 <span class="caption lang-text" data-lang="fr">1/3 : Interface UX paramétrable (PyQt6) pour piloter l'entraînement</span>
-                                <span class="caption lang-text" data-lang="en" style="display: none;">1/3: Configurable UX Interface (PyQt6) to control training</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">1/3 : Configurable UX Interface (PyQt6) to control training</span>
                             </div>
+                        
+                            <!-- Slide 2 : Courbes d'apprentissage -->
                             <div class="slide">
-                                <img src="assets/images/project-AI/eda_training.png" alt="Courbes d'apprentissage RL">
+                                <img src="assets/images/project-AI/eda_training.png" 
+                                     alt="RL Training Curves">
                                 <span class="caption lang-text" data-lang="fr">2/3 : Convergence de l'agent (Reward Maximization)</span>
-                                <span class="caption lang-text" data-lang="en" style="display: none;">2/3: Agent Convergence (Reward Maximization)</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">2/3 : Agent Convergence (Reward Maximization)</span>
                             </div>
+                        
+                            <!-- Slide 3 : Schématique optimisé -->
                             <div class="slide">
-                                <img src="assets/images/project-AI/eda_schematic.png" alt="Schematic Inverter Optimized">
+                                <img src="assets/images/project-AI/eda_schematic.png" 
+                                     alt="Optimized Inverter Schematic">
                                 <span class="caption lang-text" data-lang="fr">3/3 : Résultat : Cellule Standard optimisée (Schematic)</span>
-                                <span class="caption lang-text" data-lang="en" style="display: none;">3/3: Result: Optimized Standard Cell (Schematic)</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">3/3 : Result: Optimized Standard Cell (Schematic)</span>
                             </div>
-
+                        
                             <a class="prev" onclick="plusSlides(-1, 'eda-slider')">❮</a>
                             <a class="next" onclick="plusSlides(1, 'eda-slider')">❯</a>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
 
@@ -179,9 +195,10 @@
                         </div>
 
                         <div class="evidence-image">
-                            <img src="assets/images/project-AI/eda_results.png" alt="Résultats Comparatifs">
+                            <img src="assets/images/project-AI/eda_results.png" 
+                                 alt="Comparative Results">
                             <span class="caption lang-text" data-lang="fr">Comparaison : Sizing Manuel vs Optimisé par RL</span>
-                            <span class="caption lang-text" data-lang="en" style="display: none;">Comparison: Manual Sizing vs RL-Optimized</span>
+                            <span class="caption lang-text" data-lang="en" style="display: none;">Comparison : Manual Sizing vs RL-Optimized</span>
                         </div>
                     </div>
                 </div>

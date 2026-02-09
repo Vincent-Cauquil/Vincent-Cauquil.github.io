@@ -156,6 +156,12 @@ function openLightbox(img) {
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
     
+    if (img.src.toLowerCase().endsWith('.svg')) {
+        lightboxImg.classList.add('svg-image');
+    } else {
+        lightboxImg.classList.remove('svg-image');
+    }
+
     // Récupérer la caption visible (gère le bilinguisme)
     const parentContainer = img.closest('.evidence-image, .slide');
     if (parentContainer) {
