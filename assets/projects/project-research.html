@@ -1,380 +1,310 @@
-<div class="timeline-item">
-    <div class="timeline-content">
-        <button class="btn-close" onclick="toggleProject(this)">✕</button>
+<!-- ========================================
+     PROJET : PAPER DE RECHERCHE — TECM
+     ======================================== -->
 
-        <div class="project-image">
-            <img src="assets/images/project-research/neuromorphic_cover.png" alt="Processeurs Neuromorphiques">
+     <div class="timeline-item">
+        <div class="timeline-content">
+            <button class="btn-close" onclick="toggleProject(this)">✕</button>
+    
+            <div class="project-image">
+                <img src="assets/images/project-research/paper_cover.png" 
+                     alt="Processeurs Neuromorphiques - Paper de Recherche">
+            </div>
+    
+            <div class="project-info">
+                <h3>
+                    <span class="lang-text" data-lang="fr">🧠 Paper de Recherche : Processeurs Neuromorphiques</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">🧠 Research Paper: Neuromorphic Processors</span>
+                </h3>
+    
+                <p class="lang-text" data-lang="fr">
+                    Analyse critique des architectures neuromorphiques hybrides (<strong>CMOS + RRAM/PCM</strong>) et de leurs compromis énergétiques. 
+                    Exercice de formation à la <strong>rédaction scientifique</strong> et à la <strong>pensée critique</strong> dans le cadre du cours <strong>TECM</strong>.
+                </p>
+                <p class="lang-text" data-lang="en" style="display: none;">
+                    Critical analysis of hybrid neuromorphic architectures (<strong>CMOS + RRAM/PCM</strong>) and their energy trade-offs. 
+                    Training exercise in <strong>scientific writing</strong> and <strong>critical thinking</strong> as part of the <strong>TECM</strong> course.
+                </p>
+    
+                <div class="project-tags">
+                    <span class="tag">Neuromorphique</span>
+                    <span class="tag">IA Matérielle</span>
+                    <span class="tag">RRAM/PCM</span>
+                    <span class="tag">SNN</span>
+                    <span class="tag">Rédaction Scientifique</span>
+                </div>
+    
+                <div class="card-buttons">
+                    <button class="btn-expand" onclick="toggleProject(this)">
+                        <span class="lang-text" data-lang="fr">En savoir plus →</span>
+                        <span class="lang-text" data-lang="en" style="display: none;">Learn more →</span>
+                    </button>
+    
+                    <a href="assets/ressource/V-CAUQUIL-Processeurs-Neuromorphiques-Enjeux-Limites-et-Architectures-Hybrides.pdf" 
+                       class="btn-github" target="_blank">
+                        📄 <span class="lang-text" data-lang="fr">Lire le Paper</span>
+                        <span class="lang-text" data-lang="en" style="display: none;">Read Paper</span>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- ===================================================
+                 DÉTAILS TECHNIQUES (Cachés par défaut)
+                 =================================================== -->
+            <div class="project-details">
+    
+                <!-- ===== BLOC 1 : Objectif & Méthodologie ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">🎯 Objectif & Méthodologie</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">🎯 Objective & Methodology</h4>
+    
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <p>
+                                    <strong>Problématique :</strong> Comment les architectures hybrides peuvent-elles dépasser les limites énergétiques 
+                                    des processeurs IA traditionnels ?
+                                </p>
+    
+                                <p>
+                                    <strong>Contexte Pédagogique :</strong> Exercice de formation à la <strong>recherche scientifique</strong> 
+                                    dans le cadre du cours <strong>TECM (Technologies Émergentes et Initiation à la Recherche)</strong>. Objectifs :
+                                </p>
+                                <ul>
+                                    <li>Initiation à la <strong>critique scientifique</strong> et à l'analyse bibliographique</li>
+                                    <li>Apprentissage de la <strong>rédaction académique</strong> (structure IMRAD, citations IEEE)</li>
+                                    <li>Exposition aux <strong>séminaires de recherche</strong> (Alberto Bosio, Ian O'Connor, Cédric Marchand, Guillaume Vibert, Julien Bachelard)</li>
+                                </ul>
+    
+                                <p>
+                                    <strong>Démarche :</strong> État de l'art comparatif (<strong>Intel Loihi 2, IBM TrueNorth, BrainChip Akida</strong>), 
+                                    identification des verrous technologiques, et proposition d'une architecture exploitant le <strong>bruit matériel</strong> 
+                                    comme ressource computationnelle.
+                                </p>
+                            </div>
+    
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p>
+                                    <strong>Research Question:</strong> How can hybrid architectures overcome energy limitations 
+                                    of traditional AI processors?
+                                </p>
+    
+                                <p>
+                                    <strong>Educational Context:</strong> Training exercise in <strong>scientific research</strong> 
+                                    as part of the <strong>TECM (Emerging Technologies and Introduction to Research)</strong> course. Objectives:
+                                </p>
+                                <ul>
+                                    <li>Introduction to <strong>scientific critique</strong> and bibliographic analysis</li>
+                                    <li>Learning <strong>academic writing</strong> (IMRAD structure, IEEE citations)</li>
+                                    <li>Exposure to <strong>research seminars</strong> (Alberto Bosio, Ian O'Connor, Cédric Marchand, Guillaume Vibert, Julien Bachelard)</li>
+                                </ul>
+    
+                                <p>
+                                    <strong>Approach:</strong> Comparative state-of-the-art (<strong>Intel Loihi 2, IBM TrueNorth, BrainChip Akida</strong>), 
+                                    identification of technological bottlenecks, and proposal of an architecture exploiting <strong>hardware noise</strong> 
+                                    as a computational resource.
+                                </p>
+                            </div>
+                        </div>
+    
+                        <div class="evidence-image">
+                            <img src="assets/images/project-research/memory_wall.png" 
+                                 alt="Memory Wall Problem">
+                            <span class="caption lang-text" data-lang="fr">Memory Wall — Goulot d'étranglement énergétique des architectures Von Neumann (80% énergie en transferts)</span>
+                            <span class="caption lang-text" data-lang="en" style="display: none;">Memory Wall — Energy bottleneck of Von Neumann architectures (80% energy in transfers)</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- ===== BLOC 2 : Analyse Comparative ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">📊 Analyse Comparative & Résultats</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">📊 Comparative Analysis & Results</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <p>
+                                    <strong>État de l'Art :</strong> Benchmark des processeurs neuromorphiques existants. 
+                                    Mise en évidence du compromis fondamental <strong>efficacité énergétique ↔ précision</strong>.
+                                </p>
+
+                                <p>
+                                    <strong>Observation Clé :</strong> Les architectures mixtes offrent jusqu'à <strong>13× plus d'efficacité énergétique</strong> 
+                                    (195 vs 15 TOPS/W), au prix d'une <strong>précision stochastique</strong> et d'une <strong>maturité technologique limitée</strong>.
+                                </p>
+
+                                <p><strong>Limites Identifiées :</strong></p>
+                                <ul>
+                                    <li><strong>Variabilité des mémoires RRAM/PCM</strong> (cycle-to-cycle, device-to-device) → Compromet la reproductibilité</li>
+                                    <li><strong>Algorithmes SNN immatures</strong> vs Deep Learning classique → Limitation des applications</li>
+                                    <li><strong>Compromis non-résolu</strong> entre précision stochastique et applications critiques (médical, spatial)</li>
+                                </ul>
+
+                                <p>
+                                    <strong>Proposition :</strong> Architecture hybride exploitant le <strong>bruit matériel</strong> 
+                                    comme ressource computationnelle (<strong>Stochastic Computing</strong>), avec un paradigme de 
+                                    <strong>tolérance au bruit</strong> dès la conception.
+                                </p>
+                            </div>
+
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p>
+                                    <strong>State-of-the-Art:</strong> Benchmark of existing neuromorphic processors. 
+                                    Highlighting the fundamental trade-off <strong>energy efficiency ↔ precision</strong>.
+                                </p>
+
+                                <p>
+                                    <strong>Key Observation:</strong> Mixed-signal architectures offer up to <strong>13× more energy efficiency</strong> 
+                                    (195 vs 15 TOPS/W), at the cost of <strong>stochastic precision</strong> and <strong>limited technological maturity</strong>.
+                                </p>
+
+                                <p><strong>Identified Limitations:</strong></p>
+                                <ul>
+                                    <li><strong>RRAM/PCM variability</strong> (cycle-to-cycle, device-to-device) → Compromises reproducibility</li>
+                                    <li><strong>Immature SNN algorithms</strong> vs classical Deep Learning → Application limitations</li>
+                                    <li><strong>Unresolved trade-off</strong> between stochastic precision and critical applications (medical, space)</li>
+                                </ul>
+
+                                <p>
+                                    <strong>Proposal:</strong> Hybrid architecture exploiting <strong>hardware noise</strong> 
+                                    as computational resource (<strong>Stochastic Computing</strong>), with a 
+                                    <strong>noise-tolerance paradigm</strong> from design phase.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- SLIDER : Tableau Comparatif + Architecture Hybride -->
+                        <div class="evidence-slider" id="research-analysis-slider">
+                            <!-- Slide 1 : Tableau Comparatif -->
+                            <div class="slide active">
+                                <img src="assets/images/project-research/tableau_comparatif.png" 
+                                    alt="Tableau Comparatif Architectures Neuromorphiques">
+                                <span class="caption">
+                                    <span class="lang-text" data-lang="fr">1/2 — Comparaison : Architectures Numériques (SRAM) vs Mixtes (RRAM/PCM)</span>
+                                    <span class="lang-text" data-lang="en" style="display: none;">1/2 — Comparison: Digital (SRAM) vs Mixed-Signal (RRAM/PCM)</span>
+                                </span>
+                            </div>
+
+                            <!-- Slide 2 : Architecture Hybride -->
+                            <div class="slide">
+                                <img src="assets/images/project-research/hybrid_architecture.png" 
+                                    alt="Architecture Hybride Proposée">
+                                <span class="caption">
+                                    <span class="lang-text" data-lang="fr">2/2 — Architecture Hybride Proposée : CMOS + RRAM avec exploitation du bruit</span>
+                                    <span class="lang-text" data-lang="en" style="display: none;">2/2 — Proposed Hybrid Architecture: CMOS + RRAM with noise exploitation</span>
+                                </span>
+                            </div>
+
+                            <!-- Boutons de navigation -->
+                            <button class="slider-btn prev" onclick="plusSlides(-1, 'research-analysis-slider')">❮</button>
+                            <button class="slider-btn next" onclick="plusSlides(1, 'research-analysis-slider')">❯</button>
+                        </div>
+                    </div>
+
+                    <!-- Warning Box -->
+                    <div style="background: rgba(255, 152, 0, 0.1); border-left: 4px solid #ff9800; padding: 15px; margin-top: 20px; border-radius: 8px;">
+                        <strong class="lang-text" data-lang="fr">⚠️ Limitations & Perspectives</strong>
+                        <strong class="lang-text" data-lang="en" style="display: none;">⚠️ Limitations & Perspectives</strong>
+                        <ul class="lang-text" data-lang="fr" style="margin-top: 10px; color: var(--text-muted);">
+                            <li><strong>Maturité Logicielle :</strong> Absence d'outils de compilation automatique (nécessite développements custom)</li>
+                            <li><strong>Coût de Fabrication :</strong> Technologies RRAM/PCM encore en phase de R&D industrielle</li>
+                            <li><strong>Fiabilité Long-Terme :</strong> Endurance limitée des mémoires résistives (~10⁹ cycles)</li>
+                        </ul>
+                        <ul class="lang-text" data-lang="en" style="display: none; margin-top: 10px; color: var(--text-muted);">
+                            <li><strong>Software Maturity:</strong> Lack of automatic compilation tools (requires custom development)</li>
+                            <li><strong>Manufacturing Cost:</strong> RRAM/PCM technologies still in industrial R&D phase</li>
+                            <li><strong>Long-Term Reliability:</strong> Limited endurance of resistive memories (~10⁹ cycles)</li>
+                        </ul>
+                    </div>
+                </div>
+
+    
+                <!-- ===== BLOC 3 : Compétences Mobilisées ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">💡 Compétences Mobilisées</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">💡 Skills Leveraged</h4>
+    
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Méthodologie de Recherche</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">Research Methodology</h5>
+                            <ul>
+                                <li class="lang-text" data-lang="fr">Veille bibliographique (IEEE Xplore)</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">Bibliographic monitoring (IEEE Xplore)</li>
+    
+                                <li class="lang-text" data-lang="fr">Pensée critique & analyse</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">Critical thinking & analysis</li>
+    
+                                <li class="lang-text" data-lang="fr">Rédaction académique (IMRAD)</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">Academic writing (IMRAD)</li>
+    
+                                <li class="lang-text" data-lang="fr">Citations normalisées (IEEE)</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">Standardized citations (IEEE)</li>
+                            </ul>
+                        </div>
+    
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Architectures Neuromorphiques</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">Neuromorphic Architectures</h5>
+                            <ul>
+                                <li>Spiking Neural Networks (SNN)</li>
+                                <li>Compute-In-Memory (CIM)</li>
+                                <li class="lang-text" data-lang="fr">Mémoires RRAM/PCM</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">RRAM/PCM Memories</li>
+    
+                                <li>Stochastic Computing</li>
+                            </ul>
+                        </div>
+    
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Domaines Techniques</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">Technical Domains</h5>
+                            <ul>
+                                <li class="lang-text" data-lang="fr">Électronique analogique/mixte</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">Analog/mixed-signal electronics</li>
+    
+                                <li class="lang-text" data-lang="fr">Technologies émergentes</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">Emerging technologies</li>
+    
+                                <li class="lang-text" data-lang="fr">Optimisation énergétique</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">Energy optimization</li>
+    
+                                <li class="lang-text" data-lang="fr">Architecture matérielle IA</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">AI hardware architecture</li>
+                            </ul>
+                        </div>
+    
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Soft Skills</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">Soft Skills</h5>
+                            <ul>
+                                <li class="lang-text" data-lang="fr">Communication scientifique</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">Scientific communication</li>
+    
+                                <li class="lang-text" data-lang="fr">Synthèse d'informations</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">Information synthesis</li>
+    
+                                <li class="lang-text" data-lang="fr">Argumentation technique</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">Technical argumentation</li>
+    
+                                <li class="lang-text" data-lang="fr">Gestion de projet autonome</li>
+                                <li class="lang-text" data-lang="en" style="display: none;">Autonomous project management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
         </div>
-
-        <div class="project-info">
-            <h3>
-                <span class="lang-text" data-lang="fr">🧠 Processeurs Neuromorphiques : Enjeux, Limites et Architectures Hybrides</span>
-                <span class="lang-text" data-lang="en" style="display: none;">🧠 Neuromorphic Processors: Challenges, Limits and Hybrid Architectures</span>
-            </h3>
-
-            <p class="lang-text" data-lang="fr">
-                Revue critique des architectures neuromorphiques actuelles (numériques vs mixtes). 
-                Proposition d'une architecture hybride optimisant le compromis efficacité/précision.
-            </p>
-            <p class="lang-text" data-lang="en" style="display: none;">
-                Critical review of current neuromorphic architectures (digital vs mixed-signal). 
-                Proposal of a hybrid architecture optimizing the efficiency/precision tradeoff.
-            </p>
-
-            <div class="project-tags">
-                <span class="tag">Neuromorphic Computing</span>
-                <span class="tag">IMC (In-Memory Computing)</span>
-                <span class="tag">RRAM / PCM</span>
-                <span class="tag">Spiking Neural Networks</span>
-                <span class="tag">Hardware/Software Co-Design</span>
-            </div>
-
-            <div class="card-buttons">
-                <button class="btn-expand" onclick="toggleProject(this)">
-                    <span class="lang-text" data-lang="fr">📖 Lire le rapport</span>
-                    <span class="lang-text" data-lang="en" style="display: none;">📖 Read the report</span>
-                </button>
-                <a href="assets/ressource/V-CAUQUIL-Processeurs-Neuromorphiques-Enjeux-Limites-et-Architectures-Hybrides.pdf" 
-                   class="btn-github" target="_blank">
-                    <span>📄 PDF</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- ===================================================
-             DÉTAILS TECHNIQUES (Cachés par défaut)
-             =================================================== -->
-        <div class="project-details">
-
-            <!-- ===== BLOC 1 : Contexte & Problématique ===== -->
-            <div class="detail-block">
-                <h4 class="lang-text" data-lang="fr">🎯 Contexte & Problématique</h4>
-                <h4 class="lang-text" data-lang="en" style="display: none;">🎯 Context & Problem Statement</h4>
-
-                <div class="evidence-container">
-                    <div class="evidence-text">
-                        <div class="lang-text" data-lang="fr">
-                            <p>
-                                <strong>Motivation :</strong> L'explosion de l'IA Edge (véhicules autonomes, IoT, robotique) nécessite 
-                                des architectures <strong>ultra-basse consommation</strong> (<1W) capables d'inférence temps-réel.
-                            </p>
-                            <p>
-                                <strong>Verrou Technologique :</strong> L'architecture von Neumann classique atteint ses limites 
-                                (<strong>Memory Wall</strong>). Les transferts de données CPU ↔ RAM consomment <strong>80% de l'énergie totale</strong>, 
-                                avec une efficacité énergétique plafonnée à <strong>15 TOPS/W</strong>.
-                            </p>
-                            <p>
-                                <strong>Promesse Neuromorphique :</strong> Les Spiking Neural Networks (SNNs) et le calcul en mémoire (IMC) 
-                                promettent <strong>1000× moins d'énergie</strong> via un calcul événementiel et une fusion données/calcul.
-                            </p>
-                        </div>
-                        <div class="lang-text" data-lang="en" style="display: none;">
-                            <p>
-                                <strong>Motivation:</strong> The explosion of Edge AI (autonomous vehicles, IoT, robotics) requires 
-                                <strong>ultra-low-power</strong> architectures (<1W) capable of real-time inference.
-                            </p>
-                            <p>
-                                <strong>Technological Bottleneck:</strong> Classic von Neumann architecture reaches its limits 
-                                (<strong>Memory Wall</strong>). CPU ↔ RAM data transfers consume <strong>80% of total energy</strong>, 
-                                with energy efficiency capped at <strong>15 TOPS/W</strong>.
-                            </p>
-                            <p>
-                                <strong>Neuromorphic Promise:</strong> Spiking Neural Networks (SNNs) and In-Memory Computing (IMC) 
-                                promise <strong>1000× less energy</strong> via event-driven computing and data/computation fusion.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="evidence-image">
-                        <img src="assets/images/project-research/memory_wall.png" 
-                             alt="Memory Wall Problem">
-                        <span class="caption lang-text" data-lang="fr">Memory Wall — Goulot d'étranglement énergétique des architectures Von Neumann (80% énergie en transferts)</span>
-                        <span class="caption lang-text" data-lang="en" style="display: none;">Memory Wall — Energy bottleneck of Von Neumann architectures (80% energy in transfers)</span>
-                    </div>
-                </div>
-
-                <div class="tech-highlight" style="margin-top: 20px;">
-                    <strong class="lang-text" data-lang="fr">📋 Démarche de l'Étude :</strong>
-                    <strong class="lang-text" data-lang="en" style="display: none;">📋 Study Approach:</strong>
-                    <ul class="lang-text" data-lang="fr">
-                        <li>Analyse critique de <strong>15 architectures</strong> neuromorphiques (2018-2024)</li>
-                        <li>Identification des verrous : <strong>précision</strong>, <strong>maturité logicielle</strong>, <strong>scalabilité</strong></li>
-                        <li>Conception d'une architecture <strong>hybride</strong> combinant précision numérique et efficacité analogique</li>
-                    </ul>
-                    <ul class="lang-text" data-lang="en" style="display: none;">
-                        <li>Critical analysis of <strong>15 neuromorphic architectures</strong> (2018-2024)</li>
-                        <li>Identification of bottlenecks: <strong>precision</strong>, <strong>software maturity</strong>, <strong>scalability</strong></li>
-                        <li>Design of a <strong>hybrid architecture</strong> combining digital precision and analog efficiency</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- ===== BLOC 2 : Analyse Comparative ===== -->
-            <div class="detail-block">
-                <h4 class="lang-text" data-lang="fr">📊 Analyse Comparative des Architectures</h4>
-                <h4 class="lang-text" data-lang="en" style="display: none;">📊 Comparative Analysis of Architectures</h4>
-
-                <div class="evidence-container">
-                    <div class="evidence-text">
-                        <div class="lang-text" data-lang="fr">
-                            <p>
-                                <strong>État de l'Art :</strong> Benchmark des processeurs neuromorphiques leaders 
-                                (<strong>Intel Loihi 2, IBM TrueNorth, BrainChip Akida</strong>). 
-                                Mise en évidence du compromis fondamental <strong>efficacité énergétique ↔ précision</strong>.
-                            </p>
-                            <p>
-                                <strong>Observation Clé :</strong> Les architectures mixtes offrent jusqu'à <strong>13× plus d'efficacité énergétique</strong> 
-                                (195 vs 15 TOPS/W), au prix d'une <strong>précision stochastique</strong> et d'une <strong>maturité technologique limitée</strong>.
-                            </p>
-                        </div>
-                        <div class="lang-text" data-lang="en" style="display: none;">
-                            <p>
-                                <strong>State-of-the-Art:</strong> Benchmark of leading neuromorphic processors 
-                                (<strong>Intel Loihi 2, IBM TrueNorth, BrainChip Akida</strong>). 
-                                Highlighting the fundamental <strong>energy efficiency ↔ precision</strong> tradeoff.
-                            </p>
-                            <p>
-                                <strong>Key Observation:</strong> Mixed-signal architectures offer up to <strong>13× more energy efficiency</strong> 
-                                (195 vs 15 TOPS/W), at the cost of <strong>stochastic precision</strong> and <strong>limited technological maturity</strong>.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="evidence-image">
-                        <img class="img-translatable" 
-                             data-src-fr="assets/images/project-research/tableau_comparatif_fr.svg"
-                             data-src-en="assets/images/project-research/tableau_comparatif_en.svg"
-                             data-alt-fr="Tableau Comparatif : Architectures Numériques vs Mixtes"
-                             data-alt-en="Comparison Table: Digital vs Mixed Architectures"
-                             src="assets/images/project-research/tableau_comparatif_fr.svg" 
-                             alt="Tableau Comparatif : Architectures Numériques vs Mixtes"
-                             style="background:white; padding:10px; border-radius:10px;">
-
-                        <span class="caption lang-text" data-lang="fr">Comparaison Numérique (Loihi 2) vs Mixte (NeuRRAM) : Efficacité, Densité & Maturité</span>
-                        <span class="caption lang-text" data-lang="en" style="display: none;">Digital (Loihi 2) vs Mixed (NeuRRAM) Comparison: Efficiency, Density & Maturity</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== BLOC 3 : Architecture Hybride Proposée ===== -->
-            <div class="detail-block">
-                <h4 class="lang-text" data-lang="fr">🔧 Architecture Hybride Proposée</h4>
-                <h4 class="lang-text" data-lang="en" style="display: none;">🔧 Proposed Hybrid Architecture</h4>
-
-                <div class="evidence-container">
-                    <div class="evidence-slider" id="hybrid-arch-slider">
-                        <!-- Slide 1 : Schéma Général -->
-                        <div class="slide active">
-                            <img class="img-translatable" 
-                                 data-src-fr="assets/images/project-research/hybrid_arch_fr.svg"
-                                 data-src-en="assets/images/project-research/hybrid_arch_en.svg"
-                                 data-alt-fr="Architecture Hybride : Couches Numériques + Analogiques"
-                                 data-alt-en="Hybrid Architecture: Digital + Analog Layers"
-                                 src="assets/images/project-research/hybrid_arch_fr.svg" 
-                                 alt="Architecture Hybride"
-                                 style="background:white; padding:10px; border-radius:10px;">
-                            <span class="caption">
-                                <span class="lang-text" data-lang="fr">1/2 : Synoptique de l'architecture hybride (Numérique haut-niveau + Analogique bas-niveau)</span>
-                                <span class="lang-text" data-lang="en" style="display: none;">1/2 : Hybrid architecture block diagram (Digital high-level + Analog low-level)</span>
-                            </span>
-                        </div>
-
-                        <!-- Slide 2 : Détail des Couches -->
-                        <div class="slide">
-                            <img class="img-translatable" 
-                                 data-src-fr="assets/images/project-research/layers_detail_fr.svg"
-                                 data-src-en="assets/images/project-research/layers_detail_en.svg"
-                                 data-alt-fr="Détail : Répartition Numérique/Analogique par Couche"
-                                 data-alt-en="Detail: Digital/Analog Allocation per Layer"
-                                 src="assets/images/project-research/layers_detail_fr.svg" 
-                                 alt="Détail des Couches"
-                                 style="background:white; padding:10px; border-radius:10px;">
-                            <span class="caption">
-                                <span class="lang-text" data-lang="fr">2/2 : Allocation des technologies par couche (Précision vs Efficacité)</span>
-                                <span class="lang-text" data-lang="en" style="display: none;">2/2 : Technology allocation per layer (Precision vs Efficiency)</span>
-                            </span>
-                        </div>
-
-                        <!-- Boutons Navigation -->
-                        <button class="slider-btn prev" onclick="plusSlides(-1, 'hybrid-arch-slider')">❮</button>
-                        <button class="slider-btn next" onclick="plusSlides(1, 'hybrid-arch-slider')">❯</button>
-                    </div>
-
-                    <div class="evidence-text">
-                        <div class="lang-text" data-lang="fr">
-                            <p>
-                                <strong>Principe :</strong> Segmentation verticale du réseau neuronal en <strong>3 zones technologiques</strong> :
-                            </p>
-                            <ul>
-                                <li><strong>Couches Initiales (1-2)</strong> : Traitement <strong>numérique</strong> (CMOS 7nm) pour garantir la précision sur les features brutes</li>
-                                <li><strong>Couches Intermédiaires (3-6)</strong> : IMC <strong>analogique hybride</strong> (RRAM + SRAM) pour maximiser l'efficacité énergétique</li>
-                                <li><strong>Couches Finales (7-8)</strong> : Retour au <strong>numérique</strong> pour les décisions critiques (classification)</li>
-                            </ul>
-                            <p>
-                                <strong>Gains Attendus :</strong> <strong>5× réduction énergétique</strong> vs Loihi 2 tout en maintenant >95% de précision (validation théorique sur ResNet-18).
-                            </p>
-                        </div>
-                        <div class="lang-text" data-lang="en" style="display: none;">
-                            <p>
-                                <strong>Principle:</strong> Vertical segmentation of the neural network into <strong>3 technological zones</strong>:
-                            </p>
-                            <ul>
-                                <li><strong>Initial Layers (1-2)</strong>: <strong>Digital</strong> processing (7nm CMOS) to guarantee precision on raw features</li>
-                                <li><strong>Intermediate Layers (3-6)</strong>: <strong>Hybrid analog</strong> IMC (RRAM + SRAM) to maximize energy efficiency</li>
-                                <li><strong>Final Layers (7-8)</strong>: Return to <strong>digital</strong> for critical decisions (classification)</li>
-                            </ul>
-                            <p>
-                                <strong>Expected Gains:</strong> <strong>5× energy reduction</strong> vs Loihi 2 while maintaining >95% accuracy (theoretical validation on ResNet-18).
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Encadré Co-Design -->
-                <div class="tech-highlight" style="margin-top: 20px;">
-                    <strong class="lang-text" data-lang="fr">🔗 Co-Design Hardware/Software</strong>
-                    <strong class="lang-text" data-lang="en" style="display: none;">🔗 Hardware/Software Co-Design</strong>
-                    <ul class="lang-text" data-lang="fr">
-                        <li><strong>Quantification adaptative :</strong> 8-bit (num) → 4-bit (analogique) → 8-bit (num)</li>
-                        <li><strong>Calibration dynamique :</strong> Compensation des dérives RRAM par correction logicielle</li>
-                        <li><strong>Mapping intelligent :</strong> Allocation automatique couche ↔ technologie selon la criticité</li>
-                    </ul>
-                    <ul class="lang-text" data-lang="en" style="display: none;">
-                        <li><strong>Adaptive quantization:</strong> 8-bit (digital) → 4-bit (analog) → 8-bit (digital)</li>
-                        <li><strong>Dynamic calibration:</strong> RRAM drift compensation via software correction</li>
-                        <li><strong>Smart mapping:</strong> Automatic layer ↔ technology allocation based on criticality</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- ===== BLOC 4 : Résultats & Limites ===== -->
-            <div class="detail-block">
-                <h4 class="lang-text" data-lang="fr">📈 Résultats & Limites Identifiées</h4>
-                <h4 class="lang-text" data-lang="en" style="display: none;">📈 Results & Identified Limitations</h4>
-
-                <div class="evidence-container">
-                    <div class="evidence-text">
-                        <div class="lang-text" data-lang="fr">
-                            <p>
-                                <strong>Validation Théorique :</strong> Modélisation Python d'un ResNet-18 hybride sur ImageNet. 
-                                Résultats : <strong>72 TOPS/W</strong> (vs 15 TOPS/W Loihi 2) avec une précision de <strong>94.2%</strong> (vs 95.1% baseline).
-                            </p>
-                            <p>
-                                <strong>Analyses de Sensibilité :</strong>
-                            </p>
-                            <ul>
-                                <li><strong>Variabilité RRAM :</strong> ±10% variabilité → dégradation <2% précision (acceptable)</li>
-                                <li><strong>Température :</strong> Plage -40°C à +85°C validée (automotive-grade)</li>
-                                <li><strong>Scalabilité :</strong> Architecture extensible à 100+ couches (validation sur ResNet-50)</li>
-                            </ul>
-                        </div>
-                        <div class="lang-text" data-lang="en" style="display: none;">
-                            <p>
-                                <strong>Theoretical Validation:</strong> Python modeling of a hybrid ResNet-18 on ImageNet. 
-                                Results: <strong>72 TOPS/W</strong> (vs 15 TOPS/W Loihi 2) with <strong>94.2%</strong> accuracy (vs 95.1% baseline).
-                            </p>
-                            <p>
-                                <strong>Sensitivity Analyses:</strong>
-                            </p>
-                            <ul>
-                                <li><strong>RRAM Variability:</strong> ±10% variability → <2% accuracy degradation (acceptable)</li>
-                                <li><strong>Temperature:</strong> -40°C to +85°C range validated (automotive-grade)</li>
-                                <li><strong>Scalability:</strong> Architecture extensible to 100+ layers (validation on ResNet-50)</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="evidence-image">
-                        <img src="assets/images/project-research/results_chart.png" 
-                             alt="Graphique Comparatif Efficacité/Précision">
-                        <span class="caption lang-text" data-lang="fr">Efficacité énergétique vs Précision — Positionnement de l'architecture hybride proposée</span>
-                        <span class="caption lang-text" data-lang="en" style="display: none;">Energy efficiency vs Precision — Positioning of the proposed hybrid architecture</span>
-                    </div>
-                </div>
-
-                <!-- Warning Box -->
-                <div style="background: rgba(255, 152, 0, 0.1); border-left: 4px solid #ff9800; padding: 15px; margin-top: 20px; border-radius: 8px;">
-                    <strong class="lang-text" data-lang="fr">⚠️ Limitations & Perspectives</strong>
-                    <strong class="lang-text" data-lang="en" style="display: none;">⚠️ Limitations & Perspectives</strong>
-                    <ul class="lang-text" data-lang="fr" style="margin-top: 10px; color: var(--text-muted);">
-                        <li><strong>Maturité Logicielle :</strong> Absence d'outils de compilation automatique (nécessite développements custom)</li>
-                        <li><strong>Coût de Fabrication :</strong> Technologies RRAM/PCM encore en phase de R&D industrielle</li>
-                        <li><strong>Fiabilité Long-Terme :</strong> Endurance limitée des mémoires résistives (~10⁹ cycles)</li>
-                    </ul>
-                    <ul class="lang-text" data-lang="en" style="display: none; margin-top: 10px; color: var(--text-muted);">
-                        <li><strong>Software Maturity:</strong> Lack of automatic compilation tools (requires custom development)</li>
-                        <li><strong>Manufacturing Cost:</strong> RRAM/PCM technologies still in industrial R&D phase</li>
-                        <li><strong>Long-Term Reliability:</strong> Limited endurance of resistive memories (~10⁹ cycles)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- ===== BLOC 5 : Compétences Mobilisées ===== -->
-            <div class="detail-block">
-                <h4 class="lang-text" data-lang="fr">🎓 Compétences Mobilisées</h4>
-                <h4 class="lang-text" data-lang="en" style="display: none;">🎓 Skills Demonstrated</h4>
-
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h5 class="lang-text" data-lang="fr">Hardware</h5>
-                        <h5 class="lang-text" data-lang="en" style="display: none;">Hardware</h5>
-                        <ul>
-                            <li>CMOS Advanced Nodes (7nm / 5nm)</li>
-                            <li>RRAM / PCM / FeRAM</li>
-                            <li>ADC/DAC Design (SAR, Pipeline)</li>
-                            <li class="lang-text" data-lang="fr">Analyse de Puissance</li>
-                            <li class="lang-text" data-lang="en" style="display: none;">Power Analysis</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-category">
-                        <h5 class="lang-text" data-lang="fr">Intelligence Artificielle</h5>
-                        <h5 class="lang-text" data-lang="en" style="display: none;">Artificial Intelligence</h5>
-                        <ul>
-                            <li>Spiking Neural Networks (SNNs)</li>
-                            <li>Quantization / Pruning</li>
-                            <li>Hardware-Aware Training</li>
-                            <li>PyTorch / TensorFlow</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-category">
-                        <h5 class="lang-text" data-lang="fr">Méthodologie</h5>
-                        <h5 class="lang-text" data-lang="en" style="display: none;">Methodology</h5>
-                        <ul>
-                            <li class="lang-text" data-lang="fr">Revue de Littérature (15 papiers)</li>
-                            <li class="lang-text" data-lang="en" style="display: none;">Literature Review (15 papers)</li>
-                            
-                            <li class="lang-text" data-lang="fr">Analyse Comparative Multi-Critères</li>
-                            <li class="lang-text" data-lang="en" style="display: none;">Multi-Criteria Comparative Analysis</li>
-                            
-                            <li class="lang-text" data-lang="fr">Modélisation Système (Python)</li>
-                            <li class="lang-text" data-lang="en" style="display: none;">System Modeling (Python)</li>
-                            
-                            <li class="lang-text" data-lang="fr">Rédaction Technique (LaTeX)</li>
-                            <li class="lang-text" data-lang="en" style="display: none;">Technical Writing (LaTeX)</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-category">
-                        <h5 class="lang-text" data-lang="fr">Outils</h5>
-                        <h5 class="lang-text" data-lang="en" style="display: none;">Tools</h5>
-                        <ul>
-                            <li>Python (NumPy, SciPy)</li>
-                            <li>MATLAB / Simulink</li>
-                            <li>LTSpice (Simulation Analogique)</li>
-                            <li>LaTeX / Overleaf</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+    
+        <!-- DATE (en dehors de .timeline-content) -->
+        <div class="timeline-date">
+            <span class="date">
+                <span class="lang-text" data-lang="fr">Déc 2024 - Fév 2025</span>
+                <span class="lang-text" data-lang="en" style="display: none;">Dec 2024 - Feb 2025</span>
+            </span>
+            <div class="timeline-dot"></div>
         </div>
     </div>
-
-    <!-- DATE (en dehors de .timeline-content) -->
-    <div class="timeline-date">
-        <span class="date">2024</span>
-        <div class="timeline-dot"></div>
-    </div>
-</div>
+    
