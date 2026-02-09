@@ -7,12 +7,11 @@ const projects = [
     { id: 'project-parking', file: 'assets/projects/project-parking.html' },
     { id: 'project-AI', file: 'assets/projects/project-AI.html' },
     { id: 'project-A8', file: 'assets/projects/project-A8.html' },
-    
 ];
 
 async function loadProjects() {
     console.log('Chargement des projets...');
-    
+
     for (let i = 0; i < projects.length; i++) {
         const project = projects[i];
         const container = document.getElementById(project.id);
@@ -32,14 +31,13 @@ async function loadProjects() {
                         console.log(`✅ Projet chargé: ${project.id} (${side})`);
                     }
 
-                    // 2. INITIALISATION DU SLIDER (Correction ici)
-                    // On vérifie si ce projet contient un slider et on l'initialise
+                    // 2. INITIALISATION DU SLIDER
                     const sliders = container.querySelectorAll('.evidence-slider');
                     sliders.forEach(slider => {
                         const sliderId = slider.id;
                         if (sliderId) {
                             slideIndices[sliderId] = 1;
-                            showSlides(1, sliderId); // Force l'affichage de la 1ère slide
+                            showSlides(1, sliderId);
                         }
                     });
 
@@ -56,15 +54,16 @@ async function loadProjects() {
 
     // Réappliquer la langue après chargement complet
     setLanguage(currentLang);
-    
+
+    // ✨ NOUVEAU : Activer le zoom sur toutes les images chargées
+    activateImageZoom();
+
     // Observer les nouveaux éléments
     initTimelineObserver();
     initCloseOnClickOutside();
 }
 
 // ========== GESTION DU SLIDER ==========
-// Ces fonctions doivent rester globales pour être accessibles via onclick="" dans le HTML
-
 function plusSlides(n, sliderId) {
     showSlides(slideIndices[sliderId] += n, sliderId);
 }
@@ -72,27 +71,21 @@ function plusSlides(n, sliderId) {
 function showSlides(n, sliderId) {
     let i;
     let slider = document.getElementById(sliderId);
-    
-    // Sécurité si le slider n'existe pas encore
+
     if (!slider) return;
 
     let slides = slider.getElementsByClassName("slide");
-    
-    // Initialisation de l'index si pas encore défini
+
     if (!slideIndices[sliderId]) { slideIndices[sliderId] = 1; }
-    
-    // Boucle : si on dépasse la fin, on revient au début
+
     if (n > slides.length) { slideIndices[sliderId] = 1 }    
-    // Boucle : si on est avant le début, on va à la fin
     if (n < 1) { slideIndices[sliderId] = slides.length }
-    
-    // Masquer tous les slides
+
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";  
         slides[i].classList.remove("active");
     }
-    
-    // Afficher le slide actuel
+
     slides[slideIndices[sliderId]-1].style.display = "block";  
     slides[slideIndices[sliderId]-1].classList.add("active");
 }
@@ -125,12 +118,113 @@ function setLanguage(lang) {
     document.querySelectorAll('.lang-text').forEach(el => {
         el.style.display = el.dataset.lang === lang ? '' : 'none';
     });
+
+    // ✨ NOUVEAU : Mettre à jour les images traduisibles
+    updateTranslatableImages(lang);
 }
+
+// ========== GESTION DES IMAGES BILINGUES (OPTIONNEL) ==========
+function updateTranslatableImages(lang) {
+    document.querySelectorAll('.img-translatable').forEach(img => {
+        const newSrc = img.getAttribute(`data-src-${lang}`);
+        const newAlt = img.getAttribute(`data-alt-${lang}`);
+        
+        // Change le SRC seulement si une version existe pour cette langue
+        if (newSrc) {
+            const currentSrc = img.getAttribute('src');
+            if (currentSrc !== newSrc) {
+                img.setAttribute('src', newSrc);
+            }
+        }
+        
+        // Change le ALT seulement si une version existe
+        if (newAlt) {
+            img.setAttribute('alt', newAlt);
+        }
+    });
+}
+
+// ========== LIGHTBOX ZOOM ==========
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCaption = document.getElementById('lightbox-caption');
+const lightboxClose = document.querySelector('.lightbox-close');
+
+// Fonction pour ouvrir la lightbox
+function openLightbox(img) {
+    lightbox.classList.add('active');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    
+    // Récupérer la caption visible (gère le bilinguisme)
+    const parentContainer = img.closest('.evidence-image, .slide');
+    if (parentContainer) {
+        const visibleCaption = parentContainer.querySelector('.caption.lang-text:not([style*="display: none"])');
+        if (visibleCaption) {
+            lightboxCaption.textContent = visibleCaption.textContent;
+        } else {
+            lightboxCaption.textContent = img.alt;
+        }
+    } else {
+        lightboxCaption.textContent = img.alt;
+    }
+    
+    document.body.style.overflow = 'hidden';
+}
+
+// Fonction pour fermer la lightbox
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Activer le zoom sur toutes les images
+function activateImageZoom() {
+    document.querySelectorAll('.evidence-image img, .evidence-slider img').forEach(img => {
+        // Éviter de créer plusieurs listeners
+        img.removeEventListener('click', handleImageClick);
+        img.addEventListener('click', handleImageClick);
+    });
+}
+
+function handleImageClick(e) {
+    openLightbox(e.target);
+}
+
+// Événements lightbox
+if (lightboxClose) {
+    lightboxClose.addEventListener('click', closeLightbox);
+}
+
+if (lightbox) {
+    // Fermer en cliquant sur le fond noir
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+}
+
+// Fermer avec la touche Échap (gère aussi la fermeture des projets)
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        // Fermer lightbox si ouverte
+        if (lightbox && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+        // Sinon fermer les projets expanded
+        else {
+            document.querySelectorAll('.timeline-item.expanded').forEach(item => {
+                closeProject(item);
+            });
+        }
+    }
+});
 
 // ========== OBSERVER TIMELINE ==========
 function initTimelineObserver() {
     const timelineItems = document.querySelectorAll('.timeline-item');
-    
+
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -173,20 +267,10 @@ function toggleProject(element) {
     }
 }
 
-// Fermer avec Escape
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        document.querySelectorAll('.timeline-item.expanded').forEach(item => {
-            closeProject(item); // Utilisation de la fonction centralisée
-        });
-    }
-});
-
 // Fermer en cliquant en dehors
 function initCloseOnClickOutside() {
     document.querySelectorAll('.timeline-item').forEach(item => {
         item.addEventListener('click', (e) => {
-            // Si on clique sur le fond (l'item) et pas sur la carte
             if (e.target === item && item.classList.contains('expanded')) {
                 closeProject(item);
             }
@@ -202,8 +286,6 @@ function initCloseOnClickOutside() {
         });
     });
 }
-
-
 
 // ========== FONCTION FERMETURE ==========
 function closeProject(item) {
@@ -227,6 +309,7 @@ function initSmoothScroll() {
         });
     });
 }
+
 // ========== INITIALISATION GÉNÉRALE ==========
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('🚀 Portfolio initialisé');
@@ -247,7 +330,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    // 3. Charger les projets (LE POINT CRUCIAL)
+    // 3. Charger les projets
     await loadProjects();
 
     // 4. Smooth scroll
