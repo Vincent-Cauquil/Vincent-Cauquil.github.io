@@ -194,7 +194,7 @@ function closeLightbox() {
     currentLightboxSlider = null;
 }
 
-// Navigation dans la lightbox
+// ========== NAVIGATION DANS LA LIGHTBOX ==========
 function navigateLightbox(direction) {
     if (!currentLightboxSlider) return;
 
@@ -218,24 +218,35 @@ function navigateLightbox(direction) {
     // Mettre à jour l'image dans la lightbox
     const activeSlide = slides[currentLightboxIndex];
     const img = activeSlide.querySelector('img');
-    const captions = activeSlide.querySelectorAll('.caption .lang-text');
+    
+    // Gérer les images traduisibles
+    let imgSrc = img.src;
+    let imgAlt = img.alt;
+
+    if (img.classList.contains('img-translatable')) {
+        const currentLang = document.querySelector('.lang-btn.active').dataset.lang;
+        imgSrc = img.dataset[`src${currentLang.charAt(0).toUpperCase() + currentLang.slice(1)}`] || img.src;
+        imgAlt = img.dataset[`alt${currentLang.charAt(0).toUpperCase() + currentLang.slice(1)}`] || img.alt;
+    }
+
+    // Récupérer la légende dans la bonne langue
+    const captions = activeSlide.querySelectorAll('.caption.lang-text, .caption .lang-text');
     let captionText = '';
 
     captions.forEach(caption => {
-        // Afficher uniquement la légende visible (langue active)
         if (caption.style.display !== 'none') {
             captionText = caption.textContent;
         }
     });
 
-    // Si aucune légende n'est trouvée, utiliser l'alt de l'image
+    // Fallback sur l'alt si pas de légende
     if (!captionText) {
-        captionText = img.alt || '';
+        captionText = imgAlt || '';
     }
 
     // Mise à jour de la lightbox
-    document.getElementById('lightbox-img').src = img.src;
-    document.getElementById('lightbox-img').alt = img.alt;
+    document.getElementById('lightbox-img').src = imgSrc;
+    document.getElementById('lightbox-img').alt = imgAlt;
     document.getElementById('lightbox-caption').textContent = captionText;
 }
 
