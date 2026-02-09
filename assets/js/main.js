@@ -197,32 +197,46 @@ function closeLightbox() {
 // Navigation dans la lightbox
 function navigateLightbox(direction) {
     if (!currentLightboxSlider) return;
-    
+
     const sliderId = currentLightboxSlider.id;
     const slides = currentLightboxSlider.querySelectorAll('.slide');
-    
+
     // Mettre à jour l'index
     currentLightboxIndex += direction;
-    
+
     if (currentLightboxIndex >= slides.length) {
         currentLightboxIndex = 0;
     }
     if (currentLightboxIndex < 0) {
         currentLightboxIndex = slides.length - 1;
     }
-    
+
     // Mettre à jour le slider en arrière-plan
     slideIndices[sliderId] = currentLightboxIndex + 1;
     showSlides(slideIndices[sliderId], sliderId);
-    
+
     // Mettre à jour l'image dans la lightbox
     const activeSlide = slides[currentLightboxIndex];
     const img = activeSlide.querySelector('img');
-    const caption = activeSlide.querySelector('.caption .lang-text:not([style*="display: none"])');
-    
+    const captions = activeSlide.querySelectorAll('.caption .lang-text');
+    let captionText = '';
+
+    captions.forEach(caption => {
+        // Afficher uniquement la légende visible (langue active)
+        if (caption.style.display !== 'none') {
+            captionText = caption.textContent;
+        }
+    });
+
+    // Si aucune légende n'est trouvée, utiliser l'alt de l'image
+    if (!captionText) {
+        captionText = img.alt || '';
+    }
+
+    // Mise à jour de la lightbox
     document.getElementById('lightbox-img').src = img.src;
     document.getElementById('lightbox-img').alt = img.alt;
-    document.getElementById('lightbox-caption').textContent = caption ? caption.textContent : '';
+    document.getElementById('lightbox-caption').textContent = captionText;
 }
 
 // Event listeners pour la lightbox
