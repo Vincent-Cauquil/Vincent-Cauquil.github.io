@@ -1,6 +1,8 @@
-/* ========== RESPONSIVE ========== */
+/* ========================================
+   RESPONSIVE — Toutes les media queries
+   ======================================== */
 
-/* --- Tablette / Petit desktop --- */
+/* --- Tablette --- */
 @media (max-width: 1100px) {
     .hero-content {
         gap: 2rem;
@@ -25,8 +27,13 @@
         max-width: 100%;
     }
 
-    h1 {
+    .hero-text h1 {
         font-size: 2.5rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+        text-align: left;
     }
 
     .hero-buttons {
@@ -46,26 +53,37 @@
         text-align: left;
     }
 
-    /* Timeline */
+    /* Timeline mobile : tout à gauche */
     .timeline-line {
         left: 20px;
     }
 
-    .timeline-item:nth-child(odd),
-    .timeline-item:nth-child(even) {
-        padding-left: 50px;
+    .timeline-item.left,
+    .timeline-item.right {
+        padding-left: 50px !important;
+        padding-right: 0 !important;
+        justify-content: flex-start !important;
+    }
+
+    .timeline-item.left .timeline-date,
+    .timeline-item.right .timeline-date {
+        left: 0;
+        right: auto;
+        padding-left: 0;
         padding-right: 0;
-        flex-direction: row !important;
+        flex-direction: row;
     }
 
-    .timeline-date,
+    .timeline-dot {
+        position: absolute;
+        left: 12px;
+    }
+
     .date {
-        left: 20px;
-        transform: translateX(0);
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
 
-    /* Expanded mobile */
+    /* Expanded mobile : plein écran */
     .timeline-item.expanded .timeline-content {
         width: 100%;
         max-width: 100%;
@@ -101,7 +119,7 @@
 
 /* --- Petit Mobile --- */
 @media (max-width: 480px) {
-    h1 {
+    .hero-text h1 {
         font-size: 2rem;
     }
 
