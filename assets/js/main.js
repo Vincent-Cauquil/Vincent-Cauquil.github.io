@@ -367,7 +367,39 @@ function initSmoothScroll() {
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('🚀 Portfolio initialisé');
 
-    // 1. Détection de langue
+    // 1. EVENT LISTENERS LIGHTBOX (lightbox déjà dans le HTML)
+    // Click sur l'image pour ouvrir
+    document.addEventListener('click', function(e) {
+        if (e.target.matches('.evidence-image img, .evidence-slider img')) {
+            openLightbox(e.target);
+        }
+    });
+
+    // Clic en dehors de l'image pour fermer
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+    }
+
+    // Touche Échap pour fermer
+    document.addEventListener('keydown', function(e) {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox && lightbox.classList.contains('active')) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft' && currentLightboxSlider) {
+                navigateLightbox(-1);
+            } else if (e.key === 'ArrowRight' && currentLightboxSlider) {
+                navigateLightbox(1);
+            }
+        }
+    });
+
+    // 2. Détection de langue
     const savedLang = localStorage.getItem('lang');
     if (savedLang) {
         setLanguage(savedLang);
@@ -376,18 +408,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         setLanguage(detectedLang);
     }
 
-    // 2. Boutons langue
+    // 3. Boutons langue
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             setLanguage(btn.dataset.lang);
         });
     });
 
-    // 3. Charger les projets
+    // 4. Charger les projets
     await loadProjects();
 
-    // 4. Smooth scroll
+    // 5. Smooth scroll
     initSmoothScroll();
 
     console.log('✅ Tout est chargé');
 });
+
