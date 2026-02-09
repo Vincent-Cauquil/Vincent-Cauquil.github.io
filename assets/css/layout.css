@@ -216,10 +216,15 @@
     50% { transform: translateY(-15px); }
 }
 
-/* Scroll Indicator */
+/* ========== SCROLL INDICATOR (bloc indépendant) ========== */
+.scroll-indicator-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0 3rem;
+    background: transparent;
+}
+
 .scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -227,14 +232,26 @@
     color: var(--text-muted);
     font-size: 0.85rem;
     animation: bounce 2s infinite;
+    text-decoration: none;
+    cursor: pointer;
 }
 
+.scroll-indicator:hover {
+    color: var(--accent);
+}
+
+/* Desktop : souris visible, swipe caché */
 .mouse {
     width: 24px;
     height: 40px;
     border: 2px solid var(--text-muted);
     border-radius: 12px;
     position: relative;
+    transition: border-color 0.3s;
+}
+
+.scroll-indicator:hover .mouse {
+    border-color: var(--accent);
 }
 
 .mouse::before {
@@ -248,6 +265,31 @@
     background: var(--accent);
     border-radius: 2px;
     animation: scroll-wheel 2s infinite;
+}
+
+.swipe {
+    display: none; /* Caché sur desktop */
+}
+
+/* ===== SWIPE ANIMATION ===== */
+.swipe-finger {
+    font-size: 1.8rem;
+    animation: swipe-up 2s ease-in-out infinite;
+}
+
+@keyframes swipe-up {
+    0% {
+        opacity: 0.4;
+        transform: translateY(10px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 0.4;
+        transform: translateY(10px);
+    }
 }
 
 @keyframes scroll-wheel {

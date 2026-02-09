@@ -118,13 +118,22 @@
                 </div>
             </div>
         </div>
-    
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-            <span>Scroll</span>
-        </div>
     </section>
 
+
+    <!-- SCROLL INDICATOR — Bloc indépendant -->
+    <div class="scroll-indicator-wrapper">
+        <a href="#timeline" class="scroll-indicator">
+            <!-- Desktop : souris -->
+            <div class="mouse"></div>
+            <!-- Mobile : swipe -->
+            <div class="swipe">
+                <div class="swipe-finger">👆</div>
+            </div>
+            <span class="lang-text" data-lang="fr">Scroll</span>
+            <span class="lang-text" data-lang="en" style="display: none;">Scroll</span>
+        </a>
+    </div>
 
     <!-- TIMELINE - PROJETS -->
     <section id="timeline">

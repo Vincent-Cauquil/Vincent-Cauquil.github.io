@@ -1,0 +1,644 @@
+<!-- ========================================
+     TEMPLATE — Carte Projet Portfolio
+     ========================================
+     
+     📌 WORKFLOW DE CRÉATION :
+     ─────────────────────────────────────────
+     1. Copier ce fichier → le renommer : project-XXXX.html
+     2. Placer dans : assets/projects/
+     3. Créer le dossier images : assets/images/project-XXXX/
+     4. Enregistrer dans main.js :
+        projects = [
+            { id: 'project-XXXX', file: 'assets/projects/project-XXXX.html' },
+        ];
+     5. Ajouter le conteneur dans index.html (section #timeline) :
+        <div id="project-XXXX"></div>
+     
+     
+     📌 RÈGLES D'OR :
+     ─────────────────────────────────────────
+     
+     BILINGUISME STRICT :
+       Chaque texte visible = 2 balises obligatoires :
+         <span class="lang-text" data-lang="fr">Texte FR</span>
+         <span class="lang-text" data-lang="en" style="display: none;">EN Text</span>
+       ⚠️ Ne JAMAIS mélanger FR et EN dans la même balise.
+     
+     CONTENEUR MULTI-ÉLÉMENTS :
+       Si le texte contient des <ul>, <p> multiples → utiliser :
+         <div class="lang-text" data-lang="fr">...</div>
+       Et NON <p class="lang-text"> (car <p> ne peut pas contenir <ul>/<div>).
+     
+     IMAGES :
+       → Préférer .png pour les schémas complexes (bugs SVG sur GitHub Pages).
+       → Dimensions cover recommandées : 800×400px minimum.
+       → Les images dans evidence-image/evidence-slider ont cursor: zoom-in
+         et ouvrent la lightbox automatiquement.
+     
+     PRÉCISION TECHNIQUE :
+       → "Bus I2C à 400 kHz" plutôt que "communication rapide"
+       → "ADC 12 bits, 1 MSPS" plutôt que "conversion analogique"
+     
+     ACRONYMES :
+       → Toujours définis à la première occurrence dans chaque bloc.
+       → Ex: SNN (Spiking Neural Networks), CIM (Compute-In-Memory)
+     
+     MISE EN FORME :
+       → <strong> sur les mots-clés : Technologies, Puces, Protocoles.
+       → Les tags sont TOUJOURS en anglais (standardisation technique).
+       → Pas d'émojis dans les titres h3/h4.
+     
+     MACROS (classe "macro" sur le conteneur) :
+       → \CPE_Lyon  → lien cliquable vers CPE Lyon
+       → \CEA_Leti  → lien cliquable vers CEA-Leti
+     
+     OBJECTIF PORTFOLIO :
+       → Chaque detail-block doit JUSTIFIER une compétence développée.
+       → Montrer le PROCESSUS (pas juste le résultat).
+       → L'image/slider est la PREUVE de la compétence décrite dans le texte.
+     
+     ======================================== -->
+
+
+<div class="timeline-item">
+    <div class="timeline-content">
+        <button class="btn-close" onclick="toggleProject(this)">✕</button>
+
+
+        <!-- ══════════════════════════════════════
+             SECTION 1 — IMAGE DE COUVERTURE
+             ══════════════════════════════════════
+             
+             Chemin : assets/images/project-XXXX/cover.png
+             L'image est affichée en object-fit: cover (200px de haut),
+             donc centrer le sujet important au milieu du visuel.
+        -->
+        <div class="project-image">
+            <img src="assets/images/project-XXXX/cover.png" 
+                 alt="Description courte pour accessibilité">
+        </div>
+
+
+        <!-- ══════════════════════════════════════
+             SECTION 2 — INFOS CARTE (vue repliée)
+             ══════════════════════════════════════
+             
+             C'est ce que l'utilisateur voit AVANT de cliquer "En savoir plus".
+             → Doit être concis (2-3 phrases)
+             → Donner le contexte et les technos clés
+             → Donner envie d'ouvrir les détails
+        -->
+        <div class="project-info">
+
+            <!-- TITRE — Bilingue, court et descriptif. Pas d'émojis. -->
+            <h3>
+                <span class="lang-text" data-lang="fr">Titre du Projet en Français</span>
+                <span class="lang-text" data-lang="en" style="display: none;">Project Title in English</span>
+            </h3>
+
+            <!-- DESCRIPTION COURTE
+                 → 2-3 phrases max
+                 → Mettre en <strong> les technos/outils clés
+                 → Mentionner le contexte (cours, stage, projet perso)
+                 
+                 RÈGLE : Simple paragraphe → <p class="lang-text">
+                         Contient des listes  → <div class="lang-text">
+            -->
+            <p class="lang-text" data-lang="fr">
+                Description concise du projet. Utilisation de <strong>Techno1</strong> 
+                et <strong>Techno2</strong> dans le cadre du cours <strong>NomDuCours</strong>.
+            </p>
+            <p class="lang-text" data-lang="en" style="display: none;">
+                Concise project description. Using <strong>Tech1</strong> 
+                and <strong>Tech2</strong> as part of the <strong>CourseName</strong> course.
+            </p>
+
+            <!-- TAGS — Toujours en anglais. 5-8 tags max. 
+                 Termes techniques standardisés uniquement.
+            -->
+            <div class="project-tags">
+                <span class="tag">Embedded C</span>
+                <span class="tag">PCB Design</span>
+                <span class="tag">I2C / SPI</span>
+                <span class="tag">KiCad</span>
+                <span class="tag">ARM Cortex-M</span>
+            </div>
+
+            <!-- BOUTONS DE LA CARTE
+                 
+                 btn-expand  → OBLIGATOIRE (ouvre la section détails)
+                 btn-github  → optionnel (lien repo GitHub)
+                 btn-video   → optionnel (lien démo vidéo, ::before = ▶ auto)
+                 btn-doc     → optionnel (lien PDF/rapport, ::before = 📄 auto)
+                 
+                 Décommenter les boutons nécessaires ci-dessous.
+            -->
+            <div class="card-buttons">
+
+                <!-- OBLIGATOIRE -->
+                <button class="btn-expand" onclick="toggleProject(this)">
+                    <span class="lang-text" data-lang="fr">En savoir plus →</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Learn more →</span>
+                </button>
+
+                <!-- OPTIONNEL : GitHub
+                <a href="https://github.com/user/repo" class="btn-github" target="_blank">
+                    <svg class="icon"><use href="#icon-github"/></svg>
+                    GitHub
+                </a>
+                -->
+
+                <!-- OPTIONNEL : Vidéo / Démo
+                <a href="https://youtube.com/watch?v=XXXX" class="btn-video" target="_blank">
+                    <span class="lang-text" data-lang="fr">Voir la Démo</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Watch Demo</span>
+                </a>
+                -->
+
+                <!-- OPTIONNEL : Document / PDF
+                <a href="assets/ressource/nom-du-fichier.pdf" class="btn-doc" target="_blank">
+                    <span class="lang-text" data-lang="fr">Lire le Rapport</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Read Report</span>
+                </a>
+                -->
+
+            </div>
+        </div>
+
+
+        <!-- ══════════════════════════════════════════════════════════
+             SECTION 3 — DÉTAILS TECHNIQUES (cachés par défaut)
+             ══════════════════════════════════════════════════════════
+             
+             S'affiche quand l'utilisateur clique "En savoir plus".
+             
+             STRUCTURE D'UN BLOC :
+               <div class="detail-block">           → Conteneur principal
+                 <h4>                                → Titre compétence (bilingue)
+                 <div class="evidence-container">    → Layout flex : texte + preuve
+                   <div class="evidence-text">       → Argumentation technique
+                   <div class="evidence-image">      → 1 image preuve
+                   OU
+                   <div class="evidence-slider">     → Galerie multi-étapes
+                 </div>
+               </div>
+             
+             PHILOSOPHIE : 
+               Chaque detail-block = 1 compétence justifiée
+               Le texte ARGUMENTE, l'image PROUVE.
+               
+             COMBIEN DE BLOCS ?
+               → 3 à 6 blocs par projet (selon la complexité)
+               → Ordre logique : Contexte → Technique → Résultats → Compétences
+        -->
+        <div class="project-details">
+
+
+            <!-- ═══════════════════════════════════
+                 BLOC TYPE A — Texte + Image unique
+                 ═══════════════════════════════════
+                 
+                 Utiliser quand UNE image suffit à prouver la compétence.
+                 Ex: schéma d'architecture, photo du résultat final, graphe.
+            -->
+            <div class="detail-block">
+                <h4 class="lang-text" data-lang="fr">Titre de la Compétence Développée</h4>
+                <h4 class="lang-text" data-lang="en" style="display: none;">Developed Skill Title</h4>
+
+                <div class="evidence-container">
+
+                    <!-- TEXTE — Argumentation technique
+                         
+                         STRUCTURE RECOMMANDÉE :
+                         1. Contexte / Pourquoi (1-2 phrases)
+                         2. Ce qui a été fait techniquement (détails précis)
+                         3. Résultat / Ce que ça prouve
+                         
+                         ⚠️ Utiliser <div> si le contenu a des <ul> ou <p> multiples
+                    -->
+                    <div class="evidence-text">
+                        <div class="lang-text" data-lang="fr">
+                            <p>
+                                <strong>Contexte :</strong> Explication du problème à résoudre 
+                                et des contraintes techniques rencontrées.
+                            </p>
+                            <p>
+                                <strong>Réalisation :</strong> Description précise de ce qui a été fait.
+                                Utilisation du protocole <strong>I2C à 400 kHz</strong> pour communiquer 
+                                avec le capteur <strong>BME280</strong>.
+                            </p>
+                            <ul>
+                                <li>Point technique détaillé n°1</li>
+                                <li>Point technique détaillé n°2</li>
+                                <li>Point technique détaillé n°3</li>
+                            </ul>
+                        </div>
+                        <div class="lang-text" data-lang="en" style="display: none;">
+                            <p>
+                                <strong>Context:</strong> Explanation of the problem to solve 
+                                and technical constraints encountered.
+                            </p>
+                            <p>
+                                <strong>Implementation:</strong> Precise description of what was done.
+                                Used <strong>I2C protocol at 400 kHz</strong> to communicate 
+                                with the <strong>BME280</strong> sensor.
+                            </p>
+                            <ul>
+                                <li>Detailed technical point #1</li>
+                                <li>Detailed technical point #2</li>
+                                <li>Detailed technical point #3</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- IMAGE UNIQUE — Preuve visuelle
+                         
+                         L'attribut alt doit être descriptif.
+                         La caption est bilingue.
+                         L'image ouvre la lightbox au clic (géré par main.js).
+                    -->
+                    <div class="evidence-image">
+                        <img src="assets/images/project-XXXX/nom-image.png" 
+                             alt="Description de l'image">
+                        <span class="caption lang-text" data-lang="fr">Légende en français</span>
+                        <span class="caption lang-text" data-lang="en" style="display: none;">Caption in English</span>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ═══════════════════════════════════
+                 BLOC TYPE B — Texte + Slider multi-images
+                 ═══════════════════════════════════
+                 
+                 Utiliser quand PLUSIEURS étapes/vues sont nécessaires.
+                 Ex: Schéma → Routage PCB → Rendu 3D
+                     Ou: Étape 1 → Étape 2 → Résultat
+                 
+                 ⚠️ L'ID du slider DOIT être unique dans tout le portfolio.
+                    Convention : slider-XXXX-nombloc
+            -->
+            <div class="detail-block">
+                <h4 class="lang-text" data-lang="fr">Compétence avec Processus Multi-étapes</h4>
+                <h4 class="lang-text" data-lang="en" style="display: none;">Multi-step Process Skill</h4>
+
+                <div class="evidence-container">
+
+                    <div class="evidence-text">
+                        <div class="lang-text" data-lang="fr">
+                            <p>
+                                Description du processus en plusieurs étapes. 
+                                Le slider à droite montre la progression.
+                            </p>
+                            <ul>
+                                <li><strong>Étape 1 :</strong> Schéma fonctionnel</li>
+                                <li><strong>Étape 2 :</strong> Routage du PCB</li>
+                                <li><strong>Étape 3 :</strong> Visualisation 3D</li>
+                            </ul>
+                        </div>
+                        <div class="lang-text" data-lang="en" style="display: none;">
+                            <p>
+                                Description of the multi-step process. 
+                                The slider on the right shows the progression.
+                            </p>
+                            <ul>
+                                <li><strong>Step 1:</strong> Functional schematic</li>
+                                <li><strong>Step 2:</strong> PCB routing</li>
+                                <li><strong>Step 3:</strong> 3D visualization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- SLIDER — Galerie navigable
+                         
+                         ID unique obligatoire (utilisé par main.js pour la navigation).
+                         La première slide a class="slide active", les autres juste "slide".
+                         Chaque slide a sa propre caption bilingue.
+                         Les boutons prev/next appellent moveSlide() avec l'ID.
+                    -->
+                    <div class="evidence-slider" id="slider-XXXX-nombloc">
+                        <!-- Slide 1 (active par défaut) -->
+                        <div class="slide active">
+                            <img src="assets/images/project-XXXX/etape1.png" 
+                                 alt="Étape 1">
+                            <span class="caption lang-text" data-lang="fr">Étape 1 — Schéma</span>
+                            <span class="caption lang-text" data-lang="en" style="display: none;">Step 1 — Schematic</span>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="slide">
+                            <img src="assets/images/project-XXXX/etape2.png" 
+                                 alt="Étape 2">
+                            <span class="caption lang-text" data-lang="fr">Étape 2 — Routage PCB</span>
+                            <span class="caption lang-text" data-lang="en" style="display: none;">Step 2 — PCB Routing</span>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="slide">
+                            <img src="assets/images/project-XXXX/etape3.png" 
+                                 alt="Étape 3">
+                            <span class="caption lang-text" data-lang="fr">Étape 3 — Rendu 3D</span>
+                            <span class="caption lang-text" data-lang="en" style="display: none;">Step 3 — 3D Render</span>
+                        </div>
+
+                        <!-- Contrôles du slider -->
+                        <button class="slider-prev" onclick="moveSlide('slider-XXXX-nombloc', -1)">❮</button>
+                        <button class="slider-next" onclick="moveSlide('slider-XXXX-nombloc', 1)">❯</button>
+                        <div class="slider-dots">
+                            <span class="dot active" onclick="goToSlide('slider-XXXX-nombloc', 0)"></span>
+                            <span class="dot" onclick="goToSlide('slider-XXXX-nombloc', 1)"></span>
+                            <span class="dot" onclick="goToSlide('slider-XXXX-nombloc', 2)"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ═══════════════════════════════════
+                 BLOC TYPE C — Texte seul (pas d'image)
+                 ═══════════════════════════════════
+                 
+                 Utiliser pour les blocs contextuels ou méthodologiques
+                 où aucune image n'est pertinente.
+                 
+                 Le evidence-text prendra toute la largeur automatiquement.
+            -->
+            <div class="detail-block">
+                <h4 class="lang-text" data-lang="fr">Contexte et Méthodologie</h4>
+                <h4 class="lang-text" data-lang="en" style="display: none;">Context and Methodology</h4>
+
+                <div class="evidence-container">
+                    <div class="evidence-text">
+                        <div class="lang-text" data-lang="fr">
+                            <p>
+                                Explication du contexte, de la problématique, 
+                                et de la méthodologie choisie.
+                            </p>
+                            <p>
+                                Ce bloc est utile pour poser le cadre avant 
+                                d'entrer dans les détails techniques des blocs suivants.
+                            </p>
+                        </div>
+                        <div class="lang-text" data-lang="en" style="display: none;">
+                            <p>
+                                Explanation of the context, the problem statement, 
+                                and the chosen methodology.
+                            </p>
+                            <p>
+                                This block is useful for setting the framework before 
+                                diving into technical details in the following blocks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ═══════════════════════════════════
+                 BLOC TYPE D — Résultats chiffrés
+                 ═══════════════════════════════════
+                 
+                 Utiliser pour mettre en avant des métriques/KPI.
+                 La grille results-grid affiche des cartes avec 
+                 une valeur mise en avant + description.
+                 
+                 Adapter le nombre de result-item (2 à 4 recommandé).
+            -->
+            <div class="detail-block">
+                <h4 class="lang-text" data-lang="fr">Résultats et Performances</h4>
+                <h4 class="lang-text" data-lang="en" style="display: none;">Results and Performance</h4>
+
+                <div class="results-grid">
+                    <div class="result-item">
+                        <span class="result-value">95%</span>
+                        <p class="lang-text" data-lang="fr">Précision obtenue</p>
+                        <p class="lang-text" data-lang="en" style="display: none;">Achieved accuracy</p>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value">&lt; 50 ms</span>
+                        <p class="lang-text" data-lang="fr">Temps de réponse</p>
+                        <p class="lang-text" data-lang="en" style="display: none;">Response time</p>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value">3.3 V</span>
+                        <p class="lang-text" data-lang="fr">Tension d'alimentation</p>
+                        <p class="lang-text" data-lang="en" style="display: none;">Supply voltage</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ═══════════════════════════════════
+                 BLOC TYPE E — Tech Highlight (encadré)
+                 ═══════════════════════════════════
+                 
+                 Utiliser pour un point technique important 
+                 ou un avertissement/limitation.
+                 
+                 Classes disponibles :
+                   .tech-highlight          → Encadré cyan (info technique)
+                   .tech-highlight.warning  → Encadré jaune (limitation/attention)
+            -->
+            <div class="detail-block">
+                <h4 class="lang-text" data-lang="fr">Point Technique Clé</h4>
+                <h4 class="lang-text" data-lang="en" style="display: none;">Key Technical Point</h4>
+
+                <div class="evidence-container">
+                    <div class="evidence-text">
+                        <div class="lang-text" data-lang="fr">
+                            <div class="tech-highlight">
+                                <strong>Point important :</strong> Explication d'un choix technique 
+                                critique ou d'une contrainte de conception.
+                            </div>
+                            <div class="tech-highlight warning">
+                                <strong>Limitation identifiée :</strong> Description honnête d'une 
+                                limite ou d'un compromis accepté dans la conception.
+                            </div>
+                        </div>
+                        <div class="lang-text" data-lang="en" style="display: none;">
+                            <div class="tech-highlight">
+                                <strong>Key point:</strong> Explanation of a critical technical choice 
+                                or design constraint.
+                            </div>
+                            <div class="tech-highlight warning">
+                                <strong>Identified limitation:</strong> Honest description of a 
+                                limitation or accepted trade-off in the design.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ═══════════════════════════════════
+                 BLOC TYPE F — Architecture (grille visuelle)
+                 ═══════════════════════════════════
+                 
+                 Utiliser pour décomposer une architecture en blocs.
+                 3-4 items recommandés.
+            -->
+            <div class="detail-block">
+                <h4 class="lang-text" data-lang="fr">Architecture du Système</h4>
+                <h4 class="lang-text" data-lang="en" style="display: none;">System Architecture</h4>
+
+                <div class="arch-grid">
+                    <div class="arch-item">
+                        <span class="arch-icon">⚡</span>
+                        <strong>
+                            <span class="lang-text" data-lang="fr">Bloc 1</span>
+                            <span class="lang-text" data-lang="en" style="display: none;">Block 1</span>
+                        </strong>
+                        <p>
+                            <span class="lang-text" data-lang="fr">Description du premier bloc fonctionnel</span>
+                            <span class="lang-text" data-lang="en" style="display: none;">First functional block description</span>
+                        </p>
+                    </div>
+                    <div class="arch-item">
+                        <span class="arch-icon">🧠</span>
+                        <strong>
+                            <span class="lang-text" data-lang="fr">Bloc 2</span>
+                            <span class="lang-text" data-lang="en" style="display: none;">Block 2</span>
+                        </strong>
+                        <p>
+                            <span class="lang-text" data-lang="fr">Description du second bloc fonctionnel</span>
+                            <span class="lang-text" data-lang="en" style="display: none;">Second functional block description</span>
+                        </p>
+                    </div>
+                    <div class="arch-item">
+                        <span class="arch-icon">📡</span>
+                        <strong>
+                            <span class="lang-text" data-lang="fr">Bloc 3</span>
+                            <span class="lang-text" data-lang="en" style="display: none;">Block 3</span>
+                        </strong>
+                        <p>
+                            <span class="lang-text" data-lang="fr">Description du troisième bloc fonctionnel</span>
+                            <span class="lang-text" data-lang="en" style="display: none;">Third functional block description</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ═══════════════════════════════════
+                 BLOC FINAL — Compétences Développées
+                 ═══════════════════════════════════
+                 
+                 OBLIGATOIRE en dernier bloc de chaque projet.
+                 C'est la synthèse portfolio : quelles compétences 
+                 ce projet a permis de développer/prouver.
+                 
+                 Catégories recommandées :
+                   - Compétences Techniques (hard skills)
+                   - Outils & Environnements
+                   - Domaines Techniques
+                   - Soft Skills
+                 
+                 Adapter selon le projet (3-4 catégories).
+            -->
+            <div class="detail-block">
+                <h4 class="lang-text" data-lang="fr">Compétences Développées</h4>
+                <h4 class="lang-text" data-lang="en" style="display: none;">Developed Skills</h4>
+
+                <div class="skills-grid">
+
+                    <div class="skill-category">
+                        <h5 class="lang-text" data-lang="fr">Compétences Techniques</h5>
+                        <h5 class="lang-text" data-lang="en" style="display: none;">Technical Skills</h5>
+                        <ul>
+                            <li class="lang-text" data-lang="fr">Compétence technique FR n°1</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Technical skill EN #1</li>
+
+                            <li class="lang-text" data-lang="fr">Compétence technique FR n°2</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Technical skill EN #2</li>
+
+                            <!-- Compétence non-bilingue (terme technique universel) -->
+                            <li>Universal technical term</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h5 class="lang-text" data-lang="fr">Outils & Environnements</h5>
+                        <h5 class="lang-text" data-lang="en" style="display: none;">Tools & Environments</h5>
+                        <ul>
+                            <!-- Les noms d'outils ne nécessitent pas de traduction -->
+                            <li>KiCad 8</li>
+                            <li>STM32CubeIDE</li>
+                            <li>Python (NumPy, Matplotlib)</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h5 class="lang-text" data-lang="fr">Domaines Techniques</h5>
+                        <h5 class="lang-text" data-lang="en" style="display: none;">Technical Domains</h5>
+                        <ul>
+                            <li class="lang-text" data-lang="fr">Domaine FR n°1</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Domain EN #1</li>
+
+                            <li class="lang-text" data-lang="fr">Domaine FR n°2</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Domain EN #2</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h5 class="lang-text" data-lang="fr">Soft Skills</h5>
+                        <h5 class="lang-text" data-lang="en" style="display: none;">Soft Skills</h5>
+                        <ul>
+                            <li class="lang-text" data-lang="fr">Travail en équipe</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Teamwork</li>
+
+                            <li class="lang-text" data-lang="fr">Gestion de projet</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Project management</li>
+
+                            <li class="lang-text" data-lang="fr">Communication technique</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Technical communication</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <!-- Fin project-details -->
+
+    </div>
+    <!-- Fin timeline-content -->
+
+
+    <!-- ══════════════════════════════════════
+         SECTION 4 — DATE & DOT (timeline)
+         ══════════════════════════════════════
+         
+         Positionnée automatiquement par main.js (left/right).
+         Format de date recommandé : "Mois Année" ou "Mois - Mois Année"
+    -->
+    <div class="timeline-date">
+        <span class="date">
+            <span class="lang-text" data-lang="fr">Jan - Juin 2025</span>
+            <span class="lang-text" data-lang="en" style="display: none;">Jan - June 2025</span>
+        </span>
+        <div class="timeline-dot"></div>
+    </div>
+
+</div>
+<!-- Fin timeline-item -->
+
+
+<!-- ========================================
+     CHECKLIST AVANT PUBLICATION :
+     ========================================
+     
+     □  Toutes les balises lang-text ont leur doublon FR/EN
+     □  Les <div> sont utilisés au lieu de <p> quand il y a des <ul>
+     □  Les IDs de sliders sont uniques dans tout le portfolio
+     □  Les images existent dans le bon dossier
+     □  Les images sont en .png (pas .svg pour les schémas)
+     □  Les acronymes sont définis à la première occurrence
+     □  Le dernier bloc est "Compétences Développées"
+     □  Le projet est enregistré dans main.js (tableau projects)
+     □  Le conteneur <div id="project-XXXX"> existe dans index.html
+     □  Les alt des images sont descriptifs
+     □  Pas d'émojis dans les titres h3/h4
+     □  Les tags sont en anglais
+     
+     ======================================== -->

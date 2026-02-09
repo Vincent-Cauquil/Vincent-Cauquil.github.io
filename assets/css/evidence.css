@@ -284,11 +284,12 @@
     z-index: 9999;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.95);
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .lightbox.active {
@@ -297,27 +298,35 @@
 
 .lightbox-content {
     position: relative;
-    max-width: 95vw;
-    max-height: 95vh;
+    width: 90vw;          /* ✅ LARGEUR EXPLICITE */
+    max-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.lightbox img {
-    max-width: 100%;
-    max-height: 95vh;
+/* ✅ Images classiques (PNG, JPG, WebP) */
+.lightbox-content img {
+    max-width: 90vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    min-width: 200px;     /* ✅ Garantie minimale */
     object-fit: contain;
     border-radius: 8px;
 }
 
-/* Fond blanc pour les SVG/schémas */
-.lightbox img[src$=".svg"],
-.lightbox img[alt*="Schematic"],
-.lightbox img[alt*="Architecture"],
-.lightbox img[alt*="Diagram"] {
+/* ✅ FIX SVG : Forcer une taille car les SVG n'ont pas de dimensions intrinsèques */
+.lightbox-content img[src$=".svg"] {
+    width: 85vw;
+    min-width: 60vw;
+    min-height: 50vh;
+    max-width: 90vw;
+    max-height: 80vh;
     background: white;
     padding: 20px;
+    border-radius: 12px;
+    object-fit: contain;
 }
 
 /* Bouton fermer lightbox */
@@ -368,13 +377,8 @@
     z-index: 10001;
 }
 
-.lightbox-prev {
-    left: 30px;
-}
-
-.lightbox-next {
-    right: 30px;
-}
+.lightbox-prev { left: 30px; }
+.lightbox-next { right: 30px; }
 
 .lightbox-prev:hover,
 .lightbox-next:hover {
@@ -385,16 +389,14 @@
 
 /* Caption dans la lightbox */
 .lightbox-caption {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
+    color: rgba(255, 255, 255, 0.8);
     background: rgba(0, 0, 0, 0.7);
     padding: 10px 20px;
     border-radius: 8px;
     font-size: 0.9rem;
-    max-width: 80%;
+    max-width: 80vw;
     text-align: center;
+    margin-top: 15px;
 }
+
 

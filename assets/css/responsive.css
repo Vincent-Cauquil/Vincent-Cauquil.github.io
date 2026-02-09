@@ -61,9 +61,21 @@
         text-align: left;
     }
 
-    /* Cacher le scroll indicator */
+    /* Scroll indicator : souris → swipe */
+    .scroll-indicator-wrapper {
+        padding: 1rem 0 2rem;
+    }
+
     .scroll-indicator {
-        display: none;
+        animation: none; /* Pas de bounce global, le doigt bouge déjà */
+    }
+
+    .mouse {
+        display: none; 
+    }
+
+    .swipe {
+        display: block; 
     }
 
     /* ===== TIMELINE MOBILE ===== */

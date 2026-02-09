@@ -102,8 +102,8 @@
 
                 <!-- ===== BLOC 2 : Électronique Analogique ===== -->
                 <div class="detail-block">
-                    <h4 class="lang-text" data-lang="fr">⚡ Électronique Analogique & Premier PCB</h4>
-                    <h4 class="lang-text" data-lang="en" style="display: none;">⚡ Analog Electronics & First PCB</h4>
+                    <h4 class="lang-text" data-lang="fr"> Électronique Analogique & Premier PCB</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;"> Analog Electronics & First PCB</h4>
 
                     <div class="evidence-container">
                         <div class="evidence-text">
@@ -128,24 +128,60 @@
                             </div>
                         </div>
 
+                        <!-- Slide 1 : Structure originale conservée (Mise à jour du compteur 1/5) -->
                         <div class="evidence-slider" id="sensor-slider">
+
+                            <!-- Slide 1 : Vue 3D (PNG) -->
                             <div class="slide active">
                                 <img src="assets/images/project-A8/sensor_pcb_3d.png" 
-                                     alt="3D PCB View">
-                                <span class="caption lang-text" data-lang="fr">1/2 : Rendu 3D de la carte de conditionnement</span>
-                                <span class="caption lang-text" data-lang="en" style="display: none;">1/2 : 3D Render of the conditioning board</span>
+                                    alt="3D PCB View">
+                                <span class="caption lang-text" data-lang="fr">1/5 : Rendu 3D de la carte de conditionnement</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">1/5 : 3D Render of the conditioning board</span>
                             </div>
-                        
+
+                            <!-- Slide 2 : Schéma Général (STM32 + Alim) -->
                             <div class="slide">
-                                <img src="assets/images/project-A8/sensor_schematic.png" 
-                                     alt="NE555 & MAX4194 Schematic">
-                                <span class="caption lang-text" data-lang="fr">2/2 : Schématique Analogique (NE555 & MAX4194)</span>
-                                <span class="caption lang-text" data-lang="en" style="display: none;">2/2 : Analog Schematic (NE555 & MAX4194)</span>
+                                <img src="assets/images/project-A8/Gestion_Capteurs.svg" 
+                                    alt="Schéma Général STM32"
+                                    style="background:white; padding:10px; border-radius:10px;">
+                                <span class="caption lang-text" data-lang="fr">2/5 : Architecture Globale (STM32L010 & Gestion Alimentation)</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">2/5 : Global Architecture (STM32L010 & Power Management)</span>
                             </div>
-                        
+
+                            <!-- Slide 3 : Capteur Capacitif (NE555) -->
+                            <div class="slide">
+                                <img src="assets/images/project-A8/Gestion_Capteurs-Capteur_Capacitif.svg" 
+                                    alt="Conditionnement Capacitif"
+                                    style="background:white; padding:10px; border-radius:10px;">
+                                <span class="caption lang-text" data-lang="fr">3/5 : Capteur Capacitif — Conversion Capacité/Temps (Dual NE555)</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">3/5 : Capacitive Sensor — Capacitance-to-Time Conversion (Dual NE555)</span>
+                            </div>
+
+                            <!-- Slide 4 : Capteur Résistif (LM385 + MAX4194) -->
+                            <div class="slide">
+                                <img src="assets/images/project-A8/Gestion_Capteurs-Capteur_Résistif.svg" 
+                                    alt="Conditionnement Résistif"
+                                    style="background:white; padding:10px; border-radius:10px;">
+                                <span class="caption lang-text" data-lang="fr">4/5 : Capteur Résistif — Source de Courant (LM385) & Amplification</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">4/5 : Resistive Sensor — Current Source (LM385) & Amplification</span>
+                            </div>
+
+                            <!-- Slide 5 : Jauge de Contrainte (Wheatstone + MAX4194) -->
+                            <div class="slide">
+                                <img src="assets/images/project-A8/Gestion_Capteurs-Capteur_Jauge.svg" 
+                                    alt="Conditionnement Jauge"
+                                    style="background:white; padding:10px; border-radius:10px;">
+                                <span class="caption lang-text" data-lang="fr">5/5 : Jauge de Contrainte — Pont de Wheatstone & Amplification Différentielle</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">5/5 : Strain Gauge — Wheatstone Bridge & Differential Amplification</span>
+                            </div>
+
+                            <!-- Navigation -->
                             <a class="prev" onclick="plusSlides(-1, 'sensor-slider')">❮</a>
                             <a class="next" onclick="plusSlides(1, 'sensor-slider')">❯</a>
+
                         </div>
+
+
                     </div>
                 </div>
 
