@@ -117,32 +117,6 @@
     .timeline-item.expanded .project-image {
         height: 200px;
     }
-   
-   /* --- Mobile : indicateur de scroll tactile --- */
-   /* Dégradé en bas de la carte expanded pour indiquer "il y a du contenu en dessous" */
-   .timeline-item.expanded::after {
-       content: '';
-       position: fixed;
-       bottom: 0;
-       left: 0;
-       width: 100%;
-       height: 60px;
-       background: linear-gradient(
-           to top,
-           var(--bg-dark) 0%,
-           transparent 100%
-       );
-       pointer-events: none; /* Ne bloque pas le scroll */
-       z-index: 1001;
-       opacity: 1;
-       transition: opacity 0.3s ease;
-   }
-   
-   /* Curseur par défaut sur mobile (le touch gère tout) */
-   .timeline-item.expanded {
-       cursor: default;
-   }
-
 }
 
 /* ===== PETIT MOBILE (max 480px) ===== */
