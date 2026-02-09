@@ -1,8 +1,13 @@
-/* ========== TIMELINE ========== */
+/* ========================================
+   PROJECTS — Timeline, Cartes, Expanded
+   ======================================== */
+
+/* ===== TIMELINE SECTION ===== */
 #timeline {
-    padding: 6rem 2rem;
+    padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
 }
 
 .timeline-container {
@@ -10,69 +15,82 @@
     padding: 2rem 0;
 }
 
+/* Ligne centrale */
 .timeline-line {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     width: 2px;
     height: 100%;
-    background: var(--timeline-line);
+    background: linear-gradient(180deg, transparent, var(--timeline-line), transparent);
 }
 
-/* ========== TIMELINE ITEM ========== */
+/* ===== TIMELINE ITEM ===== */
 .timeline-item {
     display: flex;
     align-items: flex-start;
     margin-bottom: 4rem;
     position: relative;
+    width: 100%;
     opacity: 0;
-    transition: all 0.6s ease;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .timeline-item.visible {
     opacity: 1;
+    transform: translateY(0);
 }
 
-.timeline-item:nth-child(odd) {
-    flex-direction: row;
+/* Positionnement gauche / droite */
+.timeline-item.left {
+    justify-content: flex-start;
     padding-right: calc(50% + 30px);
-    animation: slideInLeft 0.6s ease forwards;
 }
 
-.timeline-item:nth-child(even) {
-    flex-direction: row-reverse;
+.timeline-item.right {
+    justify-content: flex-end;
     padding-left: calc(50% + 30px);
-    animation: slideInRight 0.6s ease forwards;
 }
 
-/* ========== DATE ========== */
+/* ===== DATE & DOT ===== */
 .timeline-date {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--primary);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    z-index: 2;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.timeline-item.left .timeline-date {
+    right: 0;
+    flex-direction: row-reverse;
+    padding-right: calc(50% - 80px);
+}
+
+.timeline-item.right .timeline-date {
+    left: 0;
+    padding-left: calc(50% - 80px);
 }
 
 .date {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--primary);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
     white-space: nowrap;
-    z-index: 2;
 }
 
-/* ========== CARTE PROJET ========== */
+.timeline-dot {
+    width: 16px;
+    height: 16px;
+    background: var(--primary);
+    border-radius: 50%;
+    border: 3px solid var(--bg-dark);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    flex-shrink: 0;
+}
+
+/* ===== CARTE PROJET ===== */
 .timeline-content {
     background: var(--bg-card);
     border-radius: 16px;
@@ -89,6 +107,7 @@
     transform: translateY(-3px);
 }
 
+/* Image de couverture */
 .project-image {
     width: 100%;
     height: 200px;
@@ -106,6 +125,7 @@
     transform: scale(1.05);
 }
 
+/* Info projet */
 .project-info {
     padding: 20px;
 }
@@ -120,9 +140,10 @@
     color: var(--text-muted);
     font-size: 0.9rem;
     margin-bottom: 10px;
+    line-height: 1.6;
 }
 
-/* ========== BOUTON FERMER ========== */
+/* ===== BOUTON FERMER (caché par défaut) ===== */
 .btn-close {
     position: absolute;
     top: 15px;
@@ -135,7 +156,7 @@
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.2rem;
-    display: none;
+    display: none; /* Caché par défaut */
     align-items: center;
     justify-content: center;
     z-index: 1010;
@@ -147,12 +168,16 @@
     border-color: #ff6b6b;
 }
 
-/* ========== ÉTAT COLLAPSED : DÉTAILS CACHÉS ========== */
+/* ===================================================
+   ÉTAT PAR DÉFAUT : DÉTAILS CACHÉS
+   =================================================== */
 .project-details {
     display: none;
 }
 
-/* ========== ÉTAT EXPANDED : FULLSCREEN ========== */
+/* ===================================================
+   ÉTAT EXPANDED : FULLSCREEN MODAL
+   =================================================== */
 .timeline-item.expanded {
     position: fixed;
     top: 0;
@@ -169,6 +194,8 @@
     animation: none;
     flex-direction: row !important;
     overflow-y: auto;
+    opacity: 1;
+    transform: none;
 }
 
 .timeline-item.expanded .timeline-content {
@@ -186,17 +213,23 @@
     transform: none;
 }
 
+/* Afficher le bouton fermer en expanded */
 .timeline-item.expanded .btn-close {
     display: flex;
+    position: sticky;
+    top: 15px;
+    float: right;
+    margin: 15px 15px 0 0;
 }
 
+/* Afficher les détails en expanded */
 .timeline-item.expanded .project-details {
     display: block;
     padding: 30px;
 }
 
-.timeline-item.expanded .timeline-date,
-.timeline-item.expanded .date {
+/* Cacher la date et le bouton expand en expanded */
+.timeline-item.expanded .timeline-date {
     display: none;
 }
 
