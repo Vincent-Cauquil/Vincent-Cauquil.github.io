@@ -207,15 +207,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.85);
-    animation: none;
+    background: rgba(0, 0, 0, 0);
+    animation: fadeInOverlay 0.4s ease forwards;
     flex-direction: row !important;
     overflow-y: auto;
     opacity: 1;
     transform: none;
 }
 
-/* LE FIX CLÉ : écraser le width de left/right */
+/* Carte : animation d'expansion */
 .timeline-item.expanded .timeline-content,
 .timeline-item.expanded.left .timeline-content,
 .timeline-item.expanded.right .timeline-content {
@@ -226,8 +226,21 @@
     border-radius: 20px;
     border-color: var(--primary);
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
-    transform: none;
     margin: auto !important;
+    
+    /* Animation d'expansion */
+    animation: expandCard 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    transform-origin: center center;
+}
+
+/* Origine gauche pour les cartes gauches */
+.timeline-item.expanded.left .timeline-content {
+    transform-origin: left center;
+}
+
+/* Origine droite pour les cartes droites */
+.timeline-item.expanded.right .timeline-content {
+    transform-origin: right center;
 }
 
 .timeline-item.expanded .timeline-content:hover {
@@ -245,6 +258,7 @@
 .timeline-item.expanded .project-details {
     display: block;
     padding: 30px;
+    animation: fadeInContent 0.5s ease 0.25s both;
 }
 
 .timeline-item.expanded .timeline-date {
@@ -253,4 +267,66 @@
 
 .timeline-item.expanded .btn-expand {
     display: none;
+}
+
+/* ===================================================
+   ANIMATIONS EXPANDED
+   =================================================== */
+
+/* Fond sombre qui apparaît progressivement */
+@keyframes fadeInOverlay {
+    from {
+        background: rgba(0, 0, 0, 0);
+    }
+    to {
+        background: rgba(0, 0, 0, 0.85);
+    }
+}
+
+/* La carte grandit depuis sa position */
+@keyframes expandCard {
+    from {
+        transform: scale(0.6);
+        opacity: 0.5;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Le contenu détaillé apparaît en fondu décalé */
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation fermeture — carte qui rétrécit */
+@keyframes shrinkCard {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+}
+
+/* Animation fermeture — fond qui disparaît */
+@keyframes fadeOutOverlay {
+    from {
+        background: rgba(0, 0, 0, 0.85);
+    }
+    to {
+        background: rgba(0, 0, 0, 0);
+    }
 }
