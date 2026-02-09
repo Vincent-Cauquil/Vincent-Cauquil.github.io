@@ -1,0 +1,36 @@
+/* ========================================
+   VARIABLES, RESET & BASE
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --bg-dark: #0f0f1a;
+    --bg-card: #1a1a2e;
+    --text: #ffffff;
+    --text-muted: #a0a0b0;
+    --timeline-line: #3b3b5c;
+    --accent: #22d3ee;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
