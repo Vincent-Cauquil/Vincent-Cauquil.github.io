@@ -3,256 +3,390 @@
         <button class="btn-close" onclick="toggleProject(this)">✕</button>
 
         <div class="project-image">
-            <img src="assets/images/project-AI/eda_cover.png" alt="RL Optimization for Standard Cells">
+            <img src="assets/images/project-research/neuromorphic_cover.png" alt="Processeurs Neuromorphiques">
         </div>
 
         <div class="project-info">
             <h3>
-                <span class="lang-text" data-lang="fr">Optimisation RL sur Standard Cells</span>
-                <span class="lang-text" data-lang="en" style="display: none;">RL Optimization for Standard Cells</span>
+                <span class="lang-text" data-lang="fr">🧠 Processeurs Neuromorphiques : Enjeux, Limites et Architectures Hybrides</span>
+                <span class="lang-text" data-lang="en" style="display: none;">🧠 Neuromorphic Processors: Challenges, Limits and Hybrid Architectures</span>
             </h3>
 
             <p class="lang-text" data-lang="fr">
-                Développement d'un outil d'optimisation de dimensionnement de transistors (<strong>Sizing</strong>) par <strong>Intelligence Artificielle</strong>. 
-                Une approche exploratoire allant de la modélisation physique (<strong>SPICE</strong>) à l'agent autonome (<strong>PPO</strong>), avec une interface dédiée à l'expérimentation.
+                Revue critique des architectures neuromorphiques actuelles (numériques vs mixtes). 
+                Proposition d'une architecture hybride optimisant le compromis efficacité/précision.
             </p>
             <p class="lang-text" data-lang="en" style="display: none;">
-                Development of an <strong>AI-based</strong> transistor sizing optimization tool. 
-                An exploratory approach ranging from physical modeling (<strong>SPICE</strong>) to autonomous agents (<strong>PPO</strong>), featuring a dedicated experimentation interface.
+                Critical review of current neuromorphic architectures (digital vs mixed-signal). 
+                Proposal of a hybrid architecture optimizing the efficiency/precision tradeoff.
             </p>
 
             <div class="project-tags">
-                <span class="tag">Python</span>
-                <span class="tag">PyQt6</span>
-                <span class="tag">NGSpice</span>
-                <span class="tag">Stable-Baselines3</span>
-                <span class="tag">Sky130 PDK</span>
-                <span class="tag">Reinforcement Learning</span>
+                <span class="tag">Neuromorphic Computing</span>
+                <span class="tag">IMC (In-Memory Computing)</span>
+                <span class="tag">RRAM / PCM</span>
+                <span class="tag">Spiking Neural Networks</span>
+                <span class="tag">Hardware/Software Co-Design</span>
             </div>
 
             <div class="card-buttons">
                 <button class="btn-expand" onclick="toggleProject(this)">
-                    <span class="lang-text" data-lang="fr">En savoir plus →</span>
-                    <span class="lang-text" data-lang="en" style="display: none;">Learn more →</span>
+                    <span class="lang-text" data-lang="fr">📖 Lire le rapport</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">📖 Read the report</span>
                 </button>
-
-                <a href="https://github.com/Vincent-Cauquil/5A-Projet-Optimisation-de-Standard-Cells" class="btn-github" target="_blank">
-                    <svg class="icon"><use href="#icon-github"/></svg> GitHub
+                <a href="assets/ressource/V-CAUQUIL-Processeurs-Neuromorphiques-Enjeux-Limites-et-Architectures-Hybrides.pdf" 
+                   class="btn-github" target="_blank">
+                    <span>📄 PDF</span>
                 </a>
             </div>
+        </div>
 
-            <div class="project-details">
+        <!-- ===================================================
+             DÉTAILS TECHNIQUES (Cachés par défaut)
+             =================================================== -->
+        <div class="project-details">
 
-                <!-- ===== BLOC 1 : Environnement Python-SPICE ===== -->
-                <div class="detail-block">
-                    <h4 class="lang-text" data-lang="fr">🔧 Construction de l'Environnement (Le Pont Python-SPICE)</h4>
-                    <h4 class="lang-text" data-lang="en" style="display: none;">🔧 Building the Environment (The Python-SPICE Bridge)</h4>
+            <!-- ===== BLOC 1 : Contexte & Problématique ===== -->
+            <div class="detail-block">
+                <h4 class="lang-text" data-lang="fr">🎯 Contexte & Problématique</h4>
+                <h4 class="lang-text" data-lang="en" style="display: none;">🎯 Context & Problem Statement</h4>
 
-                    <div class="evidence-container">
-                        <div class="evidence-text">
-
-                            <div class="lang-text" data-lang="fr">
-                                <p><strong>La Démarche :</strong> Avant de faire de l'IA, il fallait "parler" au simulateur. J'ai créé un environnement <strong>custom compatible Gymnasium</strong> capable d'interagir avec <strong>NGSpice</strong>.</p>
-                                
-                                <p><strong>Défis Techniques :</strong></p>
-                                <ul>
-                                    <li><strong>Génération dynamique de Netlists SPICE</strong> : Injection des paramètres <code>W/L</code> (largeur/longueur des transistors) pour chaque essai de l'agent.</li>
-                                    <li><strong>Parsing robuste des fichiers <code>.raw</code></strong> : Extraction automatique des métriques (délais de propagation, consommation énergétique).</li>
-                                    <li><strong>Optimisation Critique</strong> : Le RL nécessitant <strong>des milliers de simulations</strong>, j'ai parallélisé le processus avec <strong>Python Multiprocessing</strong>, réduisant le temps d'entraînement de <strong>plusieurs heures</strong> à <strong>quelques minutes</strong>.</li>
-                                </ul>
-                            </div>
-
-                            <div class="lang-text" data-lang="en" style="display: none;">
-                                <p><strong>The Approach:</strong> Before tackling AI, I needed to "talk" to the simulator. I built a <strong>custom Gymnasium-compatible environment</strong> to interact with <strong>NGSpice</strong>.</p>
-                                
-                                <p><strong>Technical Challenges:</strong></p>
-                                <ul>
-                                    <li><strong>Dynamic SPICE Netlist Generation</strong>: Injecting <code>W/L</code> parameters (transistor width/length) for each agent trial.</li>
-                                    <li><strong>Robust <code>.raw</code> File Parsing</strong>: Automated extraction of metrics (propagation delays, power consumption).</li>
-                                    <li><strong>Critical Optimization</strong>: Since RL requires <strong>thousands of simulations</strong>, I parallelized the process using <strong>Python Multiprocessing</strong>, cutting training time from <strong>hours to minutes</strong>.</li>
-                                </ul>
-                            </div>
-
+                <div class="evidence-container">
+                    <div class="evidence-text">
+                        <div class="lang-text" data-lang="fr">
+                            <p>
+                                <strong>Motivation :</strong> L'explosion de l'IA Edge (véhicules autonomes, IoT, robotique) nécessite 
+                                des architectures <strong>ultra-basse consommation</strong> (<1W) capables d'inférence temps-réel.
+                            </p>
+                            <p>
+                                <strong>Verrou Technologique :</strong> L'architecture von Neumann classique atteint ses limites 
+                                (<strong>Memory Wall</strong>, 80% de l'énergie en transferts de données). 
+                                Les processeurs neuromorphiques promettent <strong>1000× moins d'énergie</strong> via un calcul événementiel 
+                                (<strong>Spiking Neural Networks</strong>).
+                            </p>
+                            <p>
+                                <strong>Démarche :</strong> Analyse critique de 15 architectures (2018-2024), identification des verrous 
+                                technologiques majeurs, et conception d'une architecture hybride combinant 
+                                <strong>précision numérique</strong> et <strong>efficacité analogique</strong>.
+                            </p>
                         </div>
-
-                        <div class="evidence-image">
-                            <img class="img-translatable" 
-                                 data-src-fr="assets/images/project-AI/eda_architecture_fr.svg"
-                                 data-src-en="assets/images/project-AI/eda_architecture_en.svg"
-                                 data-alt-fr="Processus de Microfabrication"
-                                 data-alt-en="Microfabrication Process"
-                                 src="assets/images/project-AI/eda_architecture_fr.svg" 
-                                 alt="Processus de Microfabrication"
-                                 style="background:white; padding:10px; border-radius:10px;">
-                            
-                            <span class="caption lang-text" data-lang="fr">Architecture : UI, Middleware et Backend IA</span>
-                            <span class="caption lang-text" data-lang="en" style="display: none;">Architecture: UI, Middleware, and AI Backend</span>
-                        </div>   
-                    </div>
-                </div>
-
-                <!-- ===== BLOC 2 : Apprentissage RL & UX ===== -->
-                <div class="detail-block">
-                    <h4 class="lang-text" data-lang="fr">🤖 Apprentissage & Interface d'Expérimentation</h4>
-                    <h4 class="lang-text" data-lang="en" style="display: none;">🤖 Learning & Experimentation Interface</h4>
-
-                    <div class="evidence-container">
-                        <div class="evidence-text">
-                            <div class="lang-text" data-lang="fr">
-                                <p><strong>L'Agent IA :</strong> Utilisation de <strong>PPO</strong> (Proximal Policy Optimization) via <strong>Stable-Baselines3</strong>. Le travail crucial a consisté à définir une <strong>fonction de Reward équilibrée</strong> (Trade-off Power vs Delay) pour que l'agent converge vers une solution viable.</p>
-                                
-                                <p><strong>UX Paramétrable :</strong> Pour comprendre le comportement "boîte noire" de l'IA, j'ai développé une <strong>GUI en PyQt6</strong>. Elle permet de :</p>
-                                <ul>
-                                    <li>Modifier les <strong>hyperparamètres</strong> (Learning rate, Timesteps, γ) en temps réel.</li>
-                                    <li>Ajuster les <strong>contraintes physiques du PDK Sky130</strong> (Vdd, Tox, Limites W/L).</li>
-                                    <li>Visualiser les <strong>courbes de convergence</strong> pendant l'entraînement.</li>
-                                </ul>
-                                <p>Cette interface transforme le code en <strong>véritable laboratoire d'expérimentation</strong>, essentiel pour itérer rapidement.</p>
-                            </div>
-
-                            <div class="lang-text" data-lang="en" style="display: none;">
-                                <p><strong>AI Agent:</strong> Using <strong>PPO</strong> (Proximal Policy Optimization) via <strong>Stable-Baselines3</strong>. The key work was defining a <strong>balanced Reward function</strong> (Power vs Delay trade-off) to ensure convergence to viable solutions.</p>
-                                
-                                <p><strong>Configurable UX:</strong> To understand the "black box" behavior, I built a <strong>PyQt6 GUI</strong>. It allows:</p>
-                                <ul>
-                                    <li>Real-time modification of <strong>hyperparameters</strong> (Learning rate, Timesteps, γ).</li>
-                                    <li>Adjustment of <strong>Sky130 PDK physical constraints</strong> (Vdd, Tox, W/L limits).</li>
-                                    <li>Visualization of <strong>convergence curves</strong> during training.</li>
-                                </ul>
-                                <p>This interface turns the code into a <strong>true experimentation lab</strong>, essential for rapid iteration.</p>
-                            </div>
-                        </div>
-
-                        <div class="evidence-slider" id="eda-slider">
-                            <!-- Slide 1 : Interface PyQt6 -->
-                            <div class="slide active">
-                                <img src="assets/images/project-AI/eda_gui.png" 
-                                     alt="PyQt6 Configurable Interface">
-                                <span class="caption lang-text" data-lang="fr">1/3 : Interface UX paramétrable (PyQt6) pour piloter l'entraînement</span>
-                                <span class="caption lang-text" data-lang="en" style="display: none;">1/3 : Configurable UX Interface (PyQt6) to control training</span>
-                            </div>
-                        
-                            <!-- Slide 2 : Courbes d'apprentissage -->
-                            <div class="slide">
-                                <img src="assets/images/project-AI/eda_training.png" 
-                                     alt="RL Training Curves">
-                                <span class="caption lang-text" data-lang="fr">2/3 : Convergence de l'agent (Reward Maximization)</span>
-                                <span class="caption lang-text" data-lang="en" style="display: none;">2/3 : Agent Convergence (Reward Maximization)</span>
-                            </div>
-                        
-                            <!-- Slide 3 : Schématique optimisé -->
-                            <div class="slide">
-                                <img src="assets/images/project-AI/eda_schematic.png" 
-                                     alt="Optimized Inverter Schematic">
-                                <span class="caption lang-text" data-lang="fr">3/3 : Résultat : Cellule Standard optimisée (Schematic)</span>
-                                <span class="caption lang-text" data-lang="en" style="display: none;">3/3 : Result: Optimized Standard Cell (Schematic)</span>
-                            </div>
-                        
-                            <a class="prev" onclick="plusSlides(-1, 'eda-slider')">❮</a>
-                            <a class="next" onclick="plusSlides(1, 'eda-slider')">❯</a>
-                        </div>                        
-                    </div>
-                </div>
-
-                <!-- ===== BLOC 3 : Résultats & Perspectives ===== -->
-                <div class="detail-block">
-                    <h4 class="lang-text" data-lang="fr">📊 Résultats & Perspectives</h4>
-                    <h4 class="lang-text" data-lang="en" style="display: none;">📊 Results & Perspectives</h4>
-
-                    <div class="evidence-container">
-                        <div class="evidence-text">
-                            <div class="lang-text" data-lang="fr">
-                                <p><strong>Performance Obtenue :</strong> L'agent a réussi à optimiser un <strong>inverseur CMOS</strong> en respectant les contraintes du <strong>PDK Sky130</strong>. La cellule générée présente un compromis <strong>Délai/Puissance</strong> compétitif par rapport aux méthodes manuelles classiques.</p>
-                                
-                                <p><strong>Limites Identifiées :</strong></p>
-                                <ul>
-                                    <li><strong>Temps de simulation SPICE</strong> : Malgré la parallélisation, le goulot d'étranglement reste la durée des simulations transistor-level.</li>
-                                    <li><strong>Scalabilité</strong> : Le passage à des cellules plus complexes (NOR, NAND multi-inputs) nécessiterait un espace d'état bien plus large.</li>
-                                </ul>
-                                
-                                <p><strong>Pistes d'Amélioration :</strong></p>
-                                <ul>
-                                    <li>Utiliser des <strong>modèles de substitution (Surrogate Models)</strong> pour remplacer SPICE par des approximations rapides (Régression Polynomiale, Réseaux de Neurones).</li>
-                                    <li>Explorer des algorithmes RL plus modernes comme <strong>SAC</strong> (Soft Actor-Critic) pour améliorer l'exploration.</li>
-                                </ul>
-                            </div>
-
-                            <div class="lang-text" data-lang="en" style="display: none;">
-                                <p><strong>Performance Achieved:</strong> The agent successfully optimized a <strong>CMOS inverter</strong> while respecting <strong>Sky130 PDK</strong> constraints. The generated cell shows a competitive <strong>Delay/Power</strong> trade-off compared to traditional manual methods.</p>
-                                
-                                <p><strong>Identified Limitations:</strong></p>
-                                <ul>
-                                    <li><strong>SPICE Simulation Time</strong>: Despite parallelization, transistor-level simulation remains the bottleneck.</li>
-                                    <li><strong>Scalability</strong>: Moving to more complex cells (multi-input NOR, NAND) would require a significantly larger state space.</li>
-                                </ul>
-                                
-                                <p><strong>Improvement Paths:</strong></p>
-                                <ul>
-                                    <li>Use <strong>Surrogate Models</strong> to replace SPICE with fast approximations (Polynomial Regression, Neural Networks).</li>
-                                    <li>Explore modern RL algorithms like <strong>SAC</strong> (Soft Actor-Critic) for better exploration.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="evidence-image">
-                            <img src="assets/images/project-AI/eda_results.png" 
-                                 alt="Comparative Results">
-                            <span class="caption lang-text" data-lang="fr">Comparaison : Sizing Manuel vs Optimisé par RL</span>
-                            <span class="caption lang-text" data-lang="en" style="display: none;">Comparison : Manual Sizing vs RL-Optimized</span>
+                        <div class="lang-text" data-lang="en" style="display: none;">
+                            <p>
+                                <strong>Motivation:</strong> The explosion of Edge AI (autonomous vehicles, IoT, robotics) requires 
+                                <strong>ultra-low-power</strong> architectures (<1W) capable of real-time inference.
+                            </p>
+                            <p>
+                                <strong>Technological Bottleneck:</strong> Classic von Neumann architecture reaches its limits 
+                                (<strong>Memory Wall</strong>, 80% energy in data transfers). 
+                                Neuromorphic processors promise <strong>1000× less energy</strong> via event-driven computing 
+                                (<strong>Spiking Neural Networks</strong>).
+                            </p>
+                            <p>
+                                <strong>Approach:</strong> Critical analysis of 15 architectures (2018-2024), identification of major 
+                                technological bottlenecks, and design of a hybrid architecture combining 
+                                <strong>digital precision</strong> and <strong>analog efficiency</strong>.
+                            </p>
                         </div>
                     </div>
                 </div>
-
-                <!-- ===== BLOC 4 : Compétences Mobilisées ===== -->
-                <div class="detail-block">
-                    <h4 class="lang-text" data-lang="fr">🎯 Compétences Mobilisées</h4>
-                    <h4 class="lang-text" data-lang="en" style="display: none;">🎯 Skills Leveraged</h4>
-
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h5 class="lang-text" data-lang="fr">Machine Learning</h5>
-                            <h5 class="lang-text" data-lang="en" style="display: none;">Machine Learning</h5>
-                            <ul>
-                                <li>Reinforcement Learning (PPO)</li>
-                                <li>Stable-Baselines3</li>
-                                <li>Reward Engineering</li>
-                                <li>Hyperparameter Tuning</li>
-                            </ul>
-                        </div>
-
-                        <div class="skill-category">
-                            <h5 class="lang-text" data-lang="fr">Design EDA</h5>
-                            <h5 class="lang-text" data-lang="en" style="display: none;">EDA Design</h5>
-                            <ul>
-                                <li>NGSpice (Simulation SPICE)</li>
-                                <li>Sky130 PDK (Skywater)</li>
-                                <li>Netlist Generation</li>
-                                <li>Transistor Sizing</li>
-                            </ul>
-                        </div>
-
-                        <div class="skill-category">
-                            <h5 class="lang-text" data-lang="fr">Software Engineering</h5>
-                            <h5 class="lang-text" data-lang="en" style="display: none;">Software Engineering</h5>
-                            <ul>
-                                <li>Python (OOP, Multiprocessing)</li>
-                                <li>PyQt6 (Interface Graphique)</li>
-                                <li>Gymnasium (Custom Env)</li>
-                                <li>Data Parsing (.raw files)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
+            <!-- ===== BLOC 2 : Analyse Comparative ===== -->
+            <div class="detail-block">
+                <h4 class="lang-text" data-lang="fr">📊 Analyse Comparative des Architectures</h4>
+                <h4 class="lang-text" data-lang="en" style="display: none;">📊 Comparative Analysis of Architectures</h4>
+
+                <div class="evidence-container">
+                    <div class="evidence-text">
+                        <div class="lang-text" data-lang="fr">
+                            <p>
+                                <strong>État de l'Art :</strong> Benchmark des processeurs neuromorphiques leaders 
+                                (<strong>Intel Loihi 2, IBM TrueNorth, BrainChip Akida</strong>). 
+                                Mise en évidence du compromis fondamental <strong>efficacité énergétique ↔ précision</strong>.
+                            </p>
+                            <p>
+                                <strong>Observation Clé :</strong> Les architectures mixtes (IMC - In-Memory Computing) offrent jusqu'à 
+                                <strong>13× plus d'efficacité énergétique</strong> (195 vs 15 TOPS/W pour Loihi 2), 
+                                au prix d'une <strong>précision stochastique</strong> et d'une <strong>maturité technologique limitée</strong> 
+                                (prototypes 130nm vs 7nm industriel).
+                            </p>
+                            <p>
+                                <strong>Technologies Mémoires :</strong> Comparaison <strong>RRAM</strong> (scalabilité), 
+                                <strong>PCM</strong> (endurance), et <strong>SRAM</strong> (vitesse). 
+                                Focus sur les phénomènes de <strong>dérive</strong> et <strong>variabilité</strong> impactant 
+                                la précision des poids synaptiques.
+                            </p>
+                        </div>
+                        <div class="lang-text" data-lang="en" style="display: none;">
+                            <p>
+                                <strong>State-of-the-Art:</strong> Benchmark of leading neuromorphic processors 
+                                (<strong>Intel Loihi 2, IBM TrueNorth, BrainChip Akida</strong>). 
+                                Highlighting the fundamental <strong>energy efficiency ↔ precision</strong> tradeoff.
+                            </p>
+                            <p>
+                                <strong>Key Observation:</strong> Mixed-signal architectures (IMC - In-Memory Computing) offer up to 
+                                <strong>13× higher energy efficiency</strong> (195 vs 15 TOPS/W for Loihi 2), 
+                                at the cost of <strong>stochastic precision</strong> and <strong>limited technological maturity</strong> 
+                                (130nm prototypes vs 7nm industrial).
+                            </p>
+                            <p>
+                                <strong>Memory Technologies:</strong> Comparison of <strong>RRAM</strong> (scalability), 
+                                <strong>PCM</strong> (endurance), and <strong>SRAM</strong> (speed). 
+                                Focus on <strong>drift</strong> and <strong>variability</strong> phenomena impacting 
+                                synaptic weight precision.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="evidence-image">
+                        <img class="img-translatable" 
+                             data-src-fr="assets/images/project-research/tableau_comparatif_fr.svg"
+                             data-src-en="assets/images/project-research/tableau_comparatif_en.svg"
+                             data-alt-fr="Tableau Comparatif : Architectures Numériques vs Mixtes"
+                             data-alt-en="Comparison Table: Digital vs Mixed Architectures"
+                             src="assets/images/project-research/tableau_comparatif_fr.svg" 
+                             alt="Tableau Comparatif : Architectures Numériques vs Mixtes"
+                             style="background:white; padding:10px; border-radius:10px;">
+
+                        <span class="caption lang-text" data-lang="fr">Comparaison Numérique (Loihi 2) vs Mixte (NeuRRAM) : Efficacité, Densité & Maturité</span>
+                        <span class="caption lang-text" data-lang="en" style="display: none;">Digital (Loihi 2) vs Mixed (NeuRRAM) Comparison: Efficiency, Density & Maturity</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== BLOC 3 : Architecture Hybride Proposée ===== -->
+            <div class="detail-block">
+                <h4 class="lang-text" data-lang="fr">⚡ Architecture Hybride Proposée</h4>
+                <h4 class="lang-text" data-lang="en" style="display: none;">⚡ Proposed Hybrid Architecture</h4>
+
+                <div class="evidence-container">
+                    <div class="evidence-text">
+                        <div class="lang-text" data-lang="fr">
+                            <p>
+                                <strong>Concept :</strong> Architecture à <strong>3 domaines</strong> exploitant les forces de chaque technologie :
+                            </p>
+                            <ul>
+                                <li><strong>Couches Convolutives (IMC Analogique)</strong> : Extraction de caractéristiques sur puce RRAM. 
+                                Opérations MAC parallèles à 195 TOPS/W.</li>
+                                <li><strong>Couches Fully-Connected (Numérique SRAM)</strong> : Classification haute précision. 
+                                Résistance au bruit et apprentissage on-chip.</li>
+                                <li><strong>Orchestration (RISC-V)</strong> : CPU basse consommation pour le scheduling, 
+                                conversion ADC/DAC, et gestion des spikes.</li>
+                            </ul>
+                            <p>
+                                <strong>Innovation Clé :</strong> Calibration adaptative des poids RRAM via un modèle de dérive prédictif. 
+                                Réduction de 40% de la dégradation de précision après 10⁶ cycles.
+                            </p>
+                        </div>
+                        <div class="lang-text" data-lang="en" style="display: none;">
+                            <p>
+                                <strong>Concept:</strong> <strong>3-domain architecture</strong> exploiting each technology's strengths:
+                            </p>
+                            <ul>
+                                <li><strong>Convolutional Layers (Analog IMC)</strong>: Feature extraction on RRAM chip. 
+                                Parallel MAC operations at 195 TOPS/W.</li>
+                                <li><strong>Fully-Connected Layers (Digital SRAM)</strong>: High-precision classification. 
+                                Noise resistance and on-chip learning.</li>
+                                <li><strong>Orchestration (RISC-V)</strong>: Low-power CPU for scheduling, 
+                                ADC/DAC conversion, and spike management.</li>
+                            </ul>
+                            <p>
+                                <strong>Key Innovation:</strong> Adaptive RRAM weight calibration via predictive drift model. 
+                                40% reduction in precision degradation after 10⁶ cycles.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="evidence-image">
+                        <img class="img-translatable" 
+                             data-src-fr="assets/images/project-research/architecture_hybride_fr.svg"
+                             data-src-en="assets/images/project-research/architecture_hybride_en.svg"
+                             data-alt-fr="Architecture Hybride : 3 Domaines (IMC / Numérique / Orchestration)"
+                             data-alt-en="Hybrid Architecture: 3 Domains (IMC / Digital / Orchestration)"
+                             src="assets/images/project-research/architecture_hybride_fr.svg" 
+                             alt="Architecture Hybride : 3 Domaines"
+                             style="background:white; padding:10px; border-radius:10px;">
+
+                        <span class="caption lang-text" data-lang="fr">Architecture Hybride à 3 Domaines : IMC (Conv) + Numérique (FC) + RISC-V</span>
+                        <span class="caption lang-text" data-lang="en" style="display: none;">3-Domain Hybrid Architecture: IMC (Conv) + Digital (FC) + RISC-V</span>
+                    </div>
+                </div>
+
+                <!-- Tech Highlight : Co-Design -->
+                <div class="tech-highlight">
+                    <strong class="lang-text" data-lang="fr">🔧 Co-Design Hardware/Software :</strong>
+                    <strong class="lang-text" data-lang="en" style="display: none;">🔧 Hardware/Software Co-Design:</strong>
+                    <p class="lang-text" data-lang="fr">
+                        Développement d'un compilateur Spike-to-RRAM traduisant les SNNs standards (BindsNET) 
+                        en patterns de tensions optimisés pour les crossbar arrays. 
+                        Réduction de 25% de la latence par rapport aux approches génériques.
+                    </p>
+                    <p class="lang-text" data-lang="en" style="display: none;">
+                        Development of a Spike-to-RRAM compiler translating standard SNNs (BindsNET) 
+                        into voltage patterns optimized for crossbar arrays. 
+                        25% latency reduction compared to generic approaches.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ===== BLOC 4 : Résultats & Perspectives ===== -->
+            <div class="detail-block">
+                <h4 class="lang-text" data-lang="fr">📈 Résultats & Perspectives</h4>
+                <h4 class="lang-text" data-lang="en" style="display: none;">📈 Results & Perspectives</h4>
+
+                <div class="evidence-container">
+                    <div class="evidence-text">
+                        <div class="lang-text" data-lang="fr">
+                            <p>
+                                <strong>Simulations :</strong> Évaluation sur benchmark N-MNIST (neuromorphique). 
+                                Comparaison avec Loihi 2 (référence numérique) et NeuRRAM (référence mixte).
+                            </p>
+                            <p>
+                                <strong>Performances Clés :</strong>
+                            </p>
+                            <ul>
+                                <li>Efficacité : <strong>120 TOPS/W</strong> (vs 15 pour Loihi 2, 195 pour NeuRRAM)</li>
+                                <li>Précision : <strong>94.2%</strong> (vs 95.1% Loihi, 89.3% NeuRRAM)</li>
+                                <li>Latence : <strong>2.8ms/image</strong> (inférence complète)</li>
+                            </ul>
+                            <p>
+                                <strong>Conclusion :</strong> Démonstration du concept de <strong>compromis ajustable</strong>. 
+                                L'architecture proposée capture <strong>80% de l'efficacité des architectures mixtes</strong> 
+                                tout en préservant <strong>99% de la précision numérique</strong>.
+                            </p>
+                        </div>
+                        <div class="lang-text" data-lang="en" style="display: none;">
+                            <p>
+                                <strong>Simulations:</strong> Evaluation on N-MNIST benchmark (neuromorphic). 
+                                Comparison with Loihi 2 (digital reference) and NeuRRAM (mixed reference).
+                            </p>
+                            <p>
+                                <strong>Key Performances:</strong>
+                            </p>
+                            <ul>
+                                <li>Efficiency: <strong>120 TOPS/W</strong> (vs 15 for Loihi 2, 195 for NeuRRAM)</li>
+                                <li>Accuracy: <strong>94.2%</strong> (vs 95.1% Loihi, 89.3% NeuRRAM)</li>
+                                <li>Latency: <strong>2.8ms/image</strong> (full inference)</li>
+                            </ul>
+                            <p>
+                                <strong>Conclusion:</strong> Proof-of-concept of <strong>adjustable tradeoff</strong>. 
+                                The proposed architecture captures <strong>80% of mixed-signal efficiency</strong> 
+                                while preserving <strong>99% of digital precision</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="evidence-image">
+                        <img class="img-translatable" 
+                             data-src-fr="assets/images/project-research/resultats_benchmark_fr.svg"
+                             data-src-en="assets/images/project-research/resultats_benchmark_en.svg"
+                             data-alt-fr="Résultats Benchmark : Efficacité vs Précision"
+                             data-alt-en="Benchmark Results: Efficiency vs Accuracy"
+                             src="assets/images/project-research/resultats_benchmark_fr.svg" 
+                             alt="Résultats Benchmark"
+                             style="background:white; padding:10px; border-radius:10px;">
+
+                        <span class="caption lang-text" data-lang="fr">Position de l'architecture hybride sur le graphe Efficacité/Précision</span>
+                        <span class="caption lang-text" data-lang="en" style="display: none;">Hybrid architecture position on Efficiency/Accuracy graph</span>
+                    </div>
+                </div>
+
+                <!-- Warning Box : Limitations -->
+                <div class="tech-highlight warning">
+                    <strong class="lang-text" data-lang="fr">⚠️ Limitations & Travaux Futurs :</strong>
+                    <strong class="lang-text" data-lang="en" style="display: none;">⚠️ Limitations & Future Work:</strong>
+                    <ul class="lang-text" data-lang="fr">
+                        <li><strong>Prototypage</strong> : Nécessité d'une fabrication 28nm FDSOI pour validation réelle.</li>
+                        <li><strong>Apprentissage On-Chip</strong> : Implémentation de STDP (Spike-Timing-Dependent Plasticity) sur IMC.</li>
+                        <li><strong>Robustesse Temps-Réel</strong> : Test sur applications critiques (automotive, médical).</li>
+                    </ul>
+                    <ul class="lang-text" data-lang="en" style="display: none;">
+                        <li><strong>Prototyping</strong>: Need for 28nm FDSOI fabrication for real validation.</li>
+                        <li><strong>On-Chip Learning</strong>: STDP (Spike-Timing-Dependent Plasticity) implementation on IMC.</li>
+                        <li><strong>Real-Time Robustness</strong>: Testing on critical applications (automotive, medical).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ===== BLOC 5 : Compétences Mobilisées ===== -->
+            <div class="detail-block">
+                <h4 class="lang-text" data-lang="fr">🛠️ Compétences Techniques Mobilisées</h4>
+                <h4 class="lang-text" data-lang="en" style="display: none;">🛠️ Technical Skills Demonstrated</h4>
+
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h5 class="lang-text" data-lang="fr">Hardware Design</h5>
+                        <h5 class="lang-text" data-lang="en" style="display: none;">Hardware Design</h5>
+                        <ul>
+                            <li class="lang-text" data-lang="fr">Architecture de Processeurs</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Processor Architecture</li>
+                            
+                            <li class="lang-text" data-lang="fr">Mémoires Émergentes (RRAM, PCM)</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Emerging Memories (RRAM, PCM)</li>
+                            
+                            <li class="lang-text" data-lang="fr">Crossbar Arrays</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Crossbar Arrays</li>
+                            
+                            <li class="lang-text" data-lang="fr">Modélisation Électrique</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Electrical Modeling</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h5 class="lang-text" data-lang="fr">IA & Neuromorphique</h5>
+                        <h5 class="lang-text" data-lang="en" style="display: none;">AI & Neuromorphic</h5>
+                        <ul>
+                            <li class="lang-text" data-lang="fr">Spiking Neural Networks (SNNs)</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Spiking Neural Networks (SNNs)</li>
+                            
+                            <li class="lang-text" data-lang="fr">In-Memory Computing (IMC)</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">In-Memory Computing (IMC)</li>
+                            
+                            <li class="lang-text" data-lang="fr">PyTorch / BindsNET</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">PyTorch / BindsNET</li>
+                            
+                            <li class="lang-text" data-lang="fr">Benchmarking N-MNIST</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">N-MNIST Benchmarking</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h5 class="lang-text" data-lang="fr">Méthodologie</h5>
+                        <h5 class="lang-text" data-lang="en" style="display: none;">Methodology</h5>
+                        <ul>
+                            <li class="lang-text" data-lang="fr">Revue de Littérature (15 papiers)</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Literature Review (15 papers)</li>
+                            
+                            <li class="lang-text" data-lang="fr">Analyse Comparative Multi-Critères</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Multi-Criteria Comparative Analysis</li>
+                            
+                            <li class="lang-text" data-lang="fr">Modélisation Système (Python)</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">System Modeling (Python)</li>
+                            
+                            <li class="lang-text" data-lang="fr">Rédaction Technique (LaTeX)</li>
+                            <li class="lang-text" data-lang="en" style="display: none;">Technical Writing (LaTeX)</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h5 class="lang-text" data-lang="fr">Outils</h5>
+                        <h5 class="lang-text" data-lang="en" style="display: none;">Tools</h5>
+                        <ul>
+                            <li>Python (NumPy, SciPy)</li>
+                            <li>MATLAB / Simulink</li>
+                            <li>LTSpice (Simulation Analogique)</li>
+                            <li>LaTeX / Overleaf</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
+    <!-- DATE (en dehors de .timeline-content) -->
     <div class="timeline-date">
-        <span class="date">
-            <span class="lang-text" data-lang="fr">Déc - Sept 2025</span>
-            <span class="lang-text" data-lang="en" style="display: none;">Dec - Sept 2025</span>
-        </span>
+        <span class="date">2024</span>
         <div class="timeline-dot"></div>
     </div>
 </div>
