@@ -226,3 +226,31 @@ function initSmoothScroll() {
         });
     });
 }
+// ========== INITIALISATION GÉNÉRALE ==========
+document.addEventListener('DOMContentLoaded', async () => {
+    console.log('🚀 Portfolio initialisé');
+
+    // 1. Détection de langue
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang) {
+        setLanguage(savedLang);
+    } else {
+        const detectedLang = await detectCountry();
+        setLanguage(detectedLang);
+    }
+
+    // 2. Boutons langue
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            setLanguage(btn.dataset.lang);
+        });
+    });
+
+    // 3. Charger les projets (LE POINT CRUCIAL)
+    await loadProjects();
+
+    // 4. Smooth scroll
+    initSmoothScroll();
+
+    console.log('✅ Tout est chargé');
+});
