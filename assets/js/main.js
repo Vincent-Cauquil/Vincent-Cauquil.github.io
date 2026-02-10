@@ -1,8 +1,8 @@
 // ========== VARIABLES GLOBALES ==========
 let currentLang = 'fr';
 let slideIndices = {};
-let currentLightboxSlider = null;  // ← MANQUAIT dans ton code !
-let currentLightboxIndex = 0;      // ← MANQUAIT aussi !
+let currentLightboxSlider = null;  
+let currentLightboxIndex = 0;      
 
 // ========== CHARGEMENT DES PROJETS ==========
 const projects = [
