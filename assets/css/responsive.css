@@ -61,6 +61,11 @@
         text-align: left;
     }
 
+    .role-badge {
+        display: table;
+        margin: 5px 0 0 0;
+    }
+
     /* Scroll indicator : souris → swipe */
     .scroll-indicator-wrapper {
         padding: 1rem 0 2rem;
