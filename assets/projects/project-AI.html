@@ -13,12 +13,12 @@
             </h3>
 
             <p class="lang-text" data-lang="fr">
-                Développement d'un outil d'optimisation de dimensionnement de transistors (<strong>Sizing</strong>) par <strong>Intelligence Artificielle</strong>. 
-                Une approche exploratoire allant de la modélisation physique (<strong>SPICE</strong>) à l'agent autonome (<strong>PPO</strong>), avec une interface dédiée à l'expérimentation.
+                Développement d'un outil d'optimisation de dimensionnement de transistors (<strong>Sizing</strong>) par <strong>Apprentissage par Renforcement</strong>. 
+                Une approche exploratoire allant de la modélisation physique (<strong>SPICE</strong>) à l'agent autonome (<strong>PPO</strong>), avec une interface dédiée à l'expérimentation sur un catalogue complet de cellules <strong>Sky130</strong>.
             </p>
             <p class="lang-text" data-lang="en" style="display: none;">
-                Development of an <strong>AI-based</strong> transistor sizing optimization tool. 
-                An exploratory approach ranging from physical modeling (<strong>SPICE</strong>) to autonomous agents (<strong>PPO</strong>), featuring a dedicated experimentation interface.
+                Development of a transistor <strong>sizing</strong> optimization tool driven by <strong>Reinforcement Learning</strong>. 
+                An exploratory approach ranging from physical modeling (<strong>SPICE</strong>) to autonomous agents (<strong>PPO</strong>), featuring a dedicated experimentation interface for a full <strong>Sky130</strong> cell catalog.
             </p>
 
             <div class="project-tags">
@@ -26,6 +26,7 @@
                 <span class="tag">PyQt6</span>
                 <span class="tag">NGSpice</span>
                 <span class="tag">Stable-Baselines3</span>
+                <span class="tag">Gymnasium</span>
                 <span class="tag">Sky130 PDK</span>
                 <span class="tag">Reinforcement Learning</span>
             </div>
@@ -45,31 +46,33 @@
 
                 <!-- ===== BLOC 1 : Environnement Python-SPICE ===== -->
                 <div class="detail-block">
-                    <h4 class="lang-text" data-lang="fr"> Construction de l'Environnement (Le Pont Python-SPICE)</h4>
-                    <h4 class="lang-text" data-lang="en" style="display: none;"> Building the Environment (The Python-SPICE Bridge)</h4>
+                    <h4 class="lang-text" data-lang="fr">Construction de l'Environnement (Le Pont Python-SPICE)</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Building the Environment (The Python-SPICE Bridge)</h4>
 
                     <div class="evidence-container">
                         <div class="evidence-text">
 
                             <div class="lang-text" data-lang="fr">
-                                <p><strong>La Démarche :</strong> Avant de faire de l'IA, il fallait "parler" au simulateur. J'ai créé un environnement <strong>custom compatible Gymnasium</strong> capable d'interagir avec <strong>NGSpice</strong>.</p>
-                                
+                                <p><strong>La Démarche :</strong> Avant de faire de l'IA, il fallait "parler" au simulateur. J'ai créé un environnement <strong>custom compatible Gymnasium</strong> (<code>StandardCellEnv</code>) capable d'interagir avec <strong>NGSpice</strong> en boucle fermée.</p>
+
                                 <p><strong>Défis Techniques :</strong></p>
                                 <ul>
-                                    <li><strong>Génération dynamique de Netlists SPICE</strong> : Injection des paramètres <code>W/L</code> (largeur/longueur des transistors) pour chaque essai de l'agent.</li>
-                                    <li><strong>Parsing robuste des fichiers <code>.raw</code></strong> : Extraction automatique des métriques (délais de propagation, consommation énergétique).</li>
-                                    <li><strong>Optimisation Critique</strong> : Le RL nécessitant <strong>des milliers de simulations</strong>, j'ai parallélisé le processus avec <strong>Python Multiprocessing</strong>, réduisant le temps d'entraînement de <strong>plusieurs heures</strong> à <strong>quelques minutes</strong>.</li>
+                                    <li><strong>Génération dynamique de Netlists</strong> : Un <code>CellModifier</code> parse la netlist SPICE de référence, localise chaque transistor et réinjecte les largeurs <code>W</code> dictées par l'agent — sans passer par des templates <code>.param</code> figés.</li>
+                                    <li><strong>Testbench auto-généré</strong> : Le système analyse la signature de la cellule (entrées/sorties) pour créer les stimuli <code>PULSE</code> et injecter les commandes <code>.meas</code> couvrant toutes les transitions logiques critiques.</li>
+                                    <li><strong>Parsing robuste des fichiers <code>.raw</code></strong> : Extraction automatique des métriques PPA (délais rise/fall, slew rates, énergie dynamique, puissance de fuite).</li>
+                                    <li><strong>Optimisation critique</strong> : Le RL nécessitant <strong>des milliers de simulations</strong>, j'ai combiné <strong><code>SubprocVecEnv</code></strong> (parallélisation multi-cœurs) et un <strong><code>SimulationCache</code> par hachage</strong> (W + VDD + Température) qui restitue en <code>O(1)</code> tout résultat déjà calculé.</li>
                                 </ul>
                             </div>
 
                             <div class="lang-text" data-lang="en" style="display: none;">
-                                <p><strong>The Approach:</strong> Before tackling AI, I needed to "talk" to the simulator. I built a <strong>custom Gymnasium-compatible environment</strong> to interact with <strong>NGSpice</strong>.</p>
-                                
+                                <p><strong>The Approach:</strong> Before tackling AI, I needed to "talk" to the simulator. I built a <strong>custom Gymnasium-compatible environment</strong> (<code>StandardCellEnv</code>) interacting with <strong>NGSpice</strong> in a closed loop.</p>
+
                                 <p><strong>Technical Challenges:</strong></p>
                                 <ul>
-                                    <li><strong>Dynamic SPICE Netlist Generation</strong>: Injecting <code>W/L</code> parameters (transistor width/length) for each agent trial.</li>
-                                    <li><strong>Robust <code>.raw</code> File Parsing</strong>: Automated extraction of metrics (propagation delays, power consumption).</li>
-                                    <li><strong>Critical Optimization</strong>: Since RL requires <strong>thousands of simulations</strong>, I parallelized the process using <strong>Python Multiprocessing</strong>, cutting training time from <strong>hours to minutes</strong>.</li>
+                                    <li><strong>Dynamic Netlist Generation</strong>: A <code>CellModifier</code> parses the reference SPICE netlist, locates each transistor and re-injects the <code>W</code> widths dictated by the agent — no frozen <code>.param</code> templates required.</li>
+                                    <li><strong>Auto-generated Testbench</strong>: The system analyzes the cell signature (inputs/outputs) to create <code>PULSE</code> stimuli and inject the <code>.meas</code> commands covering every critical logic transition.</li>
+                                    <li><strong>Robust <code>.raw</code> File Parsing</strong>: Automated extraction of PPA metrics (rise/fall delays, slew rates, dynamic energy, static leakage).</li>
+                                    <li><strong>Critical Optimization</strong>: Since RL requires <strong>thousands of simulations</strong>, I combined <strong><code>SubprocVecEnv</code></strong> (multi-core parallelization) with a <strong>hash-based <code>SimulationCache</code></strong> (W + VDD + Temperature) returning any already-computed result in <code>O(1)</code>.</li>
                                 </ul>
                             </div>
 
@@ -79,78 +82,80 @@
                             <img class="img-translatable" 
                                  data-src-fr="assets/images/project-AI/eda_architecture_fr.svg"
                                  data-src-en="assets/images/project-AI/eda_architecture_en.svg"
-                                 data-alt-fr="Processus de Microfabrication"
-                                 data-alt-en="Microfabrication Process"
+                                 data-alt-fr="Architecture logicielle du système d'optimisation RL"
+                                 data-alt-en="Software architecture of the RL optimization system"
                                  src="assets/images/project-AI/eda_architecture_fr.svg" 
-                                 alt="Processus de Microfabrication"
+                                 alt="Architecture logicielle du système d'optimisation RL"
                                  style="background:white; padding:10px; border-radius:10px;">
-                            
-                            <span class="caption lang-text" data-lang="fr">Architecture : UI, Middleware et Backend IA</span>
-                            <span class="caption lang-text" data-lang="en" style="display: none;">Architecture: UI, Middleware, and AI Backend</span>
+
+                            <span class="caption lang-text" data-lang="fr">Architecture : GUI PyQt6 → Workers (QThread) → Agent PPO / Env Gym → NGSpice</span>
+                            <span class="caption lang-text" data-lang="en" style="display: none;">Architecture: PyQt6 GUI → Workers (QThread) → PPO Agent / Gym Env → NGSpice</span>
                         </div>   
                     </div>
                 </div>
 
-                <!-- ===== BLOC 2 : Apprentissage RL & UX ===== -->
+                <!-- ===== BLOC 2 : Reward Engineering & Reward Hacking ===== -->
                 <div class="detail-block">
-                    <h4 class="lang-text" data-lang="fr"> Apprentissage & Interface d'Expérimentation</h4>
-                    <h4 class="lang-text" data-lang="en" style="display: none;"> Learning & Experimentation Interface</h4>
+                    <h4 class="lang-text" data-lang="fr">Reward Engineering : quand l'agent apprend à tricher</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Reward Engineering: when the agent learns to cheat</h4>
 
                     <div class="evidence-container">
                         <div class="evidence-text">
                             <div class="lang-text" data-lang="fr">
-                                <p><strong>L'Agent IA :</strong> Utilisation de <strong>PPO</strong> (Proximal Policy Optimization) via <strong>Stable-Baselines3</strong>. Le travail crucial a consisté à définir une <strong>fonction de Reward équilibrée</strong> (Trade-off Power vs Delay) pour que l'agent converge vers une solution viable.</p>
-                                
-                                <p><strong>UX Paramétrable :</strong> Pour comprendre le comportement "boîte noire" de l'IA, j'ai développé une <strong>GUI en PyQt6</strong>. Elle permet de :</p>
+                                <p><strong>L'Agent IA :</strong> <strong>PPO</strong> (Proximal Policy Optimization) via <strong>Stable-Baselines3</strong>, sur un espace d'actions <strong>continu</strong>. L'agent ne prédit pas des largeurs absolues mais un <strong>pourcentage de variation ∈ [-20 %, +20 %]</strong> appliqué aux dimensions courantes, ce qui stabilise nettement la convergence.</p>
+
+                                <p><strong>Le bug le plus instructif du projet :</strong> avec une pénalité de crash fixée à <code>-10</code>, l'agent a découvert qu'il était mathématiquement <em>plus rentable de faire planter NGSpice</em> (<code>-10</code>) que de tester une configuration valide mais éloignée des cibles (jusqu'à <code>-60</code> avec la pénalité quadratique).</p>
                                 <ul>
-                                    <li>Modifier les <strong>hyperparamètres</strong> (Learning rate, Timesteps, γ) en temps réel.</li>
-                                    <li>Ajuster les <strong>contraintes physiques du PDK Sky130</strong> (Vdd, Tox, Limites W/L).</li>
-                                    <li>Visualiser les <strong>courbes de convergence</strong> pendant l'entraînement.</li>
+                                    <li><strong>Symptôme</strong> : oscillations violentes, pics récurrents à <code>-10</code>, aucune convergence.</li>
+                                    <li><strong>Diagnostic</strong> : cas d'école de <strong>reward hacking</strong> — l'agent exploitait une faille de la fonction de récompense, pas le problème physique.</li>
+                                    <li><strong>Correctif</strong> : application de la règle <em>« l'échec doit toujours être la pire situation possible »</em> → pénalité abaissée à <code>-100</code>. La convergence est devenue immédiatement stable.</li>
                                 </ul>
-                                <p>Cette interface transforme le code en <strong>véritable laboratoire d'expérimentation</strong>, essentiel pour itérer rapidement.</p>
+
+                                <p><strong>Fonction de reward (V1.2)</strong> : pénalité <strong>quadratique</strong> sur l'erreur relative, <strong>contrainte physique</strong> pénalisant les cas W<sub>PMOS</sub> < W<sub>NMOS</sub> (mobilité des trous), et <strong>bonus de +20</strong> lorsque toutes les métriques entrent dans la tolérance.</p>
                             </div>
 
                             <div class="lang-text" data-lang="en" style="display: none;">
-                                <p><strong>AI Agent:</strong> Using <strong>PPO</strong> (Proximal Policy Optimization) via <strong>Stable-Baselines3</strong>. The key work was defining a <strong>balanced Reward function</strong> (Power vs Delay trade-off) to ensure convergence to viable solutions.</p>
-                                
-                                <p><strong>Configurable UX:</strong> To understand the "black box" behavior, I built a <strong>PyQt6 GUI</strong>. It allows:</p>
+                                <p><strong>AI Agent:</strong> <strong>PPO</strong> (Proximal Policy Optimization) via <strong>Stable-Baselines3</strong>, on a <strong>continuous</strong> action space. The agent doesn't predict absolute widths but a <strong>variation percentage ∈ [-20%, +20%]</strong> applied to current dimensions, which markedly stabilizes convergence.</p>
+
+                                <p><strong>The most instructive bug of the project:</strong> with a crash penalty set at <code>-10</code>, the agent discovered it was mathematically <em>more profitable to crash NGSpice</em> (<code>-10</code>) than to try a valid but off-target configuration (down to <code>-60</code> with the quadratic penalty).</p>
                                 <ul>
-                                    <li>Real-time modification of <strong>hyperparameters</strong> (Learning rate, Timesteps, γ).</li>
-                                    <li>Adjustment of <strong>Sky130 PDK physical constraints</strong> (Vdd, Tox, W/L limits).</li>
-                                    <li>Visualization of <strong>convergence curves</strong> during training.</li>
+                                    <li><strong>Symptom</strong>: violent oscillations, recurring spikes at <code>-10</code>, no convergence.</li>
+                                    <li><strong>Diagnosis</strong>: textbook <strong>reward hacking</strong> — the agent was exploiting a flaw in the reward function, not solving the physical problem.</li>
+                                    <li><strong>Fix</strong>: applying the rule <em>"failure must always be the worst possible outcome"</em> → penalty lowered to <code>-100</code>. Convergence became immediately stable.</li>
                                 </ul>
-                                <p>This interface turns the code into a <strong>true experimentation lab</strong>, essential for rapid iteration.</p>
+
+                                <p><strong>Reward function (V1.2)</strong>: <strong>quadratic</strong> penalty on relative error, <strong>physical constraint</strong> penalizing W<sub>PMOS</sub> < W<sub>NMOS</sub> cases (hole mobility), and a <strong>+20 bonus</strong> when all metrics fall within tolerance.</p>
                             </div>
                         </div>
 
                         <div class="evidence-slider" id="eda-slider">
-                            <!-- Slide 1 : Interface PyQt6 -->
+                            <!-- Slide 1 : Reward Hacking -->
                             <div class="slide active">
+                                <img src="assets/images/project-AI/eda_reward_hacking.png" 
+                                    alt="Reward Hacking with penalty -10">
+                                <span class="caption lang-text" data-lang="fr">1/3 : <strong>Reward Hacking</strong> (pénalité = -10) — les pics écrêtés à exactement -10 sont des crashs <em>volontaires</em>, préférés par l'agent aux configurations valides descendant jusqu'à -59</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">1/3 : <strong>Reward Hacking</strong> (penalty = -10) — spikes clipped at exactly -10 are <em>deliberate</em> crashes, preferred by the agent over valid configurations dropping to -59</span>
+                            </div>
+
+                            <!-- Slide 2 : Convergence corrigée -->
+                            <div class="slide">
+                                <img src="assets/images/project-AI/eda_xor_training.png" 
+                                    alt="Stable convergence after fix">
+                                <span class="caption lang-text" data-lang="fr">2/3 : <strong>Après correction</strong> (pénalité = -100) — plus aucun pic d'échappement : Reward stabilisée et Loss décroissante</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">2/3 : <strong>After fix</strong> (penalty = -100) — no more escape spikes: stabilized Reward and decreasing Loss</span>
+                            </div>
+
+                            <!-- Slide 3 : Interface PyQt6 -->
+                            <div class="slide">
                                 <img src="assets/images/project-AI/eda_gui.png" 
-                                     alt="PyQt6 Configurable Interface">
-                                <span class="caption lang-text" data-lang="fr">1/3 : Interface UX paramétrable (PyQt6) pour piloter l'entraînement</span>
-                                <span class="caption lang-text" data-lang="en" style="display: none;">1/3 : Configurable UX Interface (PyQt6) to control training</span>
+                                    alt="PyQt6 Configurable Interface">
+                                <span class="caption lang-text" data-lang="fr">3/3 : <strong>Interface PyQt6</strong> — catalogue Sky130, statut d'entraînement par cellule et métriques temps réel</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">3/3 : <strong>PyQt6 Interface</strong> — Sky130 catalog, per-cell training status and real-time metrics</span>
                             </div>
-                        
-                            <!-- Slide 2 : Courbes d'apprentissage -->
-                            <div class="slide">
-                                <img src="assets/images/project-AI/eda_training.png" 
-                                     alt="RL Training Curves">
-                                <span class="caption lang-text" data-lang="fr">2/3 : Convergence de l'agent (Reward Maximization)</span>
-                                <span class="caption lang-text" data-lang="en" style="display: none;">2/3 : Agent Convergence (Reward Maximization)</span>
-                            </div>
-                        
-                            <!-- Slide 3 : Schématique optimisé -->
-                            <div class="slide">
-                                <img src="assets/images/project-AI/eda_schematic.png" 
-                                     alt="Optimized Inverter Schematic">
-                                <span class="caption lang-text" data-lang="fr">3/3 : Résultat : Cellule Standard optimisée (Schematic)</span>
-                                <span class="caption lang-text" data-lang="en" style="display: none;">3/3 : Result: Optimized Standard Cell (Schematic)</span>
-                            </div>
-                        
+
                             <a class="prev" onclick="plusSlides(-1, 'eda-slider')">❮</a>
                             <a class="next" onclick="plusSlides(1, 'eda-slider')">❯</a>
-                        </div>                        
+                        </div>                
                     </div>
                 </div>
 
@@ -162,43 +167,53 @@
                     <div class="evidence-container">
                         <div class="evidence-text">
                             <div class="lang-text" data-lang="fr">
-                                <p><strong>Performance Obtenue :</strong> L'agent a réussi à optimiser un <strong>inverseur CMOS</strong> en respectant les contraintes du <strong>PDK Sky130</strong>. La cellule générée présente un compromis <strong>Délai/Puissance</strong> compétitif par rapport aux méthodes manuelles classiques.</p>
-                                
-                                <p><strong>Limites Identifiées :</strong></p>
+                                <p><strong>Performance obtenue :</strong> l'agent dimensionne avec succès les <strong>20 transistors d'une XOR2</strong> Sky130 pour approcher des cibles PPA imposées. Sur l'exemple ci-contre, le <strong>Delay Rise</strong> passe de 132,8 ps (référence) à <strong>101,0 ps</strong> pour une cible de 120,8 ps — la contrainte de délai est dépassée, au prix d'une surface légèrement au-dessus de la cible (2,63 µm² vs 2,00 µm²).</p>
+
+                                <p><strong>Séparation Training / Inférence :</strong> pendant l'entraînement, l'environnement génère des <strong>cibles aléatoires</strong> à chaque <code>reset</code> pour forcer l'exploration de tout l'espace de conception. En inférence, le mode <code>mode="inference"</code> désactive ce tirage et impose les objectifs saisis par l'utilisateur.</p>
+
+                                <p><strong>Limites identifiées :</strong></p>
                                 <ul>
-                                    <li><strong>Temps de simulation SPICE</strong> : Malgré la parallélisation, le goulot d'étranglement reste la durée des simulations transistor-level.</li>
-                                    <li><strong>Scalabilité</strong> : Le passage à des cellules plus complexes (NOR, NAND multi-inputs) nécessiterait un espace d'état bien plus large.</li>
+                                    <li><strong>Optimisation multicritère</strong> : les objectifs Délai / Puissance / Surface sont antagonistes. L'agent privilégie les métriques les plus fortement pondérées et n'atteint pas systématiquement toutes les cibles simultanément.</li>
+                                    <li><strong>Généralisation</strong> : un modèle entraîné sur une cellule se transfère mal à une topologie différente ; chaque cellule requiert son propre apprentissage.</li>
+                                    <li><strong>Pas de reprise d'entraînement</strong> : impossible actuellement de recharger un modèle pour poursuivre son <em>fine-tuning</em> — chaque session repart de zéro.</li>
+                                    <li><strong>Coût SPICE</strong> : malgré le cache et la parallélisation, la simulation transistor-level reste le goulot d'étranglement.</li>
                                 </ul>
-                                
-                                <p><strong>Pistes d'Amélioration :</strong></p>
+
+                                <p><strong>Pistes d'amélioration :</strong></p>
                                 <ul>
-                                    <li>Utiliser des <strong>modèles de substitution (Surrogate Models)</strong> pour remplacer SPICE par des approximations rapides (Régression Polynomiale, Réseaux de Neurones).</li>
-                                    <li>Explorer des algorithmes RL plus modernes comme <strong>SAC</strong> (Soft Actor-Critic) pour améliorer l'exploration.</li>
+                                    <li>Remplacer NGSpice par des <strong>modèles de substitution (Surrogate Models)</strong> — régression ou réseau de neurones entraîné sur les points déjà simulés.</li>
+                                    <li>Implémenter le <strong>chargement de modèle pré-entraîné</strong> pour capitaliser l'expérience entre sessions.</li>
+                                    <li>Explorer <strong>SAC</strong> (Soft Actor-Critic), mieux adapté aux espaces continus et plus économe en échantillons que PPO.</li>
                                 </ul>
                             </div>
 
                             <div class="lang-text" data-lang="en" style="display: none;">
-                                <p><strong>Performance Achieved:</strong> The agent successfully optimized a <strong>CMOS inverter</strong> while respecting <strong>Sky130 PDK</strong> constraints. The generated cell shows a competitive <strong>Delay/Power</strong> trade-off compared to traditional manual methods.</p>
-                                
-                                <p><strong>Identified Limitations:</strong></p>
+                                <p><strong>Performance achieved:</strong> the agent successfully sizes the <strong>20 transistors of a Sky130 XOR2</strong> to approach imposed PPA targets. In the example shown, <strong>Delay Rise</strong> drops from 132.8 ps (reference) to <strong>101.0 ps</strong> against a 120.8 ps target — the timing constraint is exceeded, at the cost of a slightly oversized area (2.63 µm² vs 2.00 µm²).</p>
+
+                                <p><strong>Training / Inference separation:</strong> during training, the environment generates <strong>random targets</strong> at every <code>reset</code> to force exploration of the whole design space. At inference time, <code>mode="inference"</code> disables this sampling and enforces the user-defined objectives.</p>
+
+                                <p><strong>Identified limitations:</strong></p>
                                 <ul>
-                                    <li><strong>SPICE Simulation Time</strong>: Despite parallelization, transistor-level simulation remains the bottleneck.</li>
-                                    <li><strong>Scalability</strong>: Moving to more complex cells (multi-input NOR, NAND) would require a significantly larger state space.</li>
+                                    <li><strong>Multi-objective optimization</strong>: Delay / Power / Area targets are antagonistic. The agent favors the most heavily weighted metrics and doesn't systematically hit all targets at once.</li>
+                                    <li><strong>Generalization</strong>: a model trained on one cell transfers poorly to a different topology; each cell requires its own training run.</li>
+                                    <li><strong>No training resumption</strong>: currently impossible to reload a model for further <em>fine-tuning</em> — every session starts from scratch.</li>
+                                    <li><strong>SPICE cost</strong>: despite caching and parallelization, transistor-level simulation remains the bottleneck.</li>
                                 </ul>
-                                
-                                <p><strong>Improvement Paths:</strong></p>
+
+                                <p><strong>Improvement paths:</strong></p>
                                 <ul>
-                                    <li>Use <strong>Surrogate Models</strong> to replace SPICE with fast approximations (Polynomial Regression, Neural Networks).</li>
-                                    <li>Explore modern RL algorithms like <strong>SAC</strong> (Soft Actor-Critic) for better exploration.</li>
+                                    <li>Replace NGSpice with <strong>Surrogate Models</strong> — regression or a neural network trained on already-simulated points.</li>
+                                    <li>Implement <strong>pre-trained model loading</strong> to accumulate experience across sessions.</li>
+                                    <li>Explore <strong>SAC</strong> (Soft Actor-Critic), better suited to continuous spaces and more sample-efficient than PPO.</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="evidence-image">
-                            <img src="assets/images/project-AI/eda_results.png" 
-                                 alt="Comparative Results">
-                            <span class="caption lang-text" data-lang="fr">Comparaison : Sizing Manuel vs Optimisé par RL</span>
-                            <span class="caption lang-text" data-lang="en" style="display: none;">Comparison : Manual Sizing vs RL-Optimized</span>
+                            <img src="assets/images/project-AI/eda_xor_inference.png" 
+                                 alt="Inference results: Reference vs Target vs Measured">
+                            <span class="caption lang-text" data-lang="fr">Inférence sur XOR2 : Référence / Cible / Métriques mesurées et largeurs optimisées</span>
+                            <span class="caption lang-text" data-lang="en" style="display: none;">XOR2 inference: Reference / Target / Measured metrics and optimized widths</span>
                         </div>
                     </div>
                 </div>
@@ -214,8 +229,9 @@
                             <h5 class="lang-text" data-lang="en" style="display: none;">Machine Learning</h5>
                             <ul>
                                 <li>Reinforcement Learning (PPO)</li>
-                                <li>Stable-Baselines3</li>
+                                <li>Stable-Baselines3 / SubprocVecEnv</li>
                                 <li>Reward Engineering</li>
+                                <li>Reward Hacking Diagnosis</li>
                                 <li>Hyperparameter Tuning</li>
                             </ul>
                         </div>
@@ -225,9 +241,10 @@
                             <h5 class="lang-text" data-lang="en" style="display: none;">EDA Design</h5>
                             <ul>
                                 <li>NGSpice (Simulation SPICE)</li>
-                                <li>Sky130 PDK (Skywater)</li>
-                                <li>Netlist Generation</li>
-                                <li>Transistor Sizing</li>
+                                <li>Sky130 PDK (SkyWater)</li>
+                                <li>Netlist & Testbench Generation</li>
+                                <li>Transistor Sizing (PPA)</li>
+                                <li>Analyse PVT</li>
                             </ul>
                         </div>
 
@@ -236,8 +253,9 @@
                             <h5 class="lang-text" data-lang="en" style="display: none;">Software Engineering</h5>
                             <ul>
                                 <li>Python (OOP, Multiprocessing)</li>
-                                <li>PyQt6 (Interface Graphique)</li>
+                                <li>PyQt6 (GUI, QThread, Signals)</li>
                                 <li>Gymnasium (Custom Env)</li>
+                                <li>Caching & Hashing</li>
                                 <li>Data Parsing (.raw files)</li>
                             </ul>
                         </div>
@@ -250,8 +268,8 @@
 
     <div class="timeline-date">
         <span class="date">
-            <span class="lang-text" data-lang="fr">Déc - Sept 2025</span>
-            <span class="lang-text" data-lang="en" style="display: none;">Dec - Sept 2025</span>
+            <span class="lang-text" data-lang="fr">Sept - Déc 2025</span>
+            <span class="lang-text" data-lang="en" style="display: none;">Sept - Dec 2025</span>
         </span>
         <div class="timeline-dot"></div>
     </div>
