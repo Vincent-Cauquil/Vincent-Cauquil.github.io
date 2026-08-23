@@ -1,0 +1,205 @@
+<div class="timeline-item" data-category="software analog">
+    <div class="timeline-content">
+        <button class="btn-close" onclick="toggleProject(this)">✕</button>
+
+        <div class="project-image">
+            <img src="assets/images/project-QDAC/Figure_1.png" alt="QDAC-II Driver & Control Application">
+        </div>
+
+        <div class="project-info">
+            <div class="featured-badge">
+                <span class="lang-text" data-lang="fr">Stage Tokyo</span>
+                <span class="lang-text" data-lang="en" style="display: none;">Tokyo Internship</span>
+            </div>
+            <h3>
+                <span class="lang-text" data-lang="fr">Driver & Application de Contrôle QDAC-II</span>
+                <span class="lang-text" data-lang="en" style="display: none;">QDAC-II Driver & Control Application</span>
+            </h3>
+
+            <p class="lang-text" data-lang="fr">
+                Développement d'un <strong>driver maison</strong> et d'une <strong>application de contrôle</strong> pour le générateur de tension de précision <strong>QDevil QDAC-II (24 canaux)</strong>, réalisé lors de mon stage à l'<strong>Institute of Science Tokyo</strong>. Interface graphique <strong>PySide6</strong> et mode <em>headless</em> pilotant l'instrument <strong>en parallèle d'un VNA</strong> pour la caractérisation cryogénique.
+            </p>
+            <p class="lang-text" data-lang="en" style="display: none;">
+                Development of a <strong>homemade driver</strong> and <strong>control application</strong> for the <strong>QDevil QDAC-II (24-channel)</strong> precision voltage source, built during my internship at the <strong>Institute of Science Tokyo</strong>. A <strong>PySide6</strong> GUI plus a <em>headless</em> mode driving the instrument <strong>alongside a VNA</strong> for cryogenic characterization.
+            </p>
+
+            <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">PySide6</span>
+                <span class="tag">PyVISA / SCPI</span>
+                <span class="tag">Instrument Control</span>
+                <span class="tag">Cryogenics</span>
+                <span class="tag">VNA</span>
+            </div>
+
+            <div class="card-buttons">
+                <button class="btn-expand" onclick="toggleProject(this)">
+                    <span class="lang-text" data-lang="fr">En savoir plus →</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Learn more →</span>
+                </button>
+
+                <span class="btn-private" title="Private repository">
+                    <svg class="icon"><use href="#icon-github"/></svg>
+                    <span class="lang-text" data-lang="fr">Code sur demande</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Code on request</span>
+                </span>
+            </div>
+
+            <div class="project-details">
+
+                <!-- ===== BLOC 1 : Architecture logicielle ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Architecture : GUI + Headless via profils partagés</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Architecture: GUI + Headless via shared profiles</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <p><strong>Le besoin :</strong> piloter les 24 canaux du QDAC-II de façon interactive pour le réglage, mais aussi de façon <strong>scriptable et sans GUI</strong> pendant les mesures, quand un script de VNA doit garder le contrôle total du <em>timing</em>.</p>
+                                <p><strong>La solution :</strong> un <strong>gestionnaire de profils JSON</strong> partagé entre les deux modes.</p>
+                                <ul>
+                                    <li><strong>Mode GUI (PySide6)</strong> : configuration par canal (mode, filtre passe-bas, gamme de courant, trigger), sauvegarde/chargement de profils.</li>
+                                    <li><strong>Mode Headless</strong> : rechargement du <em>même</em> profil JSON, pilotage direct de l'instrument sans boucle d'événements graphique.</li>
+                                    <li><strong>Découplage propre</strong> : <code>ProfileManager</code> n'a besoin que d'un objet exposant <code>channel_configs</code> — la <code>MainWindow</code> en GUI, un simple conteneur en headless.</li>
+                                </ul>
+                            </div>
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p><strong>The need:</strong> drive the 24 QDAC-II channels interactively for setup, but also in a <strong>scriptable, GUI-less</strong> way during measurements, when a VNA script must keep full control of timing.</p>
+                                <p><strong>The solution:</strong> a <strong>shared JSON profile manager</strong> used by both modes.</p>
+                                <ul>
+                                    <li><strong>GUI mode (PySide6)</strong>: per-channel configuration (mode, low-pass filter, current range, trigger), profile save/load.</li>
+                                    <li><strong>Headless mode</strong>: reloads the <em>same</em> JSON profile and drives the instrument directly, with no GUI event loop.</li>
+                                    <li><strong>Clean decoupling</strong>: <code>ProfileManager</code> only needs an object exposing <code>channel_configs</code> — the <code>MainWindow</code> in GUI, a small container in headless mode.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="evidence-image">
+                            <img src="assets/images/project-QDAC/Figure_2.png"
+                                 alt="QDAC-II application interface">
+                            <span class="caption lang-text" data-lang="fr">Interface PySide6 (style Fusion sombre) — configuration des 24 canaux</span>
+                            <span class="caption lang-text" data-lang="en" style="display: none;">PySide6 interface (dark Fusion style) — configuration of the 24 channels</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== BLOC 2 : Driver SCPI ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Driver SCPI bas niveau (PyVISA)</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Low-level SCPI driver (PyVISA)</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <p>Deux couches : un wrapper <code>Instrument</code> (context manager PyVISA) et une couche instrument <code>qdac_II</code>.</p>
+                                <ul>
+                                    <li><strong>Modes de sortie</strong> : DC fixe, List, Sweep, Sine/Square/Triangle, <strong>AWG</strong>, Datastream, Sensing.</li>
+                                    <li><strong>AWG optimisé</strong> : mémoire de traces <em>partagée</em> (plusieurs canaux réutilisent une trace avec amplitude/offset propres), envoi des échantillons en <strong>bloc binaire</strong> pour la vitesse, gestion de la contrainte « nombre d'échantillons pair » et de la limite de 4×10⁶.</li>
+                                    <li><strong>Interface Ethernet</strong> privilégiée à l'USB (1 Mbit/s) pour l'upload des traces.</li>
+                                    <li><strong>Diagnostic intégré</strong> : batterie de requêtes SCPI (<code>*IDN?</code>, <code>SYST:ERR?</code>, relecture gammes/filtres…) avec rapport ✓/✗.</li>
+                                </ul>
+                            </div>
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p>Two layers: an <code>Instrument</code> wrapper (PyVISA context manager) and a <code>qdac_II</code> instrument layer.</p>
+                                <ul>
+                                    <li><strong>Output modes</strong>: Fixed DC, List, Sweep, Sine/Square/Triangle, <strong>AWG</strong>, Datastream, Sensing.</li>
+                                    <li><strong>Optimized AWG</strong>: <em>shared</em> trace memory (several channels reuse one trace with their own amplitude/offset), samples sent as a <strong>binary block</strong> for speed, handling the "even sample count" constraint and the 4×10⁶ limit.</li>
+                                    <li><strong>Ethernet interface</strong> preferred over USB (1 Mbit/s) for trace upload.</li>
+                                    <li><strong>Built-in diagnostics</strong>: a battery of SCPI queries (<code>*IDN?</code>, <code>SYST:ERR?</code>, range/filter read-back…) with a ✓/✗ report.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="evidence-image">
+                            <img src="assets/images/project-QDAC/QO.png"
+                                 alt="Channel measurement">
+                            <span class="caption lang-text" data-lang="fr">Mesure de courant par canal (caractérisation en montage cryogénique)</span>
+                            <span class="caption lang-text" data-lang="en" style="display: none;">Per-channel current measurement (cryogenic setup characterization)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== BLOC 3 : Caractérisation & Sécurité ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Caractérisation circuit-ouvert & arrêt sécurisé</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Open-circuit characterization & safe shutdown</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <p><strong>Caractérisation :</strong> un utilitaire balaye une liste de tensions sur les 24 canaux (gamme de courant LOW), enregistre le courant, ajuste une droite et en déduit la <strong>résistance de fuite</strong> (1/pente) et le <strong>courant d'offset</strong> (ordonnée à l'origine) par canal.</p>
+                                <p><strong>Sécurité :</strong> séquence <code>safe_shutdown()</code> robuste — arrêt des générateurs, rampe à 0 V, passage en gammes basses, nettoyage des traces, <code>*CLS</code>. Chaque étape est protégée pour qu'un échec isolé ne bloque pas l'arrêt.</p>
+                            </div>
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p><strong>Characterization:</strong> a helper sweeps a voltage list over all 24 channels (LOW current range), records the current, fits a line and derives the per-channel <strong>leakage resistance</strong> (1/slope) and <strong>offset current</strong> (intercept).</p>
+                                <p><strong>Safety:</strong> a robust <code>safe_shutdown()</code> sequence — stop generators, ramp to 0 V, switch to low ranges, clear traces, <code>*CLS</code>. Each step is guarded so a single failure does not block the shutdown.</p>
+                            </div>
+                        </div>
+
+                        <div class="evidence-slider" id="qdac-slider">
+                            <div class="slide active">
+                                <img src="assets/images/project-QDAC/QOvsQ1_A-S11.png" alt="S11 characterization">
+                                <span class="caption lang-text" data-lang="fr">1/2 : Mesure S11 (setup QDAC-II + VNA)</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">1/2: S11 measurement (QDAC-II + VNA setup)</span>
+                            </div>
+                            <div class="slide">
+                                <img src="assets/images/project-QDAC/QOvsQ1_B-S22.png" alt="S22 characterization">
+                                <span class="caption lang-text" data-lang="fr">2/2 : Mesure S22</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">2/2: S22 measurement</span>
+                            </div>
+                            <a class="prev" onclick="plusSlides(-1, 'qdac-slider')">❮</a>
+                            <a class="next" onclick="plusSlides(1, 'qdac-slider')">❯</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== BLOC 4 : Compétences ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Compétences Mobilisées</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Skills Leveraged</h4>
+
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h5>Software</h5>
+                            <ul>
+                                <li>Python (OOP)</li>
+                                <li>PySide6 (GUI)</li>
+                                <li>JSON Profile System</li>
+                                <li>GUI / Headless Decoupling</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Instrumentation</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">Instrumentation</h5>
+                            <ul>
+                                <li>PyVISA</li>
+                                <li>SCPI Protocol</li>
+                                <li>AWG / Trace Memory</li>
+                                <li>Ethernet vs USB tuning</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Mesure</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">Measurement</h5>
+                            <ul>
+                                <li>Cryogenic Setup</li>
+                                <li>VNA Co-operation</li>
+                                <li>Leakage / Offset Extraction</li>
+                                <li>Safe Shutdown Design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="timeline-date">
+        <span class="date">
+            <span class="lang-text" data-lang="fr">Juil - Sept 2025</span>
+            <span class="lang-text" data-lang="en" style="display: none;">Jul - Sept 2025</span>
+        </span>
+        <div class="timeline-dot"></div>
+    </div>
+</div>

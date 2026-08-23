@@ -1,0 +1,158 @@
+<div class="timeline-item" data-category="software">
+    <div class="timeline-content">
+        <button class="btn-close" onclick="toggleProject(this)">✕</button>
+
+        <div class="project-image">
+            <img src="assets/images/project-game/play01.png" alt="Dungeon & Dungeon game">
+        </div>
+
+        <div class="project-info">
+            <h3>
+                <span class="lang-text" data-lang="fr">Dungeon &amp; Dungeon — Jeu 2D en Python</span>
+                <span class="lang-text" data-lang="en" style="display: none;">Dungeon &amp; Dungeon — 2D Python Game</span>
+            </h3>
+
+            <p class="lang-text" data-lang="fr">
+                Jeu de type <strong>rogue-like</strong> développé en <strong>Python / Tkinter</strong> durant mes classes préparatoires (CPGE). Un moteur de jeu maison (~1 100 lignes) avec <strong>génération procédurale de donjons</strong>, système de combat (corps-à-corps &amp; sorts), gestion de la vie, et un <strong>éditeur de niveaux</strong> dédié.
+            </p>
+            <p class="lang-text" data-lang="en" style="display: none;">
+                A <strong>rogue-like</strong> game built in <strong>Python / Tkinter</strong> during my intensive undergraduate years (CPGE). A homemade game engine (~1,100 lines) featuring <strong>procedural dungeon generation</strong>, a combat system (melee &amp; spells), health management, and a dedicated <strong>level editor</strong>.
+            </p>
+
+            <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Tkinter</span>
+                <span class="tag">Pillow (PIL)</span>
+                <span class="tag">Procedural Generation</span>
+                <span class="tag">Game Dev</span>
+            </div>
+
+            <div class="card-buttons">
+                <button class="btn-expand" onclick="toggleProject(this)">
+                    <span class="lang-text" data-lang="fr">En savoir plus →</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Learn more →</span>
+                </button>
+
+                <span class="btn-private" title="Private repository">
+                    <svg class="icon"><use href="#icon-github"/></svg>
+                    <span class="lang-text" data-lang="fr">Code sur demande</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Code on request</span>
+                </span>
+            </div>
+
+            <div class="project-details">
+
+                <!-- ===== BLOC 1 : Moteur & Génération ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Moteur de jeu & génération procédurale</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Game engine & procedural generation</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <p><strong>Le contexte :</strong> premier vrai projet logiciel, réalisé en autodidacte en marge du programme de prépa, pour apprendre la programmation orientée objet et la gestion d'un canvas graphique.</p>
+                                <ul>
+                                    <li><strong>Génération de donjons (<code>GenLab.py</code>)</strong> : algorithme de génération procédurale de labyrinthes/salles, garantissant des niveaux jouables et connexes.</li>
+                                    <li><strong>Rendu Tkinter Canvas</strong> : système de tuiles, gestion des <em>sprites</em> (personnages, monstres, boss, projectiles) via Pillow.</li>
+                                    <li><strong>Boucle de jeu</strong> : déplacements, collisions, <em>cooldowns</em> d'attaque et rafraîchissement temps réel.</li>
+                                </ul>
+                            </div>
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p><strong>Context:</strong> my first real software project, built self-taught alongside the CPGE curriculum, to learn object-oriented programming and graphical canvas management.</p>
+                                <ul>
+                                    <li><strong>Dungeon generation (<code>GenLab.py</code>)</strong>: procedural maze/room generation algorithm, guaranteeing playable, connected levels.</li>
+                                    <li><strong>Tkinter Canvas rendering</strong>: tile system, sprite management (characters, monsters, bosses, projectiles) via Pillow.</li>
+                                    <li><strong>Game loop</strong>: movement, collisions, attack cooldowns and real-time refresh.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="evidence-slider" id="game-slider">
+                            <div class="slide active">
+                                <img src="assets/images/project-game/play01.png" alt="Gameplay 1">
+                                <span class="caption lang-text" data-lang="fr">1/5 : Exploration du donjon généré</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">1/5: Exploring the generated dungeon</span>
+                            </div>
+                            <div class="slide">
+                                <img src="assets/images/project-game/play02.png" alt="Gameplay 2">
+                                <span class="caption lang-text" data-lang="fr">2/5 : Combat & projectiles</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">2/5: Combat & projectiles</span>
+                            </div>
+                            <div class="slide">
+                                <img src="assets/images/project-game/play03.png" alt="Gameplay 3">
+                                <span class="caption lang-text" data-lang="fr">3/5 : Progression dans les salles</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">3/5: Progressing through rooms</span>
+                            </div>
+                            <div class="slide">
+                                <img src="assets/images/project-game/play04.png" alt="Gameplay 4">
+                                <span class="caption lang-text" data-lang="fr">4/5 : Rencontre de monstres</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">4/5: Encountering monsters</span>
+                            </div>
+                            <div class="slide">
+                                <img src="assets/images/project-game/play05.png" alt="Gameplay 5">
+                                <span class="caption lang-text" data-lang="fr">5/5 : Affrontement de boss</span>
+                                <span class="caption lang-text" data-lang="en" style="display: none;">5/5: Boss fight</span>
+                            </div>
+                            <a class="prev" onclick="plusSlides(-1, 'game-slider')">❮</a>
+                            <a class="next" onclick="plusSlides(1, 'game-slider')">❯</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== BLOC 2 : Éditeur de niveaux ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Éditeur de niveaux</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Level editor</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <p>Un <strong>éditeur dédié (<code>Editeur.py</code>)</strong> permet de dessiner et sauvegarder des cartes personnalisées (murs, entités, points d'intérêt), sérialisées dans des fichiers de données et rechargées par le moteur — séparant proprement <em>contenu</em> et <em>moteur</em>.</p>
+                            </div>
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p>A dedicated <strong>level editor (<code>Editeur.py</code>)</strong> lets you draw and save custom maps (walls, entities, points of interest), serialized to data files and reloaded by the engine — cleanly separating <em>content</em> from <em>engine</em>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== BLOC 3 : Compétences ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Compétences Mobilisées</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Skills Leveraged</h4>
+
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h5>Software</h5>
+                            <ul>
+                                <li>Python (early OOP)</li>
+                                <li>Tkinter Canvas</li>
+                                <li>Pillow / Sprites</li>
+                                <li>Real-time game loop</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Algorithmique</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">Algorithms</h5>
+                            <ul>
+                                <li>Procedural Generation</li>
+                                <li>Collision Detection</li>
+                                <li>Data Serialization</li>
+                                <li>Self-taught autonomy</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="timeline-date">
+        <span class="date">
+            <span class="lang-text" data-lang="fr">2022 - 2023</span>
+            <span class="lang-text" data-lang="en" style="display: none;">2022 - 2023</span>
+        </span>
+        <div class="timeline-dot"></div>
+    </div>
+</div>

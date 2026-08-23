@@ -1,0 +1,146 @@
+<div class="timeline-item" data-category="analog">
+    <div class="timeline-content">
+        <button class="btn-close" onclick="toggleProject(this)">✕</button>
+
+        <div class="project-image placeholder">
+            <span class="placeholder-icon">〰️</span>
+        </div>
+
+        <div class="project-info">
+            <h3>
+                <span class="lang-text" data-lang="fr">Conception IC Analogique : ΔΣ ADC & PLL</span>
+                <span class="lang-text" data-lang="en" style="display: none;">Analog IC Design: ΔΣ ADC & PLL</span>
+            </h3>
+
+            <p class="lang-text" data-lang="fr">
+                Projets de conception de circuits intégrés analogiques/mixtes menés dans le cursus PSM : modélisation d'un <strong>convertisseur Sigma-Delta (ΔΣ)</strong>, conception d'une <strong>PLL</strong> avec outil d'aide au dimensionnement, filtre <strong>gm-C</strong> et référence <strong>bandgap CMOS</strong> — du modèle système au niveau transistor sous Cadence.
+            </p>
+            <p class="lang-text" data-lang="en" style="display: none;">
+                Analog/mixed-signal IC design projects from the PSM curriculum: modeling of a <strong>Sigma-Delta (ΔΣ) converter</strong>, design of a <strong>PLL</strong> with a sizing-helper tool, a <strong>gm-C</strong> filter and a <strong>CMOS bandgap</strong> reference — from system model down to transistor level in Cadence.
+            </p>
+
+            <div class="project-tags">
+                <span class="tag">Cadence</span>
+                <span class="tag">ΔΣ Modulator</span>
+                <span class="tag">PLL</span>
+                <span class="tag">gm-C Filter</span>
+                <span class="tag">Bandgap</span>
+                <span class="tag">MATLAB/Simulink</span>
+            </div>
+
+            <div class="card-buttons">
+                <button class="btn-expand" onclick="toggleProject(this)">
+                    <span class="lang-text" data-lang="fr">En savoir plus →</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Learn more →</span>
+                </button>
+
+                <a href="assets/ressource/A7_SigmaDelta_CAUQUIL_FALDA_MOREL.pdf" class="btn-doc" target="_blank">
+                    <span class="lang-text" data-lang="fr">Rapport ΔΣ</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">ΔΣ Report</span>
+                </a>
+            </div>
+
+            <div class="project-details">
+
+                <!-- ===== BLOC 1 : Sigma-Delta ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Convertisseur Sigma-Delta (ΔΣ)</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Sigma-Delta (ΔΣ) Converter</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <p>Étude et modélisation d'un modulateur ΔΣ :</p>
+                                <ul>
+                                    <li><strong>Modèle système</strong> sous MATLAB/Simulink (topologie CIFB) : mise en forme du bruit (<em>noise shaping</em>), suréchantillonnage (OSR) et analyse du SNR.</li>
+                                    <li>Analyse spectrale (FFT, dBV) via des scripts <code>dbv.m</code> / <code>undbv.m</code>.</li>
+                                    <li>Transposition vers l'implémentation circuit (intégrateurs, comparateur, DAC de retour).</li>
+                                </ul>
+                            </div>
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p>Study and modeling of a ΔΣ modulator:</p>
+                                <ul>
+                                    <li><strong>System model</strong> in MATLAB/Simulink (CIFB topology): noise shaping, oversampling ratio (OSR) and SNR analysis.</li>
+                                    <li>Spectral analysis (FFT, dBV) via <code>dbv.m</code> / <code>undbv.m</code> scripts.</li>
+                                    <li>Transition toward circuit implementation (integrators, comparator, feedback DAC).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== BLOC 2 : PLL ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">PLL & outil de dimensionnement</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">PLL & sizing helper tool</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <p>Conception d'une boucle à verrouillage de phase et écriture d'un petit <strong>outil Python (<code>PLL_App.py</code>)</strong> pour explorer rapidement les compromis de la boucle : fréquence naturelle, facteur d'amortissement, marge de phase et composants du filtre de boucle. Simulations de validation sous LTspice/Cadence.</p>
+                            </div>
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p>Design of a phase-locked loop and a small <strong>Python tool (<code>PLL_App.py</code>)</strong> to quickly explore loop trade-offs: natural frequency, damping factor, phase margin and loop-filter components. Validation simulations in LTspice/Cadence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== BLOC 3 : gm-C & Bandgap ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Filtre gm-C & Référence Bandgap</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">gm-C Filter & Bandgap Reference</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <p>Conception de blocs analogiques fondamentaux : un <strong>filtre gm-C</strong> (transconductance-capacité) et une <strong>référence de tension bandgap CMOS</strong> (compensation en température PTAT/CTAT), dimensionnés au niveau transistor et vérifiés en simulation (DC, AC, température).</p>
+                            </div>
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p>Design of fundamental analog blocks: a <strong>gm-C filter</strong> (transconductance-capacitance) and a <strong>CMOS bandgap voltage reference</strong> (PTAT/CTAT temperature compensation), sized at transistor level and verified in simulation (DC, AC, temperature).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== BLOC 4 : Compétences ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Compétences Mobilisées</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Skills Leveraged</h4>
+
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Analogique / Mixte</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">Analog / Mixed</h5>
+                            <ul>
+                                <li>ΔΣ Noise Shaping</li>
+                                <li>PLL Loop Dynamics</li>
+                                <li>gm-C Filtering</li>
+                                <li>Bandgap (PTAT/CTAT)</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Outils</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">Tools</h5>
+                            <ul>
+                                <li>Cadence Virtuoso</li>
+                                <li>MATLAB / Simulink</li>
+                                <li>LTspice</li>
+                                <li>Python (helper tooling)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="timeline-date">
+        <span class="date">
+            <span class="lang-text" data-lang="fr">2024 - 2025</span>
+            <span class="lang-text" data-lang="en" style="display: none;">2024 - 2025</span>
+        </span>
+        <div class="timeline-dot"></div>
+    </div>
+</div>

@@ -1,0 +1,142 @@
+<div class="timeline-item" data-category="software">
+    <div class="timeline-content">
+        <button class="btn-close" onclick="toggleProject(this)">✕</button>
+
+        <div class="project-image placeholder">
+            <span class="placeholder-icon">📄</span>
+        </div>
+
+        <div class="project-info">
+            <h3>
+                <span class="lang-text" data-lang="fr">PDF Toolbox — Application Bureau</span>
+                <span class="lang-text" data-lang="en" style="display: none;">PDF Toolbox — Desktop App</span>
+            </h3>
+
+            <p class="lang-text" data-lang="fr">
+                Application bureau <strong>PySide6</strong> pour manipuler des PDF : fusion, réorganisation par glisser-déposer, prévisualisation par vignettes, <strong>filigrane</strong> et <strong>caviardage</strong> (redaction). Packagée en exécutable <strong>Windows</strong> autonome via PyInstaller.
+            </p>
+            <p class="lang-text" data-lang="en" style="display: none;">
+                A <strong>PySide6</strong> desktop application to manipulate PDFs: merge, drag-and-drop reordering, thumbnail preview, <strong>watermarking</strong> and <strong>redaction</strong>. Packaged as a standalone <strong>Windows</strong> executable via PyInstaller.
+            </p>
+
+            <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">PySide6</span>
+                <span class="tag">PyMuPDF</span>
+                <span class="tag">PyInstaller</span>
+            </div>
+
+            <div class="card-buttons">
+                <button class="btn-expand" onclick="toggleProject(this)">
+                    <span class="lang-text" data-lang="fr">En savoir plus →</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Learn more →</span>
+                </button>
+
+                <span class="btn-private" title="Private repository">
+                    <svg class="icon"><use href="#icon-github"/></svg>
+                    <span class="lang-text" data-lang="fr">Code sur demande</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Code on request</span>
+                </span>
+            </div>
+
+            <div class="project-details">
+
+                <!-- ===== BLOC 1 : Fonctionnalités ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Fonctionnalités</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Features</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <ul>
+                                    <li><strong>Ajout de fichiers</strong> par glisser-déposer ou sélecteur (PDF & images).</li>
+                                    <li><strong>Réorganisation</strong> par glisser-déposer dans la liste.</li>
+                                    <li><strong>Prévisualisation</strong> par vignette (première page).</li>
+                                    <li><strong>Filigrane</strong> avec aperçu superposé sur la vignette, appliqué au PDF fusionné final.</li>
+                                    <li><strong>Caviardage (redaction)</strong> pour masquer du contenu sensible.</li>
+                                    <li><strong>Fusion & sauvegarde</strong> en un seul document.</li>
+                                </ul>
+                            </div>
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <ul>
+                                    <li><strong>Add files</strong> via drag-and-drop or a file chooser (PDF & images).</li>
+                                    <li><strong>Reorder</strong> files by dragging inside the list.</li>
+                                    <li><strong>Thumbnail preview</strong> (first page).</li>
+                                    <li><strong>Watermark</strong> with an overlay preview on the thumbnail, applied to the final merged PDF.</li>
+                                    <li><strong>Redaction</strong> to hide sensitive content.</li>
+                                    <li><strong>Merge & save</strong> into a single document.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== BLOC 2 : Architecture ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Architecture logicielle</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Software Architecture</h4>
+
+                    <div class="evidence-container">
+                        <div class="evidence-text">
+                            <div class="lang-text" data-lang="fr">
+                                <p>Séparation claire <strong>UI / cœur métier</strong> :</p>
+                                <ul>
+                                    <li><code>core/</code> : <code>pdf_renderer</code>, <code>watermark</code>, <code>redaction</code>, <code>exporter</code> — logique indépendante de l'interface.</li>
+                                    <li><code>ui/</code> : <code>main_window</code>, <code>page_grid</code>, <code>pdf_canvas</code>, <code>tools_dock</code> — vues PySide6.</li>
+                                    <li>Profils de filigrane stockés en JSON (<code>watermark_profiles.json</code>).</li>
+                                </ul>
+                                <p>Rendu PDF via <strong>PyMuPDF</strong> (<code>insert_textbox</code> pour le filigrane), packaging <strong>PyInstaller</strong> (<code>--onefile --windowed</code>).</p>
+                            </div>
+                            <div class="lang-text" data-lang="en" style="display: none;">
+                                <p>Clear <strong>UI / core</strong> separation:</p>
+                                <ul>
+                                    <li><code>core/</code>: <code>pdf_renderer</code>, <code>watermark</code>, <code>redaction</code>, <code>exporter</code> — logic independent from the UI.</li>
+                                    <li><code>ui/</code>: <code>main_window</code>, <code>page_grid</code>, <code>pdf_canvas</code>, <code>tools_dock</code> — PySide6 views.</li>
+                                    <li>Watermark profiles stored as JSON (<code>watermark_profiles.json</code>).</li>
+                                </ul>
+                                <p>PDF rendering via <strong>PyMuPDF</strong> (<code>insert_textbox</code> for the watermark), <strong>PyInstaller</strong> packaging (<code>--onefile --windowed</code>).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== BLOC 3 : Compétences ===== -->
+                <div class="detail-block">
+                    <h4 class="lang-text" data-lang="fr">Compétences Mobilisées</h4>
+                    <h4 class="lang-text" data-lang="en" style="display: none;">Skills Leveraged</h4>
+
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h5>Software</h5>
+                            <ul>
+                                <li>Python (OOP)</li>
+                                <li>PySide6 (Drag & Drop)</li>
+                                <li>PyMuPDF</li>
+                                <li>MVC-like structure</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h5 class="lang-text" data-lang="fr">Distribution</h5>
+                            <h5 class="lang-text" data-lang="en" style="display: none;">Distribution</h5>
+                            <ul>
+                                <li>PyInstaller</li>
+                                <li>Windows .exe</li>
+                                <li>Config profiles (JSON)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="timeline-date">
+        <span class="date">
+            <span class="lang-text" data-lang="fr">Projet perso</span>
+            <span class="lang-text" data-lang="en" style="display: none;">Personal</span>
+        </span>
+        <div class="timeline-dot"></div>
+    </div>
+</div>

@@ -10,6 +10,7 @@ const projects = [
     { id: 'project-research', file: 'assets/projects/project-research.html' },
     { id: 'project-AI', file: 'assets/projects/project-AI.html' },
     { id: 'project-A8', file: 'assets/projects/project-A8.html' },
+    { id: 'project-PDF', file: 'assets/projects/project-PDF.html' },
 ];
 
 async function loadProjects() {
@@ -57,6 +58,123 @@ async function loadProjects() {
     setLanguage(currentLang);
     initTimelineObserver();
     initCloseOnClickOutside();
+    initProjectFilters();
+}
+
+// ========== NAVBAR ==========
+function initNavbar() {
+    const navbar = document.getElementById('navbar');
+    const navbarToggle = document.getElementById('navbar-toggle');
+    const navbarMenu = document.getElementById('navbar-menu');
+    const navbarLinks = document.querySelectorAll('.navbar-link');
+
+    if (!navbar) return;
+
+    // Scroll effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        // Update active section
+        updateActiveNavLink();
+    });
+
+    // Mobile menu toggle
+    if (navbarToggle && navbarMenu) {
+        navbarToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+            
+            // Update icon
+            const icon = navbarToggle.querySelector('use');
+            if (icon) {
+                icon.setAttribute('href', navbarMenu.classList.contains('active') ? '#icon-close' : '#icon-menu');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        navbarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navbarMenu.classList.remove('active');
+                const icon = navbarToggle.querySelector('use');
+                if (icon) icon.setAttribute('href', '#icon-menu');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navbarMenu.classList.contains('active') 
+                && !navbarMenu.contains(e.target) 
+                && !navbarToggle.contains(e.target)) {
+                navbarMenu.classList.remove('active');
+                const icon = navbarToggle.querySelector('use');
+                if (icon) icon.setAttribute('href', '#icon-menu');
+            }
+        });
+    }
+}
+
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar-link');
+    
+    let currentSection = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+        
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// ========== PROJECT FILTERS ==========
+function initProjectFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const filter = btn.dataset.filter;
+            filterProjects(filter);
+        });
+    });
+}
+
+function filterProjects(filter) {
+    const projectItems = document.querySelectorAll('.timeline-item');
+    
+    projectItems.forEach(item => {
+        const category = item.dataset.category || '';
+        
+        if (filter === 'all' || category.includes(filter)) {
+            item.style.display = '';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        } else {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                if (!item.dataset.category?.includes(filter) && filter !== 'all') {
+                    item.style.display = 'none';
+                }
+            }, 300);
+        }
+    });
 }
 
 // ========== GESTION DU SLIDER ==========
@@ -194,7 +312,7 @@ function openLightbox(img) {
     lightbox.classList.add('active');
     document.body.classList.add('modal-open');
 
-    console.log('🔍 Lightbox ouverte:', imgSrc); // ← Debug
+    console.log('🔍 Lightbox ouverte:', imgSrc);
 }
 
 function closeLightbox() {
@@ -313,7 +431,13 @@ function initSmoothScroll() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const navbarHeight = document.getElementById('navbar').offsetHeight;
+                const targetPosition = target.offsetTop - navbarHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
             }
         });
     });
@@ -322,6 +446,9 @@ function initSmoothScroll() {
 // ========== INITIALISATION UNIQUE ==========
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('🚀 Portfolio initialisé');
+
+    // Initialize navbar
+    initNavbar();
 
     // ✅ UN SEUL listener pour les clicks sur images (délégation)
     document.addEventListener('click', function (e) {
@@ -347,6 +474,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (e.key === 'Escape') closeLightbox();
             else if (e.key === 'ArrowLeft' && currentLightboxSlider) navigateLightbox(-1);
             else if (e.key === 'ArrowRight' && currentLightboxSlider) navigateLightbox(1);
+        }
+        
+        // Close expanded project on Escape
+        if (e.key === 'Escape') {
+            const expandedItem = document.querySelector('.timeline-item.expanded');
+            if (expandedItem) {
+                closeProject(expandedItem);
+            }
         }
     });
 

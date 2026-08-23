@@ -3,7 +3,8 @@
    ======================================== */
 
 /* ===== TIMELINE SECTION ===== */
-#timeline {
+#timeline,
+#projects {
     padding: 6rem 2rem;
     max-width: 1200px;
     margin: 0 auto;

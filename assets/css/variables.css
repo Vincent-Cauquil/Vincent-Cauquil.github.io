@@ -14,6 +14,12 @@
     --text-muted: #a0a0b0;
     --timeline-line: #3b3b5c;
     --accent: #22d3ee;
+
+    /* ---- Layout uniformisé ---- */
+    --section-max: 1200px;
+    --section-pad-y: 6rem;
+    --section-pad-x: 2rem;
+    --grid-min: 280px;
 }
 
 html {

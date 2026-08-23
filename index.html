@@ -3,14 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vincent Cauquil — Portfolio</title>
+    <title>Vincent Cauquil - Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Vincent Cauquil - Electronics Engineer specializing in cryogenic electronics, mixed-signal IC design, and neuromorphic computing. Admitted to EPFL EDMI, open to PhD and R&D engineering opportunities.">
+    <meta name="keywords" content="Vincent Cauquil, Electronics Engineer, PhD, Cryogenic Electronics, Mixed-Signal IC, Neuromorphic Computing, EPFL, CEA-Leti, Quantum Computing, RISC-V, FPGA">
+    <meta name="author" content="Vincent Cauquil">
+    
+    <!-- OpenGraph for Social Sharing -->
+    <meta property="og:title" content="Vincent Cauquil - Electronics Engineer & Researcher">
+    <meta property="og:description" content="Specializing in cryogenic electronics, mixed-signal IC design, and neuromorphic computing. Admitted to EPFL EDMI, open to PhD and R&D engineering opportunities.">
+    <meta property="og:image" content="https://vincent-cauquil.github.io/assets/images/V_cauq_img.png">
+    <meta property="og:url" content="https://vincent-cauquil.github.io">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vincent Cauquil - Electronics Engineer & Researcher">
+    <meta name="twitter:description" content="Cryogenic electronics, mixed-signal IC design, neuromorphic computing. EPFL EDMI admitted.">
+    
     <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/layout.css">
     <link rel="stylesheet" href="assets/css/projects.css">
     <link rel="stylesheet" href="assets/css/evidence.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/images/icon.png">
 </head>
 <body>
@@ -29,14 +47,64 @@
         <symbol id="icon-external" viewBox="0 0 24 24">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
         </symbol>
+        <symbol id="icon-menu" viewBox="0 0 24 24">
+            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </symbol>
     </svg>
 
-    <!-- LANG SWITCH -->
-    <div class="lang-switch">
-        <button class="lang-btn active" data-lang="fr">FR</button>
-        <span class="lang-separator">|</span>
-        <button class="lang-btn" data-lang="en">EN</button>
-    </div>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="#hero" class="navbar-logo">VC</a>
+            
+            <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu">
+                <svg class="icon"><use href="#icon-menu"/></svg>
+            </button>
+            
+            <ul class="navbar-menu" id="navbar-menu">
+                <li><a href="#about" class="navbar-link">
+                    <span class="lang-text" data-lang="fr">À propos</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">About</span>
+                </a></li>
+                <li><a href="#research" class="navbar-link">
+                    <span class="lang-text" data-lang="fr">Recherche</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Research</span>
+                </a></li>
+                <li><a href="#skills" class="navbar-link">
+                    <span class="lang-text" data-lang="fr">Compétences</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Skills</span>
+                </a></li>
+                <li><a href="#experience" class="navbar-link">
+                    <span class="lang-text" data-lang="fr">Parcours</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Experience</span>
+                </a></li>
+                <li><a href="#projects" class="navbar-link">
+                    <span class="lang-text" data-lang="fr">Projets</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Projects</span>
+                </a></li>
+                <li><a href="#contact" class="navbar-link">
+                    <span class="lang-text" data-lang="fr">Contact</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Contact</span>
+                </a></li>
+            </ul>
+            
+            <div class="navbar-right">
+                <div class="phd-badge">
+                    <span class="lang-text" data-lang="fr">Ouvert : PhD / Ingénieur</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Open to PhD / Engineering</span>
+                </div>
+                
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="fr">FR</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <!-- HERO -->
     <section id="hero">
@@ -44,8 +112,8 @@
             <div class="hero-text">
                 <!-- Greeting -->
                 <p class="greeting">
-                    <span class="lang-text" data-lang="fr">Bonjour, je suis</span>
-                    <span class="lang-text" data-lang="en" style="display: none;">Hi, I'm</span>
+                    <span class="lang-text" data-lang="fr">Bonjour, je me présente,</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Welcome, I'm</span>
                 </p>
     
                 <!-- Name -->
@@ -53,17 +121,16 @@
     
                 <!-- Subtitle -->
                 <p class="subtitle">
-                    <span class="lang-text" data-lang="fr">Apprenti Ingénieur Chercheur • Physique & Microélectronique</span>
-                    <span class="lang-text" data-lang="en" style="display: none;">Apprentice Research Engineer • Physics & Microelectronics</span>
+                    <span class="lang-text" data-lang="fr">Ingénieur en Électronique • Physique & Microélectronique</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Electronics Engineer • Physics & Microelectronics</span>
                 </p>
     
-                <!-- TAGLINE — La phrase choc isolée -->
-                <p class="tagline">
+                <!-- TAGLINE -->
+                <p class="tagline" style="--tagline-color: #a0a0b0;">
                     <span class="lang-text" data-lang="fr">Du silicium au quantique, je conçois des circuits électroniques pour repousser les limites du calcul.</span>
                     <span class="lang-text" data-lang="en" style="display: none;">From silicon to quantum, I design electronic circuits to push the boundaries of computing.</span>
                 </p>
-    
-                <!-- BIO STRUCTURÉE avec icônes -->
+                
                 <div class="hero-bio">
                     <div class="bio-item">
                         <div class="lang-text macro" data-lang="fr">
@@ -85,34 +152,51 @@
                         </div>
                     </div>
                 </div>
-    
-                <!-- AWARD BADGE — Mis en avant ! -->
-                <div class="award-badge">
-                    <div>
-                        <span class="lang-text macro" data-lang="fr">
-                            <strong> 🏆 Major de promotion</strong>, 1ère promo PSM, \CPE_Lyon (2023-2026)
-                        </span>
-                        <span class="lang-text macro" data-lang="en" style="display: none;">
-                            <strong> 🏆 Valedictorian</strong>, 1st PSM class, \CPE_Lyon (2023-2026)
-                        </span>
+
+                <!-- BADGES ROW -->
+                <div class="hero-badges">
+                    <!-- EPFL Badge -->
+                    <div class="badge badge-epfl">
+                        <span class="badge-icon">🎓</span>
+                        <div>
+                            <span class="lang-text" data-lang="fr">
+                                <strong>Admis EPFL EDMI</strong> (Mai 2026)
+                            </span>
+                            <span class="lang-text" data-lang="en" style="display: none;">
+                                <strong>EPFL EDMI Admitted</strong> (May 2026)
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Award Badge -->
+                    <div class="badge badge-award">
+                        <span class="badge-icon">🏆</span>
+                        <div class="macro">
+                            <span class="lang-text" data-lang="fr">
+                                <strong>Major de promotion</strong>, 1<sup>ère</sup> promo PSM, \CPE_Lyon
+                            </span>
+                            <span class="lang-text" data-lang="en" style="display: none;">
+                                <strong>Valedictorian</strong>, 1<sup>st</sup> PSM class, \CPE_Lyon
+                            </span>
+                        </div>
                     </div>
                 </div>
     
-                <!-- BOUTONS -->
+                <!-- BUTTONS -->
                 <div class="hero-buttons">
                     <a href="assets/ressource/CAUQUIL-Vincent-CV.pdf" class="btn btn-primary" target="_blank">
                         <span class="btn-icon">📄</span>
                         <span class="lang-text" data-lang="fr">Télécharger mon CV</span>
                         <span class="lang-text" data-lang="en" style="display: none;">Download my CV</span>
                     </a>
-                    <a href="#timeline" class="btn btn-secondary">
-                        <span class="lang-text" data-lang="fr">Voir mes projets ↓</span>
-                        <span class="lang-text" data-lang="en" style="display: none;">See my projects ↓</span>
+                    <a href="#research" class="btn btn-secondary">
+                        <span class="lang-text" data-lang="fr">Intérêts de Recherche ↓</span>
+                        <span class="lang-text" data-lang="en" style="display: none;">Research Interests ↓</span>
                     </a>
                 </div>
             </div>
     
-            <!-- AVATAR avec glow amélioré -->
+            <!-- AVATAR -->
             <div class="hero-image">
                 <div class="avatar-container">
                     <img src="assets/images/V_cauq_img.png" alt="Vincent Cauquil" class="avatar">
@@ -121,13 +205,10 @@
         </div>
     </section>
 
-
-    <!-- SCROLL INDICATOR — Bloc indépendant -->
+    <!-- SCROLL INDICATOR -->
     <div class="scroll-indicator-wrapper">
-        <a href="#timeline" class="scroll-indicator">
-            <!-- Desktop : souris -->
+        <a href="#about" class="scroll-indicator">
             <div class="mouse"></div>
-            <!-- Mobile : swipe -->
             <div class="swipe">
                 <div class="swipe-finger">👆</div>
             </div>
@@ -136,21 +217,530 @@
         </a>
     </div>
 
-    <!-- TIMELINE - PROJETS -->
-    <section id="timeline">
+    <!-- ABOUT ME -->
+    <section id="about">
         <h2 class="section-title">
-            <span class="lang-text" data-lang="fr">Mes Projets</span>
-            <span class="lang-text" data-lang="en" style="display: none;">My Projects</span>
+            <span class="lang-text" data-lang="fr">À Propos</span>
+            <span class="lang-text" data-lang="en" style="display: none;">About Me</span>
         </h2>
+
+        <div class="about-container">
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lang-text" data-lang="fr">
+                        Ingénieur en électronique spécialisé dans la <strong>conception de front-ends analogiques de précision</strong> et la <strong>mesure de courants ultra-faibles</strong>, avec une expérience pratique en <strong>firmware FPGA/HDL</strong> et en <strong>conception de circuits intégrés mixtes</strong>.
+                    </p>
+                    <p class="lang-text" data-lang="en" style="display: none;">
+                        Electronics engineer specializing in <strong>precision analog front-end design</strong> and <strong>ultra-low-current measurement</strong>, with hands-on experience in <strong>FPGA/HDL firmware</strong> and <strong>mixed-signal IC design</strong>.
+                    </p>
+
+                    <p class="lang-text" data-lang="fr">
+                        Depuis trois ans au <strong>CEA-Leti</strong>, je développe des électroniques de conversion I/V cryogénique et de multiplexage pour dispositifs quantiques, de la conception de circuits à l'intégration sur carte. Mon parcours couvre l'ensemble de la chaîne : de la <strong>fabrication en salle blanche</strong> à la <strong>caractérisation 4K</strong>, en passant par le <strong>prototypage PCB</strong> pour des applications réelles.
+                    </p>
+                    <p class="lang-text" data-lang="en" style="display: none;">
+                        For three years at <strong>CEA-Leti</strong>, I've been developing cryogenic I/V conversion and multiplexing electronics for quantum devices, from circuit design to board-level integration. My background spans the full chain: from <strong>cleanroom fabrication</strong> to <strong>4K characterization</strong>, through <strong>PCB prototyping</strong> for real-world applications.
+                    </p>
+
+                    <p class="lang-text" data-lang="fr">
+                        <strong>Admis au programme doctoral EDMI de l'EPFL</strong> (Mai 2026), je suis ouvert à un sujet de doctorat aligné avec mes intérêts de recherche, comme à un poste d'<strong>ingénieur électronique</strong> en R&D - électronique cryogénique, calcul neuromorphique et circuits mixtes pour environnements contraints.
+                    </p>
+                    <p class="lang-text" data-lang="en" style="display: none;">
+                        <strong>Admitted to EPFL's EDMI doctoral program</strong> (May 2026), I am open to a PhD topic aligned with my research interests as well as an <strong>electronics engineer</strong> position in R&D - cryogenic electronics, neuromorphic computing, and mixed-signal design for constrained environments.
+                    </p>
+                </div>
+
+                <div class="about-highlights">
+                    <div class="highlight-item macro">
+                        <span class="highlight-icon">🔬</span>
+                        <span class="lang-text" data-lang="fr">3 ans d'expérience R&D au \CEA_Leti</span>
+                        <span class="lang-text" data-lang="en" style="display: none;">3 years R&D experience at \CEA_Leti</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">🌡️</span>
+                        <span class="lang-text" data-lang="fr">Spécialisation cryogénique (300K → 4K)</span>
+                        <span class="lang-text" data-lang="en" style="display: none;">Cryogenic specialization (300K → 4K)</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">🇯🇵</span>
+                        <span class="lang-text" data-lang="fr">Stage recherche à Tokyo Tech (2025)</span>
+                        <span class="lang-text" data-lang="en" style="display: none;">Research internship at Tokyo Tech (2025)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH INTERESTS -->
+    <section id="research">
+        <h2 class="section-title">
+            <span class="lang-text" data-lang="fr">Intérêts de Recherche</span>
+            <span class="lang-text" data-lang="en" style="display: none;">Research Interests</span>
+        </h2>
+
+        <p class="section-intro">
+            <span class="lang-text" data-lang="fr">
+                Je m'intéresse à la conception de dispositifs et de circuits sur l'ensemble de leur cycle de vie - de la fabrication au tapeout jusqu'à l'application sur PCB - pour repousser les limites du calcul dans les environnements les plus contraints.
+            </span>
+            <span class="lang-text" data-lang="en" style="display: none;">
+                I am interested in designing devices and circuits across their entire lifecycle - from fabrication to tapeout down to PCB-level application - to push the boundaries of computing in the most constrained environments.
+            </span>
+        </p>
+
+        <div class="research-grid">
+            <!-- Extreme Environments -->
+            <div class="research-card">
+                <h3>
+                    <span class="lang-text" data-lang="fr">Dispositifs en Environnement Extrême</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Devices for Extreme Environments</span>
+                    <span class="research-icon">❄️</span>
+                </h3>
+                <p class="lang-text" data-lang="fr">
+                    Conception de circuits robustes opérant en conditions cryogéniques et sous radiation. Électronique cryo-CMOS, calcul fiable (<em>reliable computing</em>) et durcissement pour l'embarqué spatial et les systèmes quantiques.
+                </p>
+                <p class="lang-text" data-lang="en" style="display: none;">
+                    Design of robust circuits operating under cryogenic and radiation conditions. Cryo-CMOS electronics, reliable computing, and hardening for space-embedded and quantum systems.
+                </p>
+                <div class="research-tags">
+                    <span class="tag">Cryo-CMOS</span>
+                    <span class="tag">Rad-Hard</span>
+                    <span class="tag">Reliable Computing</span>
+                </div>
+            </div>
+
+            <!-- Emerging & Quantum Devices -->
+            <div class="research-card">
+                <h3>
+                    <span class="lang-text" data-lang="fr">Dispositifs Émergents & Quantiques</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Emerging & Quantum Devices</span>
+                    <span class="research-icon">🔬</span>
+                </h3>
+                <p class="lang-text" data-lang="fr">
+                    Technologies au-delà du CMOS : CMOS 2.0, mémoires émergentes (PCM, RRAM), capteurs avancés et dispositifs quantiques. Optimisation des métriques PPA par de nouveaux matériaux pour les architectures de calcul de prochaine génération.
+                </p>
+                <p class="lang-text" data-lang="en" style="display: none;">
+                    Beyond-CMOS technologies: CMOS 2.0, emerging memories (PCM, RRAM), advanced sensors, and quantum devices. Optimizing PPA metrics through novel materials for next-generation computing architectures.
+                </p>
+                <div class="research-tags">
+                    <span class="tag">CMOS 2.0</span>
+                    <span class="tag">Beyond-CMOS</span>
+                    <span class="tag">PCM / RRAM</span>
+                    <span class="tag">Quantum Devices</span>
+                </div>
+            </div>
+
+            <!-- Integrated Analog/Mixed Design -->
+            <div class="research-card">
+                <h3>
+                    
+                    <span class="lang-text" data-lang="fr">Conception Analog/Mixte Intégrée</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Integrated Analog/Mixed-Signal Design</span>
+                    <span class="research-icon">⚡</span>
+                </h3>
+                <p class="lang-text" data-lang="fr">
+                    Conception intégrée du dispositif au circuit, avec ou sans <strong>SDTCO</strong> (System-Design Technology Co-Optimization). Convertisseurs ΔΣ, front-ends RF (LNA, mixeurs, buffers), PLL et filtres gm-C, du schématique au layout et au tapeout.
+                </p>
+                <p class="lang-text" data-lang="en" style="display: none;">
+                    Integrated design from device to circuit, with or without <strong>SDTCO</strong> (System-Design Technology Co-Optimization). ΔΣ converters, RF front-ends (LNA, mixers, buffers), PLLs and gm-C filters, from schematic to layout and tapeout.
+                </p>
+                <div class="research-tags">
+                    <span class="tag">SDTCO</span>
+                    <span class="tag">ΔΣ ADC</span>
+                    <span class="tag">RF Front-End</span>
+                    <span class="tag">Tapeout</span>
+                </div>
+            </div>
+
+            <!-- Hardware-Oriented AI -->
+            <div class="research-card">
+                <h3>
+                    <span class="lang-text" data-lang="fr">IA Orientée Matériel</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Hardware-Oriented AI</span>
+                    <span class="research-icon">🧠</span>
+                    
+                </h3>
+                <p class="lang-text" data-lang="fr">
+                    Intelligence artificielle abordée par le matériel et l'interface avec le logiciel : calcul en/près-mémoire, cœurs de calcul à base de crossbars, réseaux de neurones à impulsions (SNN) et IA embarquée robuste.
+                </p>
+                <p class="lang-text" data-lang="en" style="display: none;">
+                    AI approached from the hardware side and its interface with software: in/near-memory computing, crossbar-based computational cores, spiking neural networks (SNN), and robust embedded AI.
+                </p>
+                <div class="research-tags">
+                    <span class="tag">In/Near-Memory</span>
+                    <span class="tag">Crossbar Cores</span>
+                    <span class="tag">SNN</span>
+                    <span class="tag">Embedded AI</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <h2 class="section-title">
+            <span class="lang-text" data-lang="fr">Compétences Techniques</span>
+            <span class="lang-text" data-lang="en" style="display: none;">Technical Skills</span>
+        </h2>
+
+        <div class="skills-grid">
+            <!-- IC Design (Analog / Mixed / RF) -->
+            <div class="skills-card">
+                <h3>
+                    <span class="skills-icon">⚡</span>
+                    <span class="lang-text" data-lang="fr">Conception IC (Analog / Mixte / RF)</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">IC Design (Analog / Mixed / RF)</span>
+                </h3>
+                
+                <div class="skills-tags">
+                    <span class="tag highlight">ΔΣ Modulator</span>
+                    <span class="tag highlight">R-2R DAC</span>
+                    <span class="tag">PLL</span>
+                    <span class="tag">gm-C Filters</span>
+                    <span class="tag">Bandgap Reference</span>
+                    <span class="tag">OTA</span>
+                    <span class="tag">LNA / Mixer</span>
+                    <span class="tag">RF Layout & Routing</span>
+                </div>
+            </div>
+
+            <!-- Digital & Systems -->
+            <div class="skills-card">
+                <h3>
+                    <span class="skills-icon">🧮</span>
+                    <span class="lang-text" data-lang="fr">Numérique & Systèmes</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Digital & Systems</span>
+                </h3>
+                <div class="skills-tags">
+                    <span class="tag highlight">SoC Architecture</span>
+                    <span class="tag highlight">RISC-V / LiteX</span>
+                    <span class="tag">Metastability & CDC</span>
+                    <span class="tag">Reliable Computing</span>
+                    <span class="tag">Embedded Security</span>
+                    <span class="tag">Zephyr RTOS</span>
+                    <span class="tag">µC → SBC</span>
+                </div>
+            </div>
+
+            <!-- Hardware Design -->
+            <div class="skills-card">
+                <h3>
+                    <span class="skills-icon">🔌</span>
+                    <span class="lang-text" data-lang="fr">Conception Hardware</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Hardware Design</span>
+                </h3>
+                <div class="skills-tags">
+                    <span class="tag">Precision AFE</span>
+                    <span class="tag">Cryogenics (4K)</span>
+                    <span class="tag">PCB & RF PCB</span>
+                    <span class="tag">Power Electronics</span>
+                    <span class="tag">BMS Design</span>
+                    <span class="tag">Sensor Conditioning</span>
+                    <span class="tag">SMD Soldering</span>
+                </div>
+            </div>
+
+            <!-- Micro-fabrication -->
+            <div class="skills-card">
+                <h3>
+                    <span class="skills-icon">🏭</span>
+                    <span class="lang-text" data-lang="fr">Micro-fabrication</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Micro-fabrication</span>
+                </h3>
+                <div class="skills-tags">
+                    <span class="tag">Cleanroom (INL)</span>
+                    <span class="tag">UV Lithography</span>
+                    <span class="tag">PVD / Metallization</span>
+                    <span class="tag">Lift-off Process</span>
+                    <span class="tag">Sky130 PDK</span>
+                    <span class="tag">300mm Dicing</span>
+                </div>
+            </div>
+
+            <!-- EDA & Simulation -->
+            <div class="skills-card">
+                <h3>
+                    <span class="skills-icon">💻</span>
+                    <span class="lang-text" data-lang="fr">EDA & Simulation</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">EDA & Simulation</span>
+                </h3>
+                <div class="skills-tags">
+                    <span class="tag highlight">Cadence Virtuoso</span>
+                    <span class="tag highlight">Spectre/SPICE</span>
+                    <span class="tag">KiCad</span>
+                    <span class="tag">LTspice</span>
+                    <span class="tag">NGSpice</span>
+                    <span class="tag">Xilinx Vivado</span>
+                    <span class="tag">ModelSim</span>
+                    <span class="tag">MATLAB/Simulink</span>
+                </div>
+            </div>
+
+            <!-- Programming -->
+            <div class="skills-card">
+                <h3>
+                    <span class="skills-icon">⌨️</span>
+                    <span class="lang-text" data-lang="fr">Programmation</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Programming</span>
+                </h3>
+                <div class="skills-tags">
+                    <span class="tag highlight">Python</span>
+                    <span class="tag highlight">C/C++</span>
+                    <span class="tag highlight">VHDL/Verilog</span>
+                    <span class="tag">MATLAB</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">Linux/Bash</span>
+                    <span class="tag">Assembly</span>
+                </div>
+            </div>
+
+            <!-- Characterization -->
+            <div class="skills-card">
+                <h3>
+                    <span class="skills-icon">📊</span>
+                    <span class="lang-text" data-lang="fr">Caractérisation</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Characterization</span>
+                </h3>
+                <div class="skills-tags">
+                    <span class="tag">Wafer Prober</span>
+                    <span class="tag">Cryostats</span>
+                    <span class="tag">SMU</span>
+                    <span class="tag">I-V / C-V</span>
+                    <span class="tag">LabVIEW</span>
+                    <span class="tag">Oscilloscopes</span>
+                </div>
+            </div>
+
+            <!-- Machine Learning -->
+            <div class="skills-card">
+                <h3>
+                    <span class="skills-icon">🤖</span>
+                    <span class="lang-text" data-lang="fr">Machine Learning</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Machine Learning</span>
+                </h3>
+                <div class="skills-tags">
+                    <span class="tag highlight">Reinforcement Learning</span>
+                    <span class="tag">PPO / Stable-Baselines3</span>
+                    <span class="tag">Supervised ML</span>
+                    <span class="tag">Reward Engineering</span>
+                    <span class="tag">Gymnasium</span>
+                </div>
+            </div>
+
+            <!-- Research & Communication -->
+            <div class="skills-card">
+                <h3>
+                    <span class="skills-icon">📝</span>
+                    <span class="lang-text" data-lang="fr">Recherche & Communication</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Research & Communication</span>
+                </h3>
+                <div class="skills-tags">
+                    <span class="tag">IEEE Writing</span>
+                    <span class="tag">Literature Review</span>
+                    <span class="tag">LaTeX</span>
+                    <span class="tag">Technical Presentations</span>
+                    <span class="tag">Project Management</span>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="skills-card">
+                <h3>
+                    <span class="skills-icon">🌍</span>
+                    <span class="lang-text" data-lang="fr">Langues</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Languages</span>
+                </h3>
+                <div class="skills-tags">
+                    <span class="tag highlight">
+                        <span class="lang-text" data-lang="fr">Français (natif)</span>
+                        <span class="lang-text" data-lang="en" style="display: none;">French (native)</span>
+                    </span>
+                    <span class="tag highlight">
+                        <span class="lang-text" data-lang="fr">Anglais (C1)</span>
+                        <span class="lang-text" data-lang="en" style="display: none;">English (C1)</span>
+                    </span>
+                    <span class="tag">
+                        <span class="lang-text" data-lang="fr">Japonais (notions)</span>
+                        <span class="lang-text" data-lang="en" style="display: none;">Japanese (basic)</span>
+                    </span>
+                    <span class="tag">
+                        <span class="lang-text" data-lang="fr">Espagnol (notions)</span>
+                        <span class="lang-text" data-lang="en" style="display: none;">Spanish (basic)</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE TIMELINE -->
+    <section id="experience">
+        <h2 class="section-title">
+            <span class="lang-text" data-lang="fr">Parcours</span>
+            <span class="lang-text" data-lang="en" style="display: none;">Experience</span>
+        </h2>
+
+        <div class="experience-timeline">
+            <!-- CEA-Leti -->
+            <div class="exp-item">
+                <div class="exp-date">
+                    <span class="lang-text" data-lang="fr">Sept 2023 - Sept 2026</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Sept 2023 - Sept 2026</span>
+                </div>
+                <div class="exp-content">
+                    <a href="https://www.leti-cea.fr/cea-tech/leti" target="_blank" class="exp-logo" title="CEA-Leti">
+                        <img src="assets/images/logos/CEA_Leti.png" alt="CEA-Leti logo">
+                    </a>
+                    <div class="exp-header">
+                        <h3>
+                            <span class="lang-text" data-lang="fr">Ingénieur Chercheur Apprenti</span>
+                            <span class="lang-text" data-lang="en" style="display: none;">Apprentice Research Engineer</span>
+                            <span class="exp-type">
+                                <span class="lang-text" data-lang="fr">Alternance</span>
+                                <span class="lang-text" data-lang="en" style="display: none;">Apprenticeship</span>
+                            </span>
+                        </h3>
+                        <span class="exp-company macro">\CEA_Leti - Grenoble, France</span>
+                    </div>
+                    <p class="lang-text" data-lang="fr">
+                        Développement d'électroniques de lecture pour dispositifs quantiques. Conception d'un <strong>front-end de multiplexage 50 canaux</strong> avec TIA intégré opérant à 4K. Caractérisation FD-SOI et optimisation de process de découpe 300mm.
+                    </p>
+                    <p class="lang-text" data-lang="en" style="display: none;">
+                        Development of readout electronics for quantum devices. Design of a <strong>50-channel multiplexing front-end</strong> with integrated TIA operating at 4K. FD-SOI characterization and 300mm dicing process optimization.
+                    </p>
+                    <div class="exp-tags">
+                        <span class="tag">Cryogenic Design</span>
+                        <span class="tag">Quantum Devices</span>
+                        <span class="tag">FD-SOI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tokyo Tech -->
+            <div class="exp-item">
+                <div class="exp-date">
+                    <span class="lang-text" data-lang="fr">Juil - Sept 2025</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Jul - Sept 2025</span>
+                </div>
+                <div class="exp-content">
+                    <a href="https://www.isct.ac.jp/en" target="_blank" class="exp-logo" title="Institute of Science Tokyo">
+                        <img src="assets/images/logos/IST_logo.png" alt="Institute of Science Tokyo logo">
+                    </a>
+                    <div class="exp-header">
+                        <h3>
+                            <span class="lang-text" data-lang="fr">Stagiaire Recherche</span>
+                            <span class="lang-text" data-lang="en" style="display: none;">Research Intern</span>
+                        </h3>
+                        <span class="exp-company">Institute of Science Tokyo - Tokyo, Japan</span>
+                    </div>
+                    <p class="lang-text" data-lang="fr">
+                        Conception d'architectures de packaging cryogénique permettant le <strong>test séquentiel de multiples puces quantiques</strong> en un seul cycle de refroidissement. Gestion des contraintes thermiques et spatiales des systèmes cryogéniques.
+                    </p>
+                    <p class="lang-text" data-lang="en" style="display: none;">
+                        Design of cryogenic packaging architectures enabling <strong>sequential testing of multiple quantum chips</strong> within a single cooling cycle. Management of thermal and spatial constraints in cryogenic systems.
+                    </p>
+                    <div class="exp-tags">
+                        <span class="tag">Cryogenic Packaging</span>
+                        <span class="tag">High-Density Interconnects</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CPE Lyon -->
+            <div class="exp-item">
+                <div class="exp-date">
+                    <span class="lang-text" data-lang="fr">Sept 2023 - Sept 2026</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Sept 2023 - Sept 2026</span>
+                </div>
+                <div class="exp-content">
+                    <a href="https://www.cpe.fr/detail/psm-presentation-de-la-formation/" target="_blank" class="exp-logo" title="CPE Lyon">
+                        <img src="assets/images/logos/CPE_Lyon.png" alt="CPE Lyon logo">
+                    </a>
+                    <div class="exp-header">
+                        <h3>
+                            <span class="lang-text" data-lang="fr">Diplôme d'Ingénieur - PSM</span>
+                            <span class="lang-text" data-lang="en" style="display: none;">Engineering Degree - PSM</span>
+                            <span class="exp-type">
+                                <span class="lang-text" data-lang="fr">Alternance</span>
+                                <span class="lang-text" data-lang="en" style="display: none;">Apprenticeship</span>
+                            </span>
+                        </h3>
+                        <span class="exp-company macro">\CPE_Lyon - Villeurbanne, France</span>
+                        <span class="exp-award">🏆 Major de promotion</span>
+                    </div>
+                    <p class="lang-text" data-lang="fr">
+                        Physique & Systèmes Microélectroniques, <strong>en alternance avec le CEA-Leti</strong>. Formation en conception numérique (FPGA, RISC-V), circuits analogiques/mixtes (Cadence), physique des semiconducteurs, et procédés salle blanche (INL).
+                    </p>
+                    <p class="lang-text" data-lang="en" style="display: none;">
+                        Physics & Microelectronics Systems, <strong>apprenticeship format with CEA-Leti</strong>. Training in digital design (FPGA, RISC-V), analog/mixed-signal circuits (Cadence), semiconductor physics, and cleanroom processes (INL).
+                    </p>
+                    <div class="exp-tags">
+                        <span class="tag">FPGA/VHDL</span>
+                        <span class="tag">Analog IC</span>
+                        <span class="tag">Cleanroom</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CPGE -->
+            <div class="exp-item">
+                <div class="exp-date">
+                    <span class="lang-text" data-lang="fr">Sept 2021 - Sept 2023</span>
+                    <span class="lang-text" data-lang="en" style="display: none;">Sept 2021 - Sept 2023</span>
+                </div>
+                <div class="exp-content">
+                    <a href="https://www.prepa.cpe.fr/" target="_blank" class="exp-logo" title="Institution des Chartreux">
+                        <img src="assets/images/logos/Charteux.png" alt="Institution des Chartreux logo">
+                    </a>
+                    <div class="exp-header">
+                        <h3>
+                            <span class="lang-text" data-lang="fr">CPGE PSI</span>
+                            <span class="lang-text" data-lang="en" style="display: none;">Intensive Undergrad (CPGE PSI)</span>
+                        </h3>
+                        <span class="exp-company">Institution des Chartreux - Lyon, France</span>
+                    </div>
+                    <p class="lang-text" data-lang="fr">
+                        Classes préparatoires aux Grandes Écoles. Formation intensive en mathématiques, physique et sciences de l'ingénieur.
+                    </p>
+                    <p class="lang-text" data-lang="en" style="display: none;">
+                        Intensive undergraduate program preparing for top French engineering schools. Rigorous training in mathematics, physics, and engineering sciences.
+                    </p>
+                    <div class="exp-tags">
+                        <span class="tag">Mathematics</span>
+                        <span class="tag">Physics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2 class="section-title">
+            <span class="lang-text" data-lang="fr">Projets</span>
+            <span class="lang-text" data-lang="en" style="display: none;">Projects</span>
+        </h2>
+
+        <!-- Filter Buttons -->
+        <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">
+                <span class="lang-text" data-lang="fr">Tous</span>
+                <span class="lang-text" data-lang="en" style="display: none;">All</span>
+            </button>
+            <button class="filter-btn" data-filter="fpga">FPGA/Digital</button>
+            <button class="filter-btn" data-filter="analog">Analog/PCB</button>
+            <button class="filter-btn" data-filter="software">Software</button>
+            <button class="filter-btn" data-filter="ai">AI/ML</button>
+            <button class="filter-btn" data-filter="research">Research</button>
+        </div>
 
         <div class="timeline-container">
             <div class="timeline-line"></div>
 
-            <!-- Projets chargés dynamiquement -->
+            <!-- Projects loaded dynamically -->
             <div id="project-parking"></div>
             <div id="project-research"></div>
             <div id="project-AI"></div>
             <div id="project-A8"></div>
+            <div id="project-PDF"></div>
         </div>
     </section>
 
@@ -160,16 +750,26 @@
             <span class="lang-text" data-lang="fr">Me Contacter</span>
             <span class="lang-text" data-lang="en" style="display: none;">Contact Me</span>
         </h2>
+
+        <p class="contact-intro">
+            <span class="lang-text" data-lang="fr">
+                Ouvert aux opportunités de doctorat, postes d'ingénieur R&D et collaborations de recherche. N'hésitez pas à me contacter !
+            </span>
+            <span class="lang-text" data-lang="en" style="display: none;">
+                Open to PhD opportunities, R&D engineering positions, and research collaborations. Feel free to reach out!
+            </span>
+        </p>
+
         <div class="contact-links">
             <a href="mailto:cauquil69v@gmail.com" class="contact-item">
                 <svg class="icon"><use href="#icon-email"/></svg>
                 <span>cauquil69v@gmail.com</span>
             </a>
-            <a href="https://github.com/vincent-cauquil" target="_blank" class="contact-item">
+            <a href="https://github.com/Vincent-Cauquil" target="_blank" class="contact-item">
                 <svg class="icon"><use href="#icon-github"/></svg>
                 <span>GitHub</span>
             </a>
-            <a href="https://www.linkedin.com/in/vincent-cauquil-6048b3241/?originalSubdomain=fr" target="_blank" class="contact-item">
+            <a href="https://www.linkedin.com/in/vincent-cauquil-6048b3241/" target="_blank" class="contact-item">
                 <svg class="icon"><use href="#icon-linkedin"/></svg>
                 <span>LinkedIn</span>
             </a>
@@ -180,12 +780,13 @@
     <footer>
         <p>
             <span class="lang-text" data-lang="fr">© 2026 Vincent Cauquil 
-                <br>Hébergée sur <svg class="icon"><use href="#icon-github"/></svg> GitHub Page</span>
+                <br>Hébergé sur <svg class="icon"><use href="#icon-github"/></svg> GitHub Pages</span>
             <span class="lang-text" data-lang="en" style="display: none;">© 2026 Vincent Cauquil 
-                <br>Host on <svg class="icon"><use href="#icon-github"/></svg> GitHub</span>
+                <br>Hosted on <svg class="icon"><use href="#icon-github"/></svg> GitHub Pages</span>
         </p>
     </footer>
 
+    <!-- LIGHTBOX -->
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">×</span>
         <span class="lightbox-prev" onclick="navigateLightbox(-1)">❮</span>
